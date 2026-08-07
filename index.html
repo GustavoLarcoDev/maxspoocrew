@@ -305,20 +305,27 @@ button,input,select,textarea{font:inherit;color:inherit}
   transition:box-shadow .25s ease;
 }
 .site-header.is-stuck{box-shadow:0 10px 30px -18px rgba(140,46,30,.5)}
-.hdr{display:flex; align-items:center; gap:18px; min-height:74px; padding-block:11px}
+.hdr{display:flex; align-items:center; gap:14px; min-height:74px; padding-block:11px; position:relative}
 
 .brand{display:flex; align-items:center; gap:11px; text-decoration:none; margin-right:auto}
-.brand-logo{width:84px; height:auto; flex:none; transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+/* same white tile as the footer logo, so both read as one treatment */
+.brand-logo{
+  width:76px; height:auto; flex:none; display:block;
+  background:#fff; border-radius:14px; padding:7px 9px;
+  box-shadow:0 4px 12px -6px rgba(90,20,14,.35);
+  transition:transform .2s cubic-bezier(.34,1.56,.64,1);
+}
 .brand:hover .brand-logo{transform:rotate(-4deg) scale(1.07)}
 .brand-name{font-family:var(--display); font-weight:900; font-size:19.5px; letter-spacing:-.028em; line-height:1.05; display:block; white-space:nowrap}
 .brand-sub{font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); display:block; margin-top:2px; white-space:nowrap}
 /* compact tap-to-call that replaces the header CTA on phones */
 .hdr-call{display:none}
 
-.nav{display:flex; align-items:center; gap:4px; flex:none}
+.nav{display:flex; align-items:center; gap:2px; flex:none}
+/* padding stays tight: seven links plus the phone number just fit the 1140 wrap */
 .nav a{
   text-decoration:none; font-size:15px; font-weight:600; color:var(--ink-2);
-  padding:9px 11px; border-radius:999px; white-space:nowrap;
+  padding:9px 7px; border-radius:999px; white-space:nowrap;
   transition:color .15s, background-color .15s;
 }
 .nav a:hover{color:var(--brand-ink); background:color-mix(in srgb, var(--brand) 12%, transparent)}
