@@ -616,28 +616,22 @@ button,input,select,textarea{font:inherit;color:inherit}
    QUOTE + CONTACT
    ============================================================ */
 .quote-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:24px; align-items:start}
-.form-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl); padding:clamp(24px,3.4vw,38px); box-shadow:var(--shadow)}
-.fields{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.field{display:flex; flex-direction:column; gap:7px}
-.field--full{grid-column:1/-1}
-.field label{font-size:13px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2)}
-.field input,.field select,.field textarea{
-  width:100%; padding:13px 15px; border-radius:14px;
-  border:2px solid var(--line); background:var(--surface-2); color:var(--ink);
-  font-size:16px; font-family:var(--body);
-  transition:border-color .16s, background-color .16s;
+/* Jobber ships its own light-themed stylesheet for the embed, so this card stays
+   white in both themes — on our dark ground it would render dark text on dark. */
+.form-embed{
+  background:#fff; color:#331411;
+  border:1px solid var(--line); border-radius:var(--r-xl);
+  padding:clamp(20px,3vw,32px); box-shadow:var(--shadow);
+  min-height:420px;
 }
-.field textarea{resize:vertical; min-height:96px; line-height:1.55}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none; border-color:var(--brand); background:var(--surface)}
-.field select{appearance:none; cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23C4221B' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat; background-position:right 13px center; background-size:19px; padding-right:42px;
-}
-.form-foot{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:22px}
-.form-foot .note{font-size:14px; color:var(--ink-3); max-width:34ch}
-.form-msg{margin-top:16px; padding:15px 18px; border-radius:16px; background:color-mix(in srgb,var(--yard) 15%, var(--surface)); border:1px solid color-mix(in srgb,var(--yard) 40%, transparent); color:var(--ink); font-size:15.5px; display:none}
-.form-msg.is-on{display:block; animation:popin .35s cubic-bezier(.34,1.56,.64,1)}
-@keyframes popin{from{opacity:0; transform:translateY(8px) scale(.97)} to{opacity:1; transform:none}}
+.form-embed iframe{width:100%; border:0; display:block}
+.embed-note{margin-top:18px; padding-top:16px; border-top:1px solid #F0DCD4; font-size:14.5px; color:#6E433A}
+.embed-note a{color:#A81C14; font-weight:700}
+.embed-fallback{padding:22px 0 4px; display:flex; flex-direction:column; align-items:flex-start; gap:14px}
+/* display:flex above out-specifies the browser's [hidden]{display:none}, so the
+   attribute alone would not hide it */
+.embed-fallback[hidden]{display:none}
+.embed-fallback p{font-size:15.5px; color:#6E433A; max-width:44ch}
 
 .contact-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl); padding:clamp(24px,3vw,32px); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:6px}
 .cinfo{display:flex; gap:15px; align-items:flex-start; padding:15px 0; border-bottom:1px solid var(--line)}
@@ -676,15 +670,6 @@ a.v:hover{color:var(--brand-ink)}
 .rv{opacity:0; transform:translateY(22px); transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1)}
 .rv.in{opacity:1; transform:none}
 
-/* paw burst on submit */
-.burst{position:fixed; inset:0; pointer-events:none; z-index:200; overflow:hidden}
-.burst i{position:absolute; width:24px;height:24px; color:var(--brand); animation:burst 1.15s cubic-bezier(.2,.7,.3,1) forwards}
-.burst i svg{width:100%;height:100%;fill:currentColor}
-@keyframes burst{
-  from{transform:translate(0,0) rotate(0) scale(.3); opacity:1}
-  to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1); opacity:0}
-}
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -704,8 +689,7 @@ a.v:hover{color:var(--brand-ink)}
   .grid-3,.grid-2,.perks,.pricing-extra,.pups{grid-template-columns:1fr}
   .plans{gap:26px; margin-top:40px}
   .plan--best{order:-1}
-  .fields{grid-template-columns:1fr}
-  .hero h1{max-width:none}
+    .hero h1{max-width:none}
   .xcard{flex-direction:column; align-items:flex-start}
   .xcard .btn{margin-left:0; width:100%}
   .foot-grid{grid-template-columns:1fr}
@@ -719,7 +703,6 @@ a.v:hover{color:var(--brand-ink)}
   .brand-name{font-size:17.5px}
   /* stack the photo above the text so the NASAR pill has room */
   .pup{flex-direction:column; align-items:flex-start; gap:14px}
-  .form-foot .btn{width:100%}
   /* on a phone, tapping to call beats a scroll-to-form button */
   .hdr .btn--cta{display:none}
   .hdr-call{display:inline-flex}
@@ -1216,69 +1199,20 @@ a.v:hover{color:var(--brand-ink)}
     </div>
 
     <div class="quote-grid">
-      <form class="form-card rv" id="quoteForm" novalidate>
-        <div class="fields">
-          <div class="field">
-            <label for="f-name">Your name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Jane Doe">
-          </div>
-          <div class="field">
-            <label for="f-phone">Phone</label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="618-555-0134">
-          </div>
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="jane@example.com">
-          </div>
-          <div class="field">
-            <label for="f-addr">Service address or ZIP</label>
-            <input id="f-addr" name="address" type="text" autocomplete="street-address" required placeholder="Chesterfield, 63005">
-          </div>
-          <div class="field">
-            <label for="f-type">Property type</label>
-            <select id="f-type" name="property">
-              <option>Home</option>
-              <option>HOA or apartment community</option>
-              <option>Business, kennel, or vet clinic</option>
-              <option>Dog park or common area</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-dogs">How many dogs</label>
-            <select id="f-dogs" name="dogs">
-              <option>1 dog</option>
-              <option>2 dogs</option>
-              <option>3+ dogs</option>
-            </select>
-          </div>
-          <div class="field field--full">
-            <label for="f-freq">How often</label>
-            <select id="f-freq" name="frequency">
-              <option>Weekly &mdash; most popular</option>
-              <option>Twice weekly</option>
-              <option>Every other week</option>
-              <option>Once a month</option>
-              <option>One-time cleanup ($100)</option>
-              <option>Commercial / HOA bid</option>
-              <option>Not sure yet &mdash; help me pick</option>
-            </select>
-          </div>
-          <div class="field field--full">
-            <label for="f-notes">Anything we should know?</label>
-            <textarea id="f-notes" name="notes" placeholder="Gate code, where the gate is, a dog who needs space, how long it&rsquo;s been since the last cleanup&hellip;"></textarea>
-          </div>
+      <div class="form-embed rv">
+        <!-- Jobber work request form. Submissions go straight into the Jobber
+             account, so nothing depends on the visitor's mail client. -->
+        <div id="8c46d6e1-7100-4789-922b-6097eaaeac32-5064062"></div>
+        <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen">
+        <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="8c46d6e1-7100-4789-922b-6097eaaeac32-5064062" form_url="https://clienthub.getjobber.com/client_hubs/8c46d6e1-7100-4789-922b-6097eaaeac32/public/work_request/embedded_work_request_form?form_id=5064062"></script>
+
+        <div class="embed-fallback" id="embedFallback" hidden>
+          <p>The request form couldn&rsquo;t load &mdash; a browser extension or a slow connection can block it.</p>
+          <a class="btn btn--primary" href="https://clienthub.getjobber.com/client_hubs/8c46d6e1-7100-4789-922b-6097eaaeac32/public/work_request/embedded_work_request_form?form_id=5064062" target="_blank" rel="noopener">Open the form in a new tab</a>
         </div>
 
-        <div class="form-foot">
-          <button class="btn btn--primary" type="submit">
-            <svg class="wag" viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><ellipse cx="7.6" cy="8.4" rx="2" ry="2.7"/><ellipse cx="12.6" cy="6.9" rx="2" ry="2.9"/><ellipse cx="17" cy="9.4" rx="1.9" ry="2.5"/><path d="M12.2 12c2.7 0 5 2 5 4.2 0 1.7-1.4 2.6-3.1 2.6-.8 0-1.3-.2-1.9-.2s-1.1.2-1.9.2c-1.7 0-3.1-.9-3.1-2.6C7.2 14 9.5 12 12.2 12z"/></g></svg>
-            Send my request
-          </button>
-          <p class="note">Or just call <a href="tel:+16187193802" style="color:var(--brand-ink); font-weight:700">618-719-3802</a>. We answer Mon&ndash;Sat.</p>
-        </div>
-
-        <div class="form-msg" id="formMsg" role="status"></div>
-      </form>
+        <p class="embed-note">Or just call <a href="tel:+16187193802">618-719-3802</a>. We answer Mon&ndash;Sat, 7am&ndash;6pm.</p>
+      </div>
 
       <aside class="contact-card rv" id="contact">
         <div class="cinfo">
@@ -1650,72 +1584,17 @@ a.v:hover{color:var(--brand-ink)}
   document.head.appendChild(faqLd);
 
   /* ---------------------------------------------------------
-     QUOTE FORM  →  opens a prefilled email
+     JOBBER EMBED — third-party and external, so offer a plain
+     link if an extension or a slow connection blocks it
      --------------------------------------------------------- */
-  var form = document.getElementById("quoteForm");
-  var msg = document.getElementById("formMsg");
-
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var d = new FormData(form);
-    var get = function(k){ return (d.get(k) || "").toString().trim(); };
-
-    var missing = ["name","phone","email","address"].filter(function(k){ return !get(k); });
-    if (missing.length){
-      msg.className = "form-msg is-on";
-      msg.style.background = "color-mix(in srgb, #D9483B 12%, var(--surface))";
-      msg.style.borderColor = "color-mix(in srgb, #D9483B 40%, transparent)";
-      msg.textContent = "We still need your name, phone, email, and address so we can find the yard.";
-      var first = form.querySelector("[name='" + missing[0] + "']");
-      if (first) first.focus();
-      return;
-    }
-
-    var body =
-      "Name: " + get("name") + "\n" +
-      "Phone: " + get("phone") + "\n" +
-      "Email: " + get("email") + "\n" +
-      "Address: " + get("address") + "\n" +
-      "Property: " + get("property") + "\n" +
-      "Dogs: " + get("dogs") + "\n" +
-      "Frequency: " + get("frequency") + "\n\n" +
-      "Notes:\n" + (get("notes") || "(none)") + "\n";
-
-    var href = "mailto:maxspoocrew@outlook.com" +
-      "?subject=" + encodeURIComponent("Free cleanup request — " + get("name")) +
-      "&body=" + encodeURIComponent(body);
-
-    msg.className = "form-msg is-on";
-    msg.style.background = "";
-    msg.style.borderColor = "";
-    msg.innerHTML = "<strong>Nice — your email is opening now.</strong> Hit send and we&rsquo;ll get back to you the same day. In a hurry? Call <a href=\"tel:+16187193802\" style=\"color:var(--brand-ink);font-weight:700\">618-719-3802</a>.";
-
-    pawBurst();
-    window.location.href = href;
-  });
-
-  function pawBurst(){
-    if (reduce) return;
-    var b = document.createElement("div");
-    b.className = "burst";
-    var r = form.getBoundingClientRect();
-    var cx = r.left + r.width / 2, cy = r.top + r.height - 60;
-    for (var i = 0; i < 18; i++){
-      var s = document.createElement("i");
-      var a = rnd(-Math.PI, 0);
-      var dist = rnd(120, 340);
-      s.style.left = cx + "px";
-      s.style.top = cy + "px";
-      s.style.setProperty("--dx", Math.cos(a) * dist + "px");
-      s.style.setProperty("--dy", Math.sin(a) * dist + "px");
-      s.style.setProperty("--rot", rnd(-360, 360) + "deg");
-      s.style.animationDelay = (i * 18) + "ms";
-      s.innerHTML = PAW;
-      b.appendChild(s);
-    }
-    document.body.appendChild(b);
-    setTimeout(function(){ b.remove(); }, 1800);
+  var embedBox = document.getElementById("8c46d6e1-7100-4789-922b-6097eaaeac32-5064062");
+  var embedFallback = document.getElementById("embedFallback");
+  if (embedBox && embedFallback){
+    setTimeout(function(){
+      if (!embedBox.querySelector("iframe, form")) embedFallback.hidden = false;
+    }, 5000);
   }
+
 
   /* ---------------------------------------------------------
      REVEAL ON SCROLL

@@ -46,21 +46,19 @@ python3 -m http.server 8787
 
 Y abrir http://localhost:8787
 
-## Lo único que falta conectar: el formulario
+## El formulario
 
-El formulario de "Claim your free first cleanup" hoy arma un correo con todos los datos
-y abre el cliente de mail del visitante hacia `maxspoocrew@outlook.com`. Funciona, pero
-depende de que la persona tenga mail configurado y le dé a "enviar".
+El formulario de solicitud es el embed oficial de **Jobber**. Las solicitudes
+entran directo a la cuenta de Jobber de Max's Poo Crew — ya no dependen de que
+el visitante tenga cliente de correo configurado.
 
-Para que llegue directo a la bandeja de Mike sin ese paso, hay que apuntarlo a un
-servicio de formularios. Con Formspree son dos cambios en `index.html`:
+El embed carga desde `d3ey4dbjkt2f6s.cloudfront.net`, así que necesita internet.
+Si un bloqueador de anuncios o una conexión lenta impiden que cargue, aparece un
+botón de respaldo que abre el mismo formulario en una pestaña nueva.
 
-1. En el `<form id="quoteForm">`, agregar `action="https://formspree.io/f/XXXXXXX"`
-   y `method="POST"`.
-2. En el bloque `form.addEventListener("submit", ...)`, borrar el `e.preventDefault()`
-   y la línea `window.location.href = href;`.
-
-Netlify Forms es aún más simple si se hospeda ahí: basta con agregar `netlify` al `<form>`.
+La tarjeta que lo contiene se queda blanca en ambos temas a propósito: Jobber
+trae su propia hoja de estilos clara, y sobre nuestro fondo oscuro el formulario
+quedaría con texto oscuro sobre oscuro.
 
 ## Datos que hay que revisar con Mike antes de publicar
 
@@ -70,6 +68,8 @@ Todo el contenido salió del sitio actual (maxspoocrew.com). Vale la pena confir
   frecuencias, tal cual la página de pricing actual.
 - **Privacy Policy y Terms & Conditions.** En el footer apuntan a `#` porque el sitio
   actual las tiene como páginas aparte. Hay que pegarles la URL real o crear las páginas.
+- **Cuál perro es cuál.** Max es el labrador chocolate y Simon el negro, deducido de
+  la placa del collar y del nombre de un archivo. Los nombres salen en los pies de foto.
 - **Redes sociales.** El sitio actual no mostraba ninguna. Si Mike tiene Facebook o
   Instagram, conviene agregarlas al footer.
 
