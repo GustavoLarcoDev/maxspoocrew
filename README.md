@@ -22,6 +22,7 @@ pesan unos 620 KB, contra los 5.6 MB de los originales.
 | `max-simon.webp` | Max y Simon echados juntos | Antes de la sección About |
 | `max.webp` / `simon.webp` | Retratos recortados de cada uno | Tarjetas "Meet Max and Simon" |
 | `mike-simon.webp` | Mike con Simon | Columna derecha de About |
+| `banner.webp` | Banner promocional | Arriba del formulario de contacto |
 | `og-banner.jpg` | Banner de Facebook | Vista previa al compartir el link |
 
 La foto del golden corriendo (`Daycare-Homepage-Max-K9.webp`) no se usa. El original
@@ -82,3 +83,20 @@ Todo el contenido salió del sitio actual (maxspoocrew.com). Vale la pena confir
   los perros se quedan quietos y todo sigue legible.
 - Responsive de 390px hasta escritorio. En celular el botón del header cambia a
   "Call", que es lo que más se toca en un negocio local.
+
+
+## Paleta
+
+El rojo base es **#981818**, muestreado directamente del logo y del banner de
+Facebook — no es un rojo inventado, es el de la marca. A partir de ahí:
+
+- `--brand` `#C4221B` — botones y acentos
+- `--brand-ink` `#A81C14` — texto de acento (contraste 6.9 sobre el fondo)
+- `--brand-deep` `#981818` — sombras y estados hover
+
+Los fondos, textos y bordes están todos inclinados hacia el rojo, así que la
+página se lee roja de base y no como un crema con acentos encima.
+
+Todas las combinaciones de texto pasan WCAG AA (4.5:1) en tema claro y oscuro.
+En oscuro el rojo del botón sube a `#D63A2E` porque `#C4221B` con texto blanco
+se quedaba en 3.87 — por debajo del mínimo.
