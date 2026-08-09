@@ -54,6 +54,9 @@ a{color:inherit}
   padding:clamp(34px,6vw,60px) 0 clamp(30px,5vw,50px)}
 .hero h1{font-size:clamp(29px,5vw,47px);color:#fff}
 .hero p{margin-top:14px;max-width:60ch;color:rgba(255,255,255,.93);font-size:clamp(16px,1.8vw,18.5px)}
+/* The count, right under the headline — it sets expectations before the scroll. */
+.hero .hero-note{margin-top:10px;font-family:var(--display);font-size:14px;letter-spacing:.06em;
+  color:var(--butter);text-transform:uppercase}
 .eyebrow{display:inline-flex;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.15em;
   text-transform:uppercase;color:var(--butter)}
 .back{display:inline-flex;align-items:center;gap:7px;margin-top:20px;color:rgba(255,255,255,.9);
@@ -69,6 +72,9 @@ section+section{border-top:1px solid var(--rule)}
 
 .grid{display:grid;gap:clamp(18px,2.6vw,26px)}
 @media(min-width:760px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+/* Four square sheets read as a set in 2x2, and the previews come out big
+   enough to actually judge. In three columns the fourth sits alone. */
+@media(min-width:760px){.grid--2{grid-template-columns:repeat(2,1fr)}}
 
 .card{background:var(--surface);border:1px solid var(--rule);border-radius:20px;
   overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column}
@@ -126,6 +132,7 @@ footer{padding-block:34px;border-top:1px solid var(--rule);color:var(--ink-3);fo
 <div class="hero"><div class="wrap">
   <span class="eyebrow">Max&rsquo;s Poo Crew &middot; for approval</span>
   <h1>Pick one trifold,<br>one sign, one menu</h1>
+  <p class="hero-note">Six trifolds &middot; three signs &middot; four service menus &middot; three Facebook ads</p>
   <p>Every preview is a render of the actual print-ready PDF, and every <b>Download PDF</b> button
   gives you that exact file &mdash; the one that goes to the printer. Tap a preview to see it full size.
   The Facebook ads at the bottom are the exception: those are ready to upload as they are, and you
@@ -286,30 +293,83 @@ footer{padding-block:34px;border-top:1px solid var(--rule);color:var(--ink-3);fo
 
 <section><div class="wrap">
   <div class="shead">
-    <span class="eyebrow">One piece</span>
+    <span class="eyebrow">Four options</span>
     <h2>Service menu</h2>
     <p>Square, so the same file works as an Instagram or Facebook post and as a printed counter
-    card. <b>No prices on it, on purpose:</b> rates change and a printed sheet does not, so the QR
-    goes to the plans page instead &mdash; which also means a scan gets attributed in Analytics,
-    something a printed price never does.</p>
+    card. <b>No prices on any of them, on purpose:</b> rates change and a printed sheet does not, so
+    the QR goes to the plans page instead &mdash; which also means a scan gets attributed in
+    Analytics, something a printed price never does. The four differ in what they spend the sheet on:
+    the pitch, the full list, the visit itself, or the photograph.</p>
   </div>
 
-  <div class="grid">
+  <div class="grid grid--2">
+
     <article class="card">
-      <div class="card-h"><span class="tag">&#9733;</span><div><h3>Service menu</h3><p class="role">8 &times; 8 in &middot; square</p></div></div>
+      <div class="card-h"><span class="tag">A</span><div><h3>The pitch</h3><p class="role">Name and benefits</p></div></div>
       <div class="card-b"><p>Logo top left, the name on one line, and Max and Simon across the bottom.
-        Benefits and the phone number carry the middle; the QR sends anyone who wants numbers to the
-        website. Nothing on it claims there is no contract.</p>
-        <div class="use"><b>Best where:</b> social posts, a counter card by the till, and as a handout at events.</div></div>
+        Four reasons to trust the crew carry the middle; the QR sends anyone who wants numbers to the
+        website.</p>
+        <div class="use"><b>Best where:</b> a counter card by the till, and as a handout at events.</div></div>
       <div class="shots">
-        <div><img src="img/service-menu-p1.jpg" width="1000" height="1000" alt="Service menu" loading="lazy" decoding="async"><p class="cap">8 &times; 8 in</p></div>
+        <div><img src="img/service-menu-p1.jpg" width="1000" height="1000" alt="Service menu A" loading="lazy" decoding="async"><p class="cap">8 &times; 8 in</p></div>
       </div>
       <div class="dl">
         <a class="btn" href="pdf/service-menu.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a>
-        <a class="btn" href="pdf/service-menu-social.jpg" download style="background:#331411"><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>1080&times;1080 for social</a>
-        <span class="meta">0.7 MB &middot; print &middot; 0.3 MB &middot; social</span>
+        <a class="btn" href="pdf/service-menu-social.jpg" download style="background:#331411"><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>For social</a>
+        <span class="meta">0.7 MB &middot; 0.3 MB</span>
       </div>
     </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">B</span><div><h3>The list</h3><p class="role">Every service</p></div></div>
+      <div class="card-b"><p>The literal menu: all four frequencies, one-time cleanups and commercial,
+        with what every plan includes beside them. Cream rather than red, which separates it from the
+        others at a glance and survives being photocopied by a receptionist &mdash; which is what
+        actually happens to counter cards.</p>
+        <div class="use"><b>Best where:</b> vet and daycare counters, where the question is &ldquo;what do they do?&rdquo; rather than &ldquo;who are they?&rdquo;</div></div>
+      <div class="shots">
+        <div><img src="img/service-menu-b-services-p1.jpg" width="1000" height="1000" alt="Service menu B, the full list of services" loading="lazy" decoding="async"><p class="cap">8 &times; 8 in</p></div>
+      </div>
+      <div class="dl">
+        <a class="btn" href="pdf/service-menu-b-services.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a>
+        <a class="btn" href="pdf/service-menu-b-services-social.jpg" download style="background:#331411"><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>For social</a>
+        <span class="meta">0.7 MB &middot; 0.3 MB</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">C</span><div><h3>The visit</h3><p class="role">Four steps</p></div></div>
+      <div class="card-b"><p>Answers the thing people actually hesitate over: a stranger is about to
+        open the gate while nobody is home, so what happens then? The last step carries the detail
+        that beats the cheapest quote in town &mdash; the waste leaves the property instead of going
+        into your own bin.</p>
+        <div class="use"><b>Best where:</b> handed to someone who is interested but has not booked. It closes the doubt, not the sale.</div></div>
+      <div class="shots">
+        <div><img src="img/service-menu-c-visit-p1.jpg" width="1000" height="1000" alt="Service menu C, what happens on a visit" loading="lazy" decoding="async"><p class="cap">8 &times; 8 in</p></div>
+      </div>
+      <div class="dl">
+        <a class="btn" href="pdf/service-menu-c-visit.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a>
+        <a class="btn" href="pdf/service-menu-c-visit-social.jpg" download style="background:#331411"><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>For social</a>
+        <span class="meta">0.6 MB &middot; 0.3 MB</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">D</span><div><h3>The quiet one</h3><p class="role">Photograph led</p></div></div>
+      <div class="card-b"><p>Max and Simon edge to edge, the name, one sentence, and the two ways to
+        act. The least information and the most presence &mdash; and the one that works hardest as a
+        social post, because a feed rewards a picture and punishes a wall of type.</p>
+        <div class="use"><b>Best where:</b> Instagram and Facebook. Also the one to frame and hang in the K9 Club lobby.</div></div>
+      <div class="shots">
+        <div><img src="img/service-menu-d-photo-p1.jpg" width="1000" height="1000" alt="Service menu D, photograph led" loading="lazy" decoding="async"><p class="cap">8 &times; 8 in</p></div>
+      </div>
+      <div class="dl">
+        <a class="btn" href="pdf/service-menu-d-photo.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a>
+        <a class="btn" href="pdf/service-menu-d-photo-social.jpg" download style="background:#331411"><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>For social</a>
+        <span class="meta">0.5 MB &middot; 0.4 MB</span>
+      </div>
+    </article>
+
   </div>
 </div></section>
 
