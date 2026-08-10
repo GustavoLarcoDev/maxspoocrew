@@ -257,28 +257,34 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
 </style>
 
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <style>
-.mapwrap{background:var(--surface); border:1px solid var(--rule); border-radius:18px;
-  padding:clamp(10px,2vw,20px); box-shadow:var(--sh); overflow-x:auto}
-.mapwrap svg{width:100%; min-width:660px; height:auto; display:block}
-.rings circle{fill:none; stroke:var(--rule-2); stroke-dasharray:4 5}
-.rings text{font-family:var(--mono); font-size:10px; fill:var(--ink-3)}
-.dot{stroke:var(--surface); stroke-width:1.1; opacity:.92}
-.b0{fill:var(--ink-3)}
-.b1{fill:#8FB3C7} .b2{fill:#6E9F79} .b3{fill:#D9A441} .b4{fill:#D2703A} .b5{fill:#B23A48}
-.labels text{font-family:var(--body); font-size:11px; font-weight:600; fill:var(--ink);
-  paint-order:stroke; stroke:var(--surface); stroke-width:3px; stroke-linejoin:round}
-.base circle{fill:var(--brand); stroke:var(--surface); stroke-width:2}
-.base text{font-family:var(--display); font-size:11.5px; fill:var(--brand); font-weight:800;
-  paint-order:stroke; stroke:var(--surface); stroke-width:3px}
-.legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; align-items:center;
+#map{height:min(74vh,660px); min-height:420px; border-radius:16px; overflow:hidden;
+  border:1px solid var(--rule); box-shadow:var(--sh); background:var(--surface-2)}
+.leaflet-container{font-family:var(--body); background:var(--surface-2)}
+.leaflet-popup-content-wrapper{border-radius:12px}
+.leaflet-popup-content{margin:12px 14px; font-size:13.5px; line-height:1.5}
+.pop h4{font-family:var(--display); font-size:16px; margin:0 0 2px}
+.pop .rg{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:#8a6a60}
+.pop dl{display:grid; grid-template-columns:auto auto; gap:2px 12px; margin:9px 0 0}
+.pop dt{color:#6b5049} .pop dd{margin:0; font-family:var(--mono); font-variant-numeric:tabular-nums;
+  text-align:right; font-weight:600}
+.pop .nt{margin-top:9px; padding-top:8px; border-top:1px solid #e8d8cf; color:#6b5049; font-size:12.5px}
+
+.maptools{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px}
+.seg{display:inline-flex; border:1px solid var(--rule-2); border-radius:999px; overflow:hidden}
+.seg button{appearance:none; border:0; background:transparent; color:var(--ink-2); cursor:pointer;
+  font-family:var(--body); font-size:13.5px; font-weight:700; padding:8px 16px}
+.seg button[aria-pressed="true"]{background:var(--brand); color:#fff}
+.legend{display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; align-items:center;
   font-size:12.6px; color:var(--ink-2)}
 .legend .sw{display:inline-flex; align-items:center; gap:6px}
-.legend i{width:13px; height:13px; border-radius:50%; display:inline-block}
+.legend i{width:13px; height:13px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.15)}
 .sizekey{display:flex; align-items:flex-end; gap:10px; margin-left:auto}
 .sizekey span{display:inline-flex; align-items:center; gap:5px}
-.sizekey i{border-radius:50%; background:var(--ink-3); display:inline-block}
-.rings text{paint-order:stroke; stroke:var(--surface); stroke-width:3px; stroke-linejoin:round}
+.sizekey i{border-radius:50%; background:var(--ink-3); display:inline-block; border:0}
+#mapfail{padding:22px; font-size:14px; color:var(--ink-2)}
 
 .rank td.note, td.note{font-size:12.6px; color:var(--ink-2); max-width:34ch}
 .rank tbody td{padding-top:9px; padding-bottom:9px}
@@ -308,122 +314,28 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
 <section><div class="wrap">
   <div class="shead">
     <span class="eyebrow">The map</span>
-    <h2>Every place, to scale</h2>
-    <p>Dot size is <b>owner-occupied detached homes with a dog</b>. Colour is median household
-    income, on a separate axis and deliberately not multiplied in &mdash; see why below. Rings are
-    5, 10, 15 and 20 miles from the Chesterfield base. Hover any dot for its numbers.</p>
+    <h2>Every place, on the actual streets</h2>
+    <p>Circle size is <b>owner-occupied detached homes with a dog</b>. Switch the colour between what
+    a place is worth and who is already working it. Dashed rings are 5, 10, 15 and 20 miles from the
+    Chesterfield base. Click any circle for its numbers.</p>
   </div>
-  <div class="mapwrap"><svg viewBox="0 0 1000 720" role="img" aria-label="Map of the St. Louis metro with each municipality sized by the number of households that own a dog and a single-family home">
-<g class="rings">
-<circle cx="514.7" cy="297.7" r="77.5"/>
-<text x="466.9" y="358.8" text-anchor="middle">5 mi</text>
-<circle cx="514.7" cy="297.7" r="155.1"/>
-<text x="419.2" y="419.9" text-anchor="middle">10 mi</text>
-<circle cx="514.7" cy="297.7" r="232.6"/>
-<text x="371.5" y="481.0" text-anchor="middle">15 mi</text>
-<circle cx="514.7" cy="297.7" r="310.2"/>
-<text x="323.7" y="542.1" text-anchor="middle">20 mi</text>
-</g>
-<g class="dots">
-<circle class="dot b3" cx="393.6" cy="162.2" r="28.8"><title>O'Fallon — 9,204.196691520001 serviceable households, median income $110,443</title></circle>
-<circle class="dot b2" cx="490.3" cy="163.4" r="22.5"><title>St. Peters — 5,611.029784920001 serviceable households, median income $91,637</title></circle>
-<circle class="dot b2" cx="565.4" cy="150.4" r="21.6"><title>St. Charles — 5,171.615326079999 serviceable households, median income $85,937</title></circle>
-<circle class="dot b1" cx="722.8" cy="146.1" r="20.7"><title>Florissant — 4,775.692865657999 serviceable households, median income $65,318</title></circle>
-<circle class="dot b3" cx="268.1" cy="128.1" r="20.6"><title>Wentzville — 4,695.751565999999 serviceable households, median income $112,394</title></circle>
-<circle class="dot b4" cx="437.8" cy="384.5" r="20.4"><title>Wildwood — 4,608.488833956 serviceable households, median income $161,060</title></circle>
-<circle class="dot b4" cx="514.7" cy="297.7" r="19.7"><title>Chesterfield — 4,299.76071 serviceable households, median income $133,037</title></circle>
-<circle class="dot b3" cx="730.1" cy="520.8" r="19.1"><title>Oakville — 4,057.6362998399995 serviceable households, median income $106,362</title></circle>
-<circle class="dot b3" cx="536.4" cy="365.6" r="17.8"><title>Ballwin — 3,518.104222416 serviceable households, median income $124,626</title></circle>
-<circle class="dot b3" cx="644.4" cy="382.0" r="16.3"><title>Kirkwood — 2,946.043268928 serviceable households, median income $121,270</title></circle>
-<circle class="dot b2" cx="723.4" cy="413.6" r="15.0"><title>Affton — 2,484.0975048 serviceable households, median income $79,539</title></circle>
-<circle class="dot b3" cx="700.0" cy="374.3" r="14.8"><title>Webster Groves — 2,431.4351990640002 serviceable households, median income $115,227</title></circle>
-<circle class="dot b2" cx="719.1" cy="289.6" r="14.4"><title>University City — 2,297.267311872 serviceable households, median income $80,694</title></circle>
-<circle class="dot b2" cx="702.9" cy="454.5" r="14.3"><title>Concord — 2,270.5234272 serviceable households, median income $89,038</title></circle>
-<circle class="dot b2" cx="687.5" cy="546.3" r="14.2"><title>Arnold — 2,254.28357448 serviceable households, median income $78,370</title></circle>
-<circle class="dot b1" cx="733.4" cy="464.6" r="14.2"><title>Mehlville — 2,229.2077064400005 serviceable households, median income $67,071</title></circle>
-<circle class="dot b1" cx="665.2" cy="151.5" r="12.4"><title>Hazelwood — 1,713.6201024 serviceable households, median income $55,908</title></circle>
-<circle class="dot b3" cx="572.8" cy="378.1" r="12.3"><title>Manchester — 1,688.415003 serviceable households, median income $97,801</title></circle>
-<circle class="dot b3" cx="680.1" cy="406.1" r="12.0"><title>Crestwood — 1,604.88584742 serviceable households, median income $107,169</title></circle>
-<circle class="dot b4" cx="398.1" cy="208.8" r="12.0"><title>Dardenne Prairie — 1,602.4579038719996 serviceable households, median income $152,500</title></circle>
-<circle class="dot b1" cx="758.0" cy="431.1" r="12.0"><title>Lemay — 1,596.818727594 serviceable households, median income $60,399</title></circle>
-<circle class="dot b3" cx="339.3" cy="167.3" r="11.9"><title>Lake St. Louis — 1,581.4456822079999 serviceable households, median income $125,693</title></circle>
-<circle class="dot b2" cx="601.8" cy="234.9" r="11.7"><title>Maryland Heights — 1,532.5711111679996 serviceable households, median income $86,436</title></circle>
-<circle class="dot b1" cx="688.4" cy="257.3" r="11.5"><title>Overland — 1,471.8901443840002 serviceable households, median income $61,773</title></circle>
-<circle class="dot b5" cx="674.3" cy="320.9" r="11.2"><title>Ladue — 1,397.5338960000001 serviceable households, median income $250,000</title></circle>
-<circle class="dot b5" cx="624.0" cy="361.6" r="10.7"><title>Des Peres — 1,279.1608073999998 serviceable households, median income $224,327</title></circle>
-<circle class="dot b5" cx="597.3" cy="327.2" r="10.5"><title>Town and Country — 1,232.60457735 serviceable households, median income $232,534</title></circle>
-<circle class="dot b1" cx="749.0" cy="200.6" r="10.3"><title>Ferguson — 1,178.7644016360002 serviceable households, median income $47,524</title></circle>
-<circle class="dot b3" cx="625.8" cy="293.5" r="9.8"><title>Creve Coeur — 1,065.6545438879998 serviceable households, median income $127,188</title></circle>
-<circle class="dot b4" cx="654.1" cy="433.6" r="9.8"><title>Sunset Hills — 1,062.5520975 serviceable households, median income $138,144</title></circle>
-<circle class="dot b1" cx="672.5" cy="224.4" r="9.4"><title>St. Ann — 984.6883670400001 serviceable households, median income $52,323</title></circle>
-<circle class="dot b1" cx="805.7" cy="196.3" r="9.2"><title>Bellefontaine Neighbors — 943.522820226 serviceable households, median income $49,170</title></circle>
-<circle class="dot b4" cx="676.4" cy="366.9" r="9.2"><title>Glendale — 936.6227665919998 serviceable households, median income $170,700</title></circle>
-<circle class="dot b4" cx="208.6" cy="320.6" r="8.6"><title>Femme Osage corridor — 825.588 serviceable households, median income $149,841</title></circle>
-<circle class="dot b3" cx="659.3" cy="642.0" r="8.5"><title>Barnhart — 807.6752248319998 serviceable households, median income $95,811</title></circle>
-<circle class="dot b3" cx="679.8" cy="282.4" r="8.5"><title>Olivette — 807.3165618000002 serviceable households, median income $111,660</title></circle>
-<circle class="dot b3" cx="504.3" cy="371.1" r="8.5"><title>Ellisville — 793.8407546999999 serviceable households, median income $113,309</title></circle>
-<circle class="dot b2" cx="647.6" cy="174.4" r="8.0"><title>Bridgeton — 704.364189264 serviceable households, median income $72,005</title></circle>
-<circle class="dot b2" cx="776.1" cy="146.9" r="7.9"><title>Black Jack — 694.4818540439999 serviceable households, median income $78,331</title></circle>
-<circle class="dot b3" cx="689.2" cy="350.3" r="7.5"><title>Rock Hill — 632.7461236139999 serviceable households, median income $95,372</title></circle>
-<circle class="dot b2" cx="676.7" cy="625.0" r="7.5"><title>Imperial — 623.24643906 serviceable households, median income $90,028</title></circle>
-<circle class="dot b2" cx="684.3" cy="439.2" r="7.4"><title>Sappington — 608.0491830000001 serviceable households, median income $77,650</title></circle>
-<circle class="dot b2" cx="717.7" cy="326.8" r="7.2"><title>Richmond Heights — 574.299675504 serviceable households, median income $94,460</title></circle>
-<circle class="dot b4" cx="450.6" cy="242.8" r="7.0"><title>Weldon Spring — 550.29228192 serviceable households, median income $158,548</title></circle>
-<circle class="dot b1" cx="715.2" cy="203.3" r="7.0"><title>Berkeley — 548.881901568 serviceable households, median income $44,265</title></circle>
-<circle class="dot b4" cx="446.2" cy="197.6" r="7.0"><title>Cottleville — 545.3592019199999 serviceable households, median income $131,310</title></circle>
-<circle class="dot b3" cx="705.7" cy="339.1" r="7.0"><title>Brentwood — 541.28569194 serviceable households, median income $99,719</title></circle>
-<circle class="dot b3" cx="619.4" cy="436.5" r="6.6"><title>Fenton — 480.4388228639999 serviceable households, median income $101,000</title></circle>
-<circle class="dot b4" cx="377.0" cy="93.5" r="6.5"><title>St. Paul — 473.49066744 serviceable households, median income $159,022</title></circle>
-<circle class="dot b5" cx="646.0" cy="327.8" r="6.5"><title>Frontenac — 472.3274906279999 serviceable households, median income $233,425</title></circle>
-<circle class="dot b3" cx="720.2" cy="312.4" r="6.4"><title>Clayton — 458.37666881999996 serviceable households, median income $123,000</title></circle>
-<circle class="dot b5" cx="669.2" cy="352.6" r="5.8"><title>Warson Woods — 377.001085524 serviceable households, median income $206,979</title></circle>
-<circle class="dot b1" cx="581.6" cy="413.5" r="5.7"><title>Valley Park — 359.310567762 serviceable households, median income $67,898</title></circle>
-<circle class="dot b2" cx="721.9" cy="374.3" r="5.7"><title>Shrewsbury — 356.05223136000006 serviceable households, median income $80,757</title></circle>
-<circle class="dot b5" cx="500.4" cy="332.8" r="5.6"><title>Clarkson Valley — 352.71522 serviceable households, median income $247,000</title></circle>
-<circle class="dot b2" cx="713.9" cy="442.1" r="5.5"><title>Green Park — 337.98037416000005 serviceable households, median income $79,141</title></circle>
-<circle class="dot b2" cx="556.3" cy="371.1" r="4.7"><title>Winchester — 244.89358055999995 serviceable households, median income $87,917</title></circle>
-<circle class="dot b4" cx="696.4" cy="409.6" r="3.7"><title>Grantwood Village — 155.92990464 serviceable households, median income $153,947</title></circle>
-<circle class="dot b3" cx="674.5" cy="384.8" r="3.7"><title>Oakland — 148.22512720799998 serviceable households, median income $114,861</title></circle>
-<circle class="dot b3" cx="194.3" cy="130.4" r="3.3"><title>Foristell — 119.714094 serviceable households, median income $116,581</title></circle>
-<circle class="dot b4" cx="269.2" cy="78.0" r="3.2"><title>Flint Hill — 80.89143600000001 serviceable households, median income $130,208</title></circle>
-<circle class="dot b3" cx="258.5" cy="232.6" r="3.2"><title>New Melle — 74.16148799999999 serviceable households, median income $114,375</title></circle>
-<circle class="dot b3" cx="337.1" cy="113.1" r="3.2"><title>Josephville — 73.70226 serviceable households, median income $107,708</title></circle>
-<circle class="dot b5" cx="654.3" cy="345.9" r="3.2"><title>Huntleigh — 61.38964078799998 serviceable households, median income $250,000</title></circle>
-<circle class="dot b3" cx="259.4" cy="392.7" r="3.2"><title>Augusta — 53.238924000000004 serviceable households, median income $103,750</title></circle>
-<circle class="dot b1" cx="712.7" cy="393.9" r="3.2"><title>Marlborough — 21.502401120000002 serviceable households, median income $50,300</title></circle>
-<circle class="dot b0" cx="340.2" cy="324.8" r="3.2"><title>Defiance — 13.206 serviceable households</title></circle>
-<circle class="dot b3" cx="577.4" cy="396.6" r="3.2"><title>Twin Oaks — 13.162513919999999 serviceable households, median income $120,151</title></circle>
-</g>
-<g class="labels">
-<text class="lbl" x="393.6" y="127.4" text-anchor="middle">O'Fallon</text>
-<text class="lbl" x="490.3" y="135.0" text-anchor="middle">St. Peters</text>
-<text class="lbl" x="565.4" y="122.8" text-anchor="middle">St. Charles</text>
-<text class="lbl" x="722.8" y="119.4" text-anchor="middle">Florissant</text>
-<text class="lbl" x="268.1" y="101.6" text-anchor="middle">Wentzville</text>
-<text class="lbl" x="437.8" y="358.1" text-anchor="middle">Wildwood</text>
-<text class="lbl" x="514.7" y="272.0" text-anchor="middle">Chesterfield</text>
-<text class="lbl" x="730.1" y="495.7" text-anchor="middle">Oakville</text>
-<text class="lbl" x="536.4" y="341.8" text-anchor="middle">Ballwin</text>
-<text class="lbl" x="644.4" y="359.7" text-anchor="middle">Kirkwood</text>
-<text class="lbl" x="723.4" y="392.6" text-anchor="middle">Affton</text>
-<text class="lbl" x="720.8" y="378.3" text-anchor="start">Webster Groves</text>
-<text class="lbl" x="719.1" y="269.2" text-anchor="middle">University City</text>
-<text class="lbl" x="702.9" y="434.2" text-anchor="middle">Concord</text>
-<text class="lbl" x="687.5" y="526.0" text-anchor="middle">Arnold</text>
-<text class="lbl" x="753.6" y="468.6" text-anchor="start">Mehlville</text>
-<text class="lbl" x="665.2" y="133.0" text-anchor="middle">Hazelwood</text>
-<text class="lbl" x="572.8" y="359.8" text-anchor="middle">Manchester</text>
-<text class="lbl" x="698.1" y="410.1" text-anchor="start">Crestwood</text>
-<text class="lbl" x="398.1" y="190.8" text-anchor="middle">Dardenne Prairie</text>
-<text class="lbl" x="758.0" y="455.1" text-anchor="middle">Lemay</text>
-<text class="lbl" x="339.3" y="149.4" text-anchor="middle">Lake St. Louis</text>
-</g>
-<g class="base"><circle cx="514.7" cy="297.7" r="6"/><text x="514.7" y="319.7" text-anchor="middle">Base</text></g>
-</svg><div class="legend"><b style="color:var(--ink)">Median income</b><span class="sw"><i class="b1"></i>under $70k</span><span class="sw"><i class="b2"></i>$70-95k</span><span class="sw"><i class="b3"></i>$95-130k</span><span class="sw"><i class="b4"></i>$130-200k</span><span class="sw"><i class="b5"></i>over $200k</span><span class="sizekey"><b style="color:var(--ink)">Homes with a dog</b><span><i style="width:13px;height:13px"></i>500</span><span><i style="width:27px;height:27px"></i>2,000</span><span><i style="width:54px;height:54px"></i>8,000</span></span></div></div>
-  <p class="src">Positions are the Census Bureau internal point for each place, projected with the
-  longitude squeezed by cos(38.6&deg;) so distances read true rather than stretched east-west. This
-  is a scale plot of real coordinates, not a street map &mdash; there are no roads or rivers on it
-  because nothing on it is decorative.</p>
+
+  <div class="maptools">
+    <div class="seg" role="group" aria-label="What the colour shows">
+      <button type="button" data-mode="opportunity" aria-pressed="true">Opportunity</button>
+      <button type="button" data-mode="competition" aria-pressed="false">Competition</button>
+    </div>
+  </div>
+
+  <div id="map"><p id="mapfail">The map needs to load Leaflet and its basemap tiles from the
+  internet. If this message is still here, that did not happen &mdash; the ranked table further down
+  carries the same figures, and every place has its coordinates in it.</p></div>
+  <div class="legend" id="key-opportunity"><b style="color:var(--ink)">Median income</b><span class="sw"><i style="background:#8FB3C7"></i>under $70k</span><span class="sw"><i style="background:#6E9F79"></i>$70-95k</span><span class="sw"><i style="background:#D9A441"></i>$95-130k</span><span class="sw"><i style="background:#D2703A"></i>$130-200k</span><span class="sw"><i style="background:#B23A48"></i>over $200k</span><span class="sizekey"><b style="color:var(--ink)">Homes with a dog</b><span><i style="width:8px;height:8px"></i>500</span><span><i style="width:10px;height:10px"></i>2,000</span><span><i style="width:21px;height:21px"></i>8,000</span></span></div><div class="legend" id="key-competition" hidden><b style="color:var(--ink)">Operators claiming the area</b><span class="sw"><i style="background:#3F8E63"></i>open, 3 or fewer</span><span class="sw"><i style="background:#D9A441"></i>worked, 5-6</span><span class="sw"><i style="background:#B23A48"></i>saturated, 10+</span><span class="sw"><i style="background:#9C8076"></i>not classified</span><span class="sizekey"><b style="color:var(--ink)">Homes with a dog</b><span><i style="width:8px;height:8px"></i>500</span><span><i style="width:10px;height:10px"></i>2,000</span><span><i style="width:21px;height:21px"></i>8,000</span></span></div>
+
+  <p class="src">Basemap from OpenStreetMap via CARTO. Positions are the Census Bureau internal point
+  for each place. The competition colour is applied by region rather than by municipality, because
+  region is the resolution the competitor research honestly has &mdash; operators publish the areas
+  they claim, not their customers.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -679,5 +591,115 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
   figures plus one national dog-ownership rate. The competitor coverage is what each company claims
   on its own website, which is cheap to claim. The rankings and the reading of them are mine.</p>
 </div></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function () {
+  'use strict';
+  var PLACES = [{"name": "Oakville", "region": "South County", "county": "St. Louis", "lat": 38.449754, "lon": -90.318436, "households": 13914, "serviceable": 4058, "income": 106362, "topcoded": false, "sfd": 79.6, "owner": 86.0, "note": "1970s-80s detached subdivisions, the newest and most affluent of the south group", "pressure": "worked", "ops": 6}, {"name": "Mehlville", "region": "South County", "county": "St. Louis", "lat": 38.502315, "lon": -90.31445, "households": 13507, "serviceable": 2229, "income": 67071, "topcoded": false, "sfd": 58.7, "owner": 66.0, "note": "the most apartment-heavy place in the south; only 59% detached", "pressure": "worked", "ops": 6}, {"name": "Affton", "region": "South County", "county": "St. Louis", "lat": 38.549912, "lon": -90.326423, "households": 8695, "serviceable": 2484, "income": 79539, "topcoded": false, "sfd": 83.0, "owner": 80.8, "note": "dense grid of postwar bungalows on compact lots, median year built 1958", "pressure": "worked", "ops": 6}, {"name": "Concord", "region": "South County", "county": "St. Louis", "lat": 38.511705, "lon": -90.350891, "households": 7440, "serviceable": 2271, "income": 89038, "topcoded": false, "sfd": 83.3, "owner": 86.0, "note": "established 1960s-70s ranch subdivisions, 86% owner-occupied", "pressure": "worked", "ops": 6}, {"name": "Lemay", "region": "South County", "county": "St. Louis", "lat": 38.533539, "lon": -90.285047, "households": 6241, "serviceable": 1597, "income": 60399, "topcoded": false, "sfd": 77.9, "owner": 77.1, "note": "oldest and most working-class of the south group, median year built 1955", "pressure": "worked", "ops": 6}, {"name": "Green Park", "region": "South County", "county": "St. Louis", "lat": 38.523238, "lon": -90.337759, "households": 995, "serviceable": 338, "income": 79141, "topcoded": false, "sfd": 90.2, "owner": 88.4, "note": "small almost entirely detached enclave, but under a thousand households", "pressure": "worked", "ops": 6}, {"name": "Arnold", "region": "Jefferson edge", "county": "Jefferson", "lat": 38.42601, "lon": -90.36931, "households": 8394, "serviceable": 2254, "income": 78370, "topcoded": false, "sfd": 79.0, "owner": 79.8, "note": "1970s-80s detached subdivisions, 14 minutes south of Oakville", "pressure": "worked", "ops": 6}, {"name": "Imperial", "region": "Jefferson edge", "county": "Jefferson", "lat": 38.35246, "lon": -90.382273, "households": 1835, "serviceable": 623, "income": 90028, "topcoded": false, "sfd": 86.1, "owner": 92.6, "note": "newest housing of the southern group and the highest owner rate at 92.6%", "pressure": "worked", "ops": 6}, {"name": "Barnhart", "region": "Jefferson edge", "county": "Jefferson", "lat": 38.336604, "lon": -90.403095, "households": 2157, "serviceable": 808, "income": 95811, "topcoded": false, "sfd": 98.1, "owner": 89.6, "note": "the purest detached-home market found anywhere in the metro at 98.1%", "pressure": "worked", "ops": 6}, {"name": "Florissant", "region": "North County", "county": "St. Louis", "lat": 38.7997, "lon": -90.3271, "households": 21229, "serviceable": 4776, "income": 65318, "topcoded": false, "sfd": 78.7, "owner": 67.1, "note": "the largest yard-bearing base in the north at 21,200 households, median year built 1963", "pressure": "open", "ops": 3}, {"name": "Maryland Heights", "region": "North County", "county": "St. Louis", "lat": 38.7168, "lon": -90.4718, "households": 12592, "serviceable": 1533, "income": 86436, "topcoded": false, "sfd": 50.3, "owner": 56.8, "note": "highest income in the north but only half the stock is detached", "pressure": "open", "ops": 3}, {"name": "Hazelwood", "region": "North County", "county": "St. Louis", "lat": 38.7947, "lon": -90.396, "households": 11344, "serviceable": 1714, "income": 55908, "topcoded": false, "sfd": 60.0, "owner": 59.1, "note": "mixed stock, a quarter of units in buildings of five or more", "pressure": "open", "ops": 3}, {"name": "Ferguson", "region": "North County", "county": "St. Louis", "lat": 38.7488, "lon": -90.2958, "households": 8097, "serviceable": 1179, "income": 47524, "topcoded": false, "sfd": 70.9, "owner": 48.2, "note": "lowest ownership rate in the north at 48%, median year built 1957", "pressure": "open", "ops": 3}, {"name": "Overland", "region": "North County", "county": "St. Louis", "lat": 38.6959, "lon": -90.3683, "households": 6378, "serviceable": 1472, "income": 61773, "topcoded": false, "sfd": 86.4, "owner": 62.7, "note": "86% detached and almost no multifamily; income is the constraint, not the housing", "pressure": "open", "ops": 3}, {"name": "St. Ann", "region": "North County", "county": "St. Louis", "lat": 38.7266, "lon": -90.3872, "households": 5880, "serviceable": 985, "income": 52323, "topcoded": false, "sfd": 69.7, "owner": 56.4, "note": "older detached stock with a fifth of units in larger buildings", "pressure": "open", "ops": 3}, {"name": "Bridgeton", "region": "North County", "county": "St. Louis", "lat": 38.7733, "lon": -90.417, "households": 4747, "serviceable": 704, "income": 72005, "topcoded": false, "sfd": 55.2, "owner": 63.1, "note": "highest home values in the north but 29% of units are in 2-4 unit buildings", "pressure": "open", "ops": 3}, {"name": "Bellefontaine Neighbors", "region": "North County", "county": "St. Louis", "lat": 38.7528, "lon": -90.228, "households": 4203, "serviceable": 944, "income": 49170, "topcoded": false, "sfd": 90.7, "owner": 58.1, "note": "the most uniformly detached stock in the north, but the lowest home values", "pressure": "open", "ops": 3}, {"name": "Berkeley", "region": "North County", "county": "St. Louis", "lat": 38.7463, "lon": -90.3362, "households": 2912, "serviceable": 549, "income": 44265, "topcoded": false, "sfd": 83.8, "owner": 52.8, "note": "lowest income and lowest home values of the ten northern places", "pressure": "open", "ops": 3}, {"name": "Black Jack", "region": "North County", "county": "St. Louis", "lat": 38.799, "lon": -90.2634, "households": 2683, "serviceable": 694, "income": 78331, "topcoded": false, "sfd": 77.8, "owner": 78.1, "note": "best income-and-ownership combination in the north, on the smallest base", "pressure": "open", "ops": 3}, {"name": "Ladue", "region": "Central", "county": "St. Louis", "lat": 38.636434, "lon": -90.385114, "households": 3428, "serviceable": 1398, "income": 250000, "topcoded": true, "sfd": 100.0, "owner": 95.7, "note": "every single housing unit is detached; estate lots and private drives", "pressure": "worked", "ops": 6}, {"name": "Frontenac", "region": "Central", "county": "St. Louis", "lat": 38.630067, "lon": -90.418983, "households": 1197, "serviceable": 472, "income": 233425, "topcoded": false, "sfd": 95.1, "owner": 97.4, "note": "one-acre R-1 zoning across most of the city, plus a small villa pocket", "pressure": "worked", "ops": 6}, {"name": "Huntleigh", "region": "Central", "county": "St. Louis", "lat": 38.613081, "lon": -90.409074, "households": 149, "serviceable": 61, "income": 250000, "topcoded": true, "sfd": 99.4, "owner": 97.3, "note": "three-acre minimum lots and only about 150 homes; every figure here is directional", "pressure": "worked", "ops": 6}, {"name": "Des Peres", "region": "Central", "county": "St. Louis", "lat": 38.598414, "lon": -90.445274, "households": 3195, "serviceable": 1279, "income": 224327, "topcoded": false, "sfd": 98.0, "owner": 95.9, "note": "near-all-detached postwar subdivisions, one small apartment complex in the whole city", "pressure": "worked", "ops": 6}, {"name": "Creve Coeur", "region": "Central", "county": "St. Louis", "lat": 38.662023, "lon": -90.443048, "households": 8158, "serviceable": 1066, "income": 127188, "topcoded": false, "sfd": 50.6, "owner": 60.6, "note": "split personality: 4,460 large-lot houses plus 39% of units in apartment buildings", "pressure": "worked", "ops": 6}, {"name": "Olivette", "region": "Central", "county": "St. Louis", "lat": 38.672373, "lon": -90.378582, "households": 3508, "serviceable": 807, "income": 111660, "topcoded": false, "sfd": 73.5, "owner": 73.5, "note": "mid-century detached subdivisions on quarter-acre lots with scattered garden apartments", "pressure": "worked", "ops": 6}, {"name": "Clayton", "region": "Central", "county": "St. Louis", "lat": 38.644403, "lon": -90.330212, "households": 6222, "serviceable": 458, "income": 123000, "topcoded": false, "sfd": 31.5, "owner": 54.9, "note": "wealthy but the weakest fit here: under a third of units are detached", "pressure": "worked", "ops": 6}, {"name": "Richmond Heights", "region": "Central", "county": "St. Louis", "lat": 38.630928, "lon": -90.333181, "households": 4371, "serviceable": 574, "income": 94460, "topcoded": false, "sfd": 56.8, "owner": 54.3, "note": "tight pre-war bungalows and two-family flats mixed with newer condos", "pressure": "worked", "ops": 6}, {"name": "Brentwood", "region": "Central", "county": "St. Louis", "lat": 38.619423, "lon": -90.347528, "households": 4091, "serviceable": 541, "income": 99719, "topcoded": false, "sfd": 49.3, "owner": 63.0, "note": "small dense pre-war lots; only half the units are detached", "pressure": "worked", "ops": 6}, {"name": "Warson Woods", "region": "Central", "county": "St. Louis", "lat": 38.606827, "lon": -90.39125, "households": 893, "serviceable": 377, "income": 206979, "topcoded": false, "sfd": 99.4, "owner": 99.7, "note": "99.7% owner-occupied, no apartments at all, compact but uniformly detached", "pressure": "worked", "ops": 6}, {"name": "Glendale", "region": "Central", "county": "St. Louis", "lat": 38.593507, "lon": -90.382573, "households": 2304, "serviceable": 937, "income": 170700, "topcoded": false, "sfd": 99.3, "owner": 96.1, "note": "the best doors-per-mile of any high-income city here: all detached, on modest lots", "pressure": "worked", "ops": 6}, {"name": "Rock Hill", "region": "Central", "county": "St. Louis", "lat": 38.609052, "lon": -90.367299, "households": 2253, "serviceable": 633, "income": 95372, "topcoded": false, "sfd": 80.3, "owner": 82.1, "note": "small-lot middle-class detached homes with a townhouse component", "pressure": "worked", "ops": 6}, {"name": "University City", "region": "Central", "county": "St. Louis", "lat": 38.665731, "lon": -90.331551, "households": 15782, "serviceable": 2297, "income": 80694, "topcoded": false, "sfd": 60.8, "owner": 56.2, "note": "the largest raw count of detached houses in the group, 10,843, on very tight grid lots", "pressure": "worked", "ops": 6}, {"name": "Kirkwood", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5794, "lon": -90.4209, "households": 11992, "serviceable": 2946, "income": 121270, "topcoded": false, "sfd": 74.7, "owner": 77.2, "note": "mature pre-war core plus deep postwar subdivisions, with steady teardown-rebuild infill", "pressure": "saturated", "ops": 10}, {"name": "Webster Groves", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5866, "lon": -90.3544, "households": 9446, "serviceable": 2431, "income": 115227, "topcoded": false, "sfd": 79.4, "owner": 76.1, "note": "oldest and densest of the corridor: streetcar-era grid, 46% of homes pre-1950", "pressure": "saturated", "ops": 10}, {"name": "Sunset Hills", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5312, "lon": -90.4093, "households": 3625, "serviceable": 1063, "income": 138144, "topcoded": false, "sfd": 83.0, "owner": 82.9, "note": "the most spacious in the corridor, large-lot low-density subdivisions", "pressure": "saturated", "ops": 10}, {"name": "Crestwood", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5569, "lon": -90.3782, "households": 4915, "serviceable": 1605, "income": 107169, "topcoded": false, "sfd": 87.4, "owner": 87.7, "note": "best volume-to-quality balance in the corridor: uniform postwar ranches, 88% owner-occupied", "pressure": "saturated", "ops": 10}, {"name": "Oakland", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5768, "lon": -90.3849, "households": 593, "serviceable": 148, "income": 114861, "topcoded": false, "sfd": 76.6, "owner": 76.6, "note": "tiny enclave with an older core but a quarter of units rebuilt since 2000", "pressure": "saturated", "ops": 10}, {"name": "Fenton", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5285, "lon": -90.4508, "households": 1612, "serviceable": 480, "income": 101000, "topcoded": false, "sfd": 84.7, "owner": 82.6, "note": "newest housing in the corridor, late-century large-lot subdivisions", "pressure": "saturated", "ops": 10}, {"name": "Twin Oaks", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5658, "lon": -90.501, "households": 478, "serviceable": 13, "income": 120151, "topcoded": false, "sfd": 20.2, "owner": 32.0, "note": "structurally wrong for this service: about 100 detached houses exist in the whole village", "pressure": "saturated", "ops": 10}, {"name": "Shrewsbury", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5866, "lon": -90.3282, "households": 3071, "serviceable": 356, "income": 80757, "topcoded": false, "sfd": 43.2, "owner": 63.0, "note": "dense small-lot suburb with heavy two-to-four-family and apartment stock", "pressure": "saturated", "ops": 10}, {"name": "Marlborough", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5683, "lon": -90.3392, "households": 1340, "serviceable": 22, "income": 50300, "topcoded": false, "sfd": 29.2, "owner": 12.9, "note": "apartment-dominated: 13% owner-occupied and only 458 detached houses", "pressure": "saturated", "ops": 10}, {"name": "Sappington", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.526, "lon": -90.3731, "households": 3220, "serviceable": 608, "income": 77650, "topcoded": false, "sfd": 59.5, "owner": 74.5, "note": "unincorporated postwar ranch tracts mixed with substantial condo development", "pressure": "saturated", "ops": 10}, {"name": "Grantwood Village", "region": "Southwest corridor", "county": "St. Louis", "lat": 38.5536, "lon": -90.3587, "households": 384, "serviceable": 156, "income": 153947, "topcoded": false, "sfd": 99.5, "owner": 95.8, "note": "the highest quality per door anywhere in the metro, on only 384 households", "pressure": "saturated", "ops": 10}, {"name": "Wentzville", "region": "West St. Charles", "county": "St. Charles", "lat": 38.8165, "lon": -90.8708, "households": 16294, "serviceable": 4696, "income": 112394, "topcoded": false, "sfd": 82.0, "owner": 82.5, "note": "81% of homes built since 2000 and denser than Chesterfield itself; the whole western opportunity in one place", "pressure": "worked", "ops": 6}, {"name": "Foristell", "region": "West St. Charles", "county": "St. Charles", "lat": 38.8144, "lon": -90.959, "households": 331, "serviceable": 120, "income": 116581, "topcoded": false, "sfd": null, "owner": 84.9, "note": "a couple of new plats bolted onto an I-70 crossroads; 11.7 acres per household", "pressure": "worked", "ops": 6}, {"name": "Flint Hill", "region": "West St. Charles", "county": "St. Charles", "lat": 38.8633, "lon": -90.8695, "households": 263, "serviceable": 81, "income": 130208, "topcoded": false, "sfd": null, "owner": 72.2, "note": "bolt-on cluster only, 263 households across 2.8 square miles", "pressure": "worked", "ops": 6}, {"name": "Josephville", "region": "West St. Charles", "county": "St. Charles", "lat": 38.8305, "lon": -90.7883, "households": 219, "serviceable": 74, "income": 107708, "topcoded": false, "sfd": null, "owner": 79.0, "note": "scattered rural homesteads with no continuous subdivision fabric", "pressure": "worked", "ops": 6}, {"name": "New Melle", "region": "West St. Charles", "county": "St. Charles", "lat": 38.7189, "lon": -90.8822, "households": 188, "serviceable": 74, "income": 114375, "topcoded": false, "sfd": null, "owner": 92.6, "note": "compact old village core ringed immediately by five-acre-plus parcels", "pressure": "worked", "ops": 6}, {"name": "Augusta", "region": "West St. Charles", "county": "St. Charles", "lat": 38.5694, "lon": -90.8812, "households": 131, "serviceable": 53, "income": 103750, "topcoded": false, "sfd": null, "owner": 95.4, "note": "wine-country hamlet of 131 households, 46 minutes each way", "pressure": "worked", "ops": 6}, {"name": "Defiance", "region": "West St. Charles", "county": "St. Charles", "lat": 38.6328, "lon": -90.7846, "households": 31, "serviceable": 13, "income": null, "topcoded": false, "sfd": null, "owner": 100.0, "note": "income suppressed by the Census; the surrounding 63341 is the richest area studied and has 18.8 acres between doors", "pressure": "worked", "ops": 6}, {"name": "Femme Osage corridor", "region": "West St. Charles", "county": "St. Charles", "lat": 38.6367, "lon": -90.9419, "households": 2040, "serviceable": 826, "income": 149841, "topcoded": false, "sfd": null, "owner": 95.0, "note": "custom homes on wooded multi-acre parcels; 31 acres per household, 56 times thinner than the county median tract. The money is real and unreachable by route.", "pressure": "worked", "ops": 6}, {"name": "O'Fallon", "region": "East St. Charles", "county": "St. Charles", "lat": 38.784674, "lon": -90.720738, "households": 35471, "serviceable": 9204, "income": 110443, "topcoded": false, "sfd": 75.2, "owner": 81.0, "note": "the largest single pool of detached homes anywhere in this study, 27,212 of them, and 6,341 more households than a decade ago", "pressure": "worked", "ops": 6}, {"name": "St. Charles", "region": "East St. Charles", "county": "St. Charles", "lat": 38.795702, "lon": -90.515364, "households": 30362, "serviceable": 5172, "income": 85937, "topcoded": false, "sfd": 58.8, "owner": 68.0, "note": "oldest and most mixed stock in the county, with the largest apartment share", "pressure": "worked", "ops": 6}, {"name": "St. Peters", "region": "East St. Charles", "county": "St. Charles", "lat": 38.78352, "lon": -90.605075, "households": 24591, "serviceable": 5611, "income": 91637, "topcoded": false, "sfd": 67.8, "owner": 79.0, "note": "a built-out 1980s-90s subdivision city on modest lots; includes annexed Harvester", "pressure": "worked", "ops": 6}, {"name": "Lake St. Louis", "region": "East St. Charles", "county": "St. Charles", "lat": 38.77989, "lon": -90.785586, "households": 7351, "serviceable": 1581, "income": 125693, "topcoded": false, "sfd": 66.8, "owner": 75.6, "note": "older lake-centred planned community whose edges keep filling with new subdivisions", "pressure": "worked", "ops": 6}, {"name": "Dardenne Prairie", "region": "East St. Charles", "county": "St. Charles", "lat": 38.741116, "lon": -90.715362, "households": 4704, "serviceable": 1602, "income": 152500, "topcoded": false, "sfd": 87.3, "owner": 91.6, "note": "the best combination of income, detached share and scale in the whole study: 4,151 detached homes at 91.6% owner-occupied", "pressure": "worked", "ops": 6}, {"name": "Cottleville", "region": "East St. Charles", "county": "St. Charles", "lat": 38.751578, "lon": -90.657798, "households": 2206, "serviceable": 545, "income": 131310, "topcoded": false, "sfd": 72.0, "owner": 80.6, "note": "fastest household growth in the county at +76% in a decade, and three-fifths of its housing built since 2010 \u2014 but only 1,638 detached units, so it saturates fast", "pressure": "worked", "ops": 6}, {"name": "Weldon Spring", "region": "East St. Charles", "county": "St. Charles", "lat": 38.709381, "lon": -90.652536, "households": 2038, "serviceable": 550, "income": 158548, "topcoded": false, "sfd": 76.0, "owner": 83.4, "note": "highest home values in the county but flat on households for a decade", "pressure": "worked", "ops": 6}, {"name": "St. Paul", "region": "East St. Charles", "county": "St. Charles", "lat": 38.848806, "lon": -90.740502, "households": 1198, "serviceable": 473, "income": 159022, "topcoded": false, "sfd": 94.0, "owner": 98.7, "note": "the purest yard-owning profile in the county \u2014 94% detached, 98.7% owner-occupied \u2014 on only 1,198 households", "pressure": "worked", "ops": 6}, {"name": "Chesterfield", "region": "West County", "county": "St. Louis", "lat": 38.658126, "lon": -90.57595, "households": 20811, "serviceable": 4300, "income": 133037, "topcoded": false, "sfd": 62.5, "owner": 77.6, "note": "12,861 owner-occupied detached homes and the highest household count in west county, but only 62.5% of its housing is detached", "pressure": "saturated", "ops": 10}, {"name": "Town and Country", "region": "West County", "county": "St. Louis", "lat": 38.630602, "lon": -90.477191, "households": 4035, "serviceable": 1233, "income": 232534, "topcoded": false, "sfd": 82.9, "owner": 86.5, "note": "the second-highest incomes in the metro on estate lots of about two acres each", "pressure": "saturated", "ops": 10}, {"name": "Wildwood", "region": "West County", "county": "St. Louis", "lat": 38.577073, "lon": -90.667807, "households": 12851, "serviceable": 4608, "income": 161060, "topcoded": false, "sfd": 91.7, "owner": 91.8, "note": "an almost perfect profile on paper \u2014 92% owner-occupied, 92% detached, $161K income \u2014 and 3.5 acres between homes, which is the catch", "pressure": "saturated", "ops": 10}, {"name": "Ellisville", "region": "West County", "county": "St. Louis", "lat": 38.589604, "lon": -90.58839, "households": 4155, "serviceable": 794, "income": 113309, "topcoded": false, "sfd": 60.2, "owner": 74.5, "note": "half-acre R-1 baseline and still adding units; the city's own plan claims 74.2% detached but that figure has a denominator error \u2014 60.2% is correct", "pressure": "saturated", "ops": 10}, {"name": "Ballwin", "region": "West County", "county": "St. Louis", "lat": 38.594726, "lon": -90.54996, "households": 12079, "serviceable": 3518, "income": 124626, "topcoded": false, "sfd": 81.2, "owner": 84.2, "note": "9,287 owner-occupied detached homes at 0.57 acres each \u2014 the densest affluent ground in west county, because the lot minimum halves on public sewer", "pressure": "saturated", "ops": 10}, {"name": "Clarkson Valley", "region": "West County", "county": "St. Louis", "lat": 38.625344, "lon": -90.592981, "households": 858, "serviceable": 353, "income": 247000, "topcoded": false, "sfd": 100.0, "owner": 96.5, "note": "every housing unit detached and 96.5% owner-occupied, on 858 households", "pressure": "saturated", "ops": 10}, {"name": "Manchester", "region": "West County", "county": "St. Louis", "lat": 38.583044, "lon": -90.506457, "households": 7279, "serviceable": 1688, "income": 97801, "topcoded": false, "sfd": 72.6, "owner": 75.0, "note": "half its residential lots are under a quarter acre and about 93% under half an acre; a density play rather than an income one", "pressure": "saturated", "ops": 10}, {"name": "Winchester", "region": "West County", "county": "St. Louis", "lat": 38.58958, "lon": -90.526221, "households": 706, "serviceable": 245, "income": 87917, "topcoded": false, "sfd": 99.3, "owner": 82.0, "note": "the densest detached housing found anywhere in this study, one frozen 1950s subdivision on 5,000 square foot lots \u2014 but only 574 owner-occupied homes", "pressure": "saturated", "ops": 10}, {"name": "Valley Park", "region": "West County", "county": "St. Louis", "lat": 38.550005, "lon": -90.495917, "households": 3219, "serviceable": 359, "income": 67898, "topcoded": false, "sfd": 50.1, "owner": 52.3, "note": "48% renters and half its stock multifamily; the Meramec has flooded the town repeatedly, including two record crests after the levee went in", "pressure": "saturated", "ops": 10}];
+  var BASE = {"name": "Base", "lat": 38.658126, "lon": -90.57595};
+  if (typeof L === 'undefined') return;          // the fallback note stays put
+
+  document.getElementById('mapfail').remove();
+
+  var map = L.map('map', {scrollWheelZoom: false}).setView([38.68, -90.53], 10);
+  L.control.scale({imperial: true, metric: false}).addTo(map);
+
+  // Two tile sets, because the page follows the reader's theme and a dark page
+  // with a bright basemap is the one thing that would make this map harder to
+  // read than the dots it replaced.
+  var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
+             'contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  var tiles = null;
+  function isDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function setBasemap() {
+    var url = 'https://{s}.basemaps.cartocdn.com/' + (isDark() ? 'dark_all' : 'light_all') +
+              '/{z}/{x}/{y}{r}.png';
+    if (tiles) map.removeLayer(tiles);
+    tiles = L.tileLayer(url, {attribution: ATTR, subdomains: 'abcd', maxZoom: 19});
+    tiles.addTo(map);
+    tiles.bringToBack();
+  }
+  setBasemap();
+  try {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setBasemap);
+  } catch (e) { /* older Safari */ }
+
+  // Distance rings, in metres, from the yard the truck leaves from.
+  var rings = L.layerGroup().addTo(map);
+  [5, 10, 15, 20].forEach(function (mi) {
+    L.circle([BASE.lat, BASE.lon], {
+      radius: mi * 1609.34, fill: false, color: '#9C8076', weight: 1, dashArray: '4 6',
+      interactive: false
+    }).addTo(rings);
+  });
+  L.circleMarker([BASE.lat, BASE.lon], {
+    radius: 7, color: '#fff', weight: 2, fillColor: '#C8102E', fillOpacity: 1
+  }).addTo(map).bindTooltip('Base — Chesterfield', {permanent: false});
+
+  var INCOME = ['#8FB3C7', '#6E9F79', '#D9A441', '#D2703A', '#B23A48'];
+  var PRESSURE = {saturated: '#B23A48', worked: '#D9A441', open: '#3F8E63', unknown: '#9C8076'};
+
+  function incomeColour(v) {
+    if (v == null) return '#9C8076';
+    return v >= 200000 ? INCOME[4] : v >= 130000 ? INCOME[3]
+         : v >= 95000 ? INCOME[2] : v >= 70000 ? INCOME[1] : INCOME[0];
+  }
+  function radius(n) { return Math.max(4, Math.sqrt(n) * 0.115); }
+
+  function popup(p) {
+    var rows = [
+      ['Homes with a dog', p.serviceable.toLocaleString()],
+      ['Households', p.households.toLocaleString()],
+      ['Median income', p.income ? '$' + p.income.toLocaleString() + (p.topcoded ? '+' : '') : 'not published'],
+      ['Detached', p.sfd != null ? p.sfd + '%' : 'not published'],
+      ['Owner-occupied', p.owner + '%'],
+      ['Operators claiming it', p.ops != null ? p.ops : 'unknown']
+    ];
+    return '<div class="pop"><h4>' + p.name + '</h4><p class="rg">' + p.region +
+      ' &middot; ' + p.county + ' County</p><dl>' +
+      rows.map(function (r) { return '<dt>' + r[0] + '</dt><dd>' + r[1] + '</dd>'; }).join('') +
+      '</dl><p class="nt">' + p.note + '</p></div>';
+  }
+
+  var layer = L.layerGroup().addTo(map);
+  var mode = 'opportunity';
+
+  function render() {
+    layer.clearLayers();
+    PLACES.slice().sort(function (a, b) { return b.serviceable - a.serviceable; })
+      .forEach(function (p) {
+        var fill = mode === 'opportunity' ? incomeColour(p.income)
+                 : (PRESSURE[p.pressure] || PRESSURE.unknown);
+        L.circleMarker([p.lat, p.lon], {
+          radius: radius(p.serviceable), fillColor: fill, fillOpacity: 0.82,
+          color: '#ffffff', weight: 1.2
+        }).bindPopup(popup(p)).bindTooltip(p.name, {direction: 'top'}).addTo(layer);
+      });
+  }
+  render();
+
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      mode = b.dataset.mode;
+      document.querySelectorAll('.seg button').forEach(function (o) {
+        o.setAttribute('aria-pressed', String(o === b));
+      });
+      document.getElementById('key-opportunity').hidden = mode !== 'opportunity';
+      document.getElementById('key-competition').hidden = mode !== 'competition';
+      render();
+    });
+  });
+
+  map.fitBounds(L.latLngBounds(PLACES.map(function (p) { return [p.lat, p.lon]; })).pad(0.06));
+})();
+</script>
+
 </body>
 </html>
