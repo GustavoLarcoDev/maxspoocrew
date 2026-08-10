@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The road to $50K — Max's Poo Crew</title>
+<meta name="description" content="The step-by-step plan from a sign on a verge to $50,000 a year in recurring revenue.">
+<meta name="theme-color" content="#C8102E">
+<!-- Internal planning, not a customer page. Keep it out of search. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/maxspoocrew/img/logo-mark.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   Tokens. Light is the bare :root, so the un-stamped "system" state — which is
+   what most viewers get — always resolves. Dark redefines the same names twice:
+   once behind prefers-color-scheme (guarded so an explicit light choice wins)
+   and once behind the stamp (so the toggle wins the other way).
+   ======================================================================== */
+:root{
+  --ground:#FBF6F2;          /* warm off-white, biased to the brand's cream */
+  --surface:#FFFFFF;
+  --surface-2:#F5EBE5;
+  --ink:#24120E;             /* warm near-black, not a neutral grey */
+  --ink-2:#6B4A40;
+  --ink-3:#9A7A70;
+  --rule:#E8D8CF;
+  --rule-2:#D6BEB2;
+  --brand:#C8102E;           /* the business's own red */
+  --brand-deep:#8E0B20;
+  /* The hero gradient needs its own pair. In dark mode --brand-deep is the
+     *lighter* accent — right for text, wrong for a ground white sits on. */
+  --hero-a:#C8102E; --hero-b:#8E0B20;
+  --butter:#FFD166;
+  --butter-ink:#6B4A0C;
+
+  /* Stage colours. Deliberately separate from --brand: the brand marks what
+     matters, these mark where you are in the journey. */
+  --s1:#C8102E;  --s1-bg:#FDECEE;
+  --s2:#B45309;  --s2-bg:#FCF0E1;
+  --s3:#2F6F4E;  --s3-bg:#E7F2EB;
+  --s4:#1F5F87;  --s4-bg:#E5F0F7;
+  --s5:#5B3E8C;  --s5-bg:#EFE9F7;
+
+  --ok:#2F6F4E; --warn:#B45309; --stop:#C8102E;
+
+  --display:ui-rounded,"SF Pro Rounded","Archivo Black",Archivo,system-ui,sans-serif;
+  --body:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+
+  --sh:0 1px 2px rgba(60,20,15,.05), 0 12px 28px -18px rgba(60,20,15,.32);
+  --sh-lift:0 2px 6px rgba(60,20,15,.08), 0 22px 42px -22px rgba(60,20,15,.4);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#17100E; --surface:#211714; --surface-2:#2C1F1B;
+    --ink:#F7EDE8; --ink-2:#CBAFA5; --ink-3:#9C8076;
+    --rule:#3A2823; --rule-2:#4E362E;
+    --brand:#F2455C; --brand-deep:#FF8A96; --butter:#FFD166; --butter-ink:#3A2705;
+    --hero-a:#8E1226; --hero-b:#450913;
+    --s1:#F2455C; --s1-bg:#33191C;
+    --s2:#E39A4A; --s2-bg:#2F2418;
+    --s3:#63B98C; --s3-bg:#182A21;
+    --s4:#63A6D0; --s4-bg:#152633;
+    --s5:#A98BD8; --s5-bg:#241E33;
+    --ok:#63B98C; --warn:#E39A4A; --stop:#F2455C;
+    --sh:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.7);
+    --sh-lift:0 2px 6px rgba(0,0,0,.5), 0 22px 42px -22px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#17100E; --surface:#211714; --surface-2:#2C1F1B;
+  --ink:#F7EDE8; --ink-2:#CBAFA5; --ink-3:#9C8076;
+  --rule:#3A2823; --rule-2:#4E362E;
+  --brand:#F2455C; --brand-deep:#FF8A96; --butter:#FFD166; --butter-ink:#3A2705;
+  --hero-a:#8E1226; --hero-b:#450913;
+  --s1:#F2455C; --s1-bg:#33191C;
+  --s2:#E39A4A; --s2-bg:#2F2418;
+  --s3:#63B98C; --s3-bg:#182A21;
+  --s4:#63A6D0; --s4-bg:#152633;
+  --s5:#A98BD8; --s5-bg:#241E33;
+  --ok:#63B98C; --warn:#E39A4A; --stop:#F2455C;
+  --sh:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.7);
+  --sh-lift:0 2px 6px rgba(0,0,0,.5), 0 22px 42px -22px rgba(0,0,0,.8);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display); font-weight:800; margin:0; line-height:1.1;
+  letter-spacing:-.02em; text-wrap:balance}
+p{margin:0}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1120px; margin-inline:auto; padding-inline:clamp(16px,4vw,32px)}
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+
+/* --- hero ---------------------------------------------------------------- */
+.hero{background:linear-gradient(155deg,var(--hero-a),var(--hero-b));
+  color:#fff; padding-block:clamp(30px,6vw,58px)}
+.hero .eyebrow{color:var(--butter)}
+.hero h1{font-size:clamp(30px,5.4vw,50px); color:#fff; margin-top:10px}
+.hero .sub{margin-top:14px; max-width:62ch; color:rgba(255,255,255,.94);
+  font-size:clamp(16px,1.8vw,18.5px)}
+.eyebrow{font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase}
+
+.dash{display:grid; gap:12px; margin-top:26px;
+  grid-template-columns:repeat(auto-fit,minmax(155px,1fr))}
+.dash div{background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+  border-radius:14px; padding:14px 16px}
+.dash b{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums;
+  font-size:clamp(24px,3.4vw,32px); font-weight:700; line-height:1.1; color:#fff}
+.dash span{display:block; font-size:12.5px; color:rgba(255,255,255,.86); margin-top:4px;
+  letter-spacing:.03em}
+
+/* --- sections ------------------------------------------------------------ */
+section{padding-block:clamp(34px,5.5vw,60px)}
+section + section{border-top:1px solid var(--rule)}
+.shead{margin-bottom:clamp(20px,3.4vw,32px); max-width:70ch}
+.shead .eyebrow{color:var(--brand)}
+.shead h2{font-size:clamp(22px,3.3vw,32px); margin-top:8px}
+.shead p{color:var(--ink-2); margin-top:10px}
+
+/* --- the map ------------------------------------------------------------- */
+.stage{display:grid; grid-template-columns:minmax(0,190px) minmax(0,1fr); gap:clamp(14px,2.4vw,26px);
+  padding-block:22px; position:relative}
+.stage + .stage{border-top:1px dashed var(--rule-2)}
+@media (max-width:760px){.stage{grid-template-columns:1fr}}
+
+.stage-id{position:relative; padding-left:16px}
+.stage-id::before{content:""; position:absolute; left:0; top:4px; bottom:4px; width:5px;
+  border-radius:3px; background:var(--c)}
+.stage-id .n{font-family:var(--mono); font-size:12px; font-weight:700; color:var(--c);
+  letter-spacing:.1em}
+.stage-id h3{font-size:20px; margin-top:2px}
+.stage-id p{font-size:14px; color:var(--ink-2); margin-top:6px}
+
+.steps{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.step{background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:14px 15px; box-shadow:var(--sh); position:relative}
+.step .tag{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono);
+  font-size:11px; font-weight:700; letter-spacing:.08em; color:var(--c);
+  background:var(--cbg); border-radius:999px; padding:3px 9px}
+.step h4{font-size:15.5px; margin-top:9px}
+.step p{font-size:13.6px; color:var(--ink-2); margin-top:6px}
+.step .who{display:block; margin-top:9px; font-size:12px; color:var(--ink-3);
+  border-top:1px dotted var(--rule-2); padding-top:8px}
+.step .who b{color:var(--ink-2); font-weight:700}
+
+.leak{margin-top:10px; background:var(--s2-bg); border-left:3px solid var(--warn);
+  border-radius:0 8px 8px 0; padding:8px 11px; font-size:12.8px; color:var(--ink-2)}
+.leak b{color:var(--ink)}
+
+/* --- loops --------------------------------------------------------------- */
+.loops{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.loop{border:1px solid var(--rule); border-radius:16px; padding:18px 20px; background:var(--surface);
+  box-shadow:var(--sh)}
+.loop h3{font-size:18px}
+.loop .ring{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px}
+.loop .ring span{font-size:12.6px; background:var(--cbg); color:var(--c); border-radius:999px;
+  padding:4px 10px; font-weight:600}
+.loop .ring i{color:var(--ink-3); font-style:normal}
+.loop p{font-size:14px; color:var(--ink-2); margin-top:12px}
+
+/* --- calculator ---------------------------------------------------------- */
+.calc{display:grid; gap:clamp(16px,3vw,28px); grid-template-columns:minmax(0,340px) minmax(0,1fr)}
+@media (max-width:820px){.calc{grid-template-columns:1fr}}
+.controls{background:var(--surface); border:1px solid var(--rule); border-radius:16px;
+  padding:18px 20px; box-shadow:var(--sh)}
+.ctl + .ctl{margin-top:18px}
+.ctl label{display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+  font-size:13.5px; font-weight:700}
+.ctl output{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:15px;
+  color:var(--brand); font-weight:700}
+.ctl input[type=range]{width:100%; margin-top:8px; accent-color:var(--brand)}
+.ctl .hint{font-size:12px; color:var(--ink-3); margin-top:4px}
+
+.readout{background:var(--surface); border:1px solid var(--rule); border-radius:16px;
+  padding:18px 20px; box-shadow:var(--sh); display:flex; flex-direction:column}
+.kpis{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.kpi{background:var(--surface-2); border-radius:12px; padding:12px 14px}
+.kpi b{display:block; font-family:var(--mono); font-variant-numeric:tabular-nums;
+  font-size:26px; font-weight:700; line-height:1.1}
+.kpi span{display:block; font-size:12px; color:var(--ink-2); margin-top:3px}
+.verdict{margin-top:14px; border-radius:12px; padding:11px 14px; font-size:14px;
+  border-left:4px solid var(--ok); background:var(--s3-bg); color:var(--ink)}
+.verdict[data-bad="1"]{border-left-color:var(--stop); background:var(--s1-bg)}
+.chart{margin-top:14px; flex:1; min-height:170px}
+.chart svg{width:100%; height:auto; display:block; overflow:visible}
+.chart .grid-l{stroke:var(--rule); stroke-width:1}
+.chart .target{stroke:var(--brand); stroke-width:1.5; stroke-dasharray:5 4}
+.chart .ramp{fill:none; stroke:var(--s4); stroke-width:2.5; stroke-linejoin:round}
+.chart .fill{fill:var(--s4-bg)}
+.chart text{font-family:var(--mono); font-size:10px; fill:var(--ink-3)}
+
+/* --- tables -------------------------------------------------------------- */
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+table{width:100%; border-collapse:collapse; font-size:14.5px; min-width:560px}
+th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3);
+  font-weight:800}
+td.n,th.n{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
+.pill{display:inline-block; font-size:11.5px; font-weight:700; border-radius:999px;
+  padding:2px 9px; background:var(--cbg); color:var(--c)}
+
+/* --- phases -------------------------------------------------------------- */
+.phases{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.phase{border:1px solid var(--rule); border-radius:16px; background:var(--surface);
+  box-shadow:var(--sh); overflow:hidden; display:flex; flex-direction:column}
+.phase header{padding:14px 16px 12px; background:var(--cbg); border-bottom:1px solid var(--rule)}
+.phase .when{font-family:var(--mono); font-size:11.5px; font-weight:700; letter-spacing:.08em;
+  color:var(--c)}
+.phase h3{font-size:17px; margin-top:4px}
+.phase .body{padding:14px 16px; flex:1}
+.phase ul{margin:0; padding-left:18px; font-size:13.8px; color:var(--ink-2)}
+.phase li + li{margin-top:6px}
+.phase footer{padding:12px 16px; border-top:1px dashed var(--rule-2); font-size:13px;
+  display:flex; justify-content:space-between; gap:10px; align-items:baseline}
+.phase footer b{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:16px}
+
+/* --- gaps ---------------------------------------------------------------- */
+.gaps{display:grid; gap:12px}
+.gap{display:grid; grid-template-columns:38px minmax(0,1fr); gap:14px; align-items:start;
+  background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--c);
+  border-radius:12px; padding:14px 16px; box-shadow:var(--sh)}
+.gap .rank{font-family:var(--mono); font-size:19px; font-weight:700; color:var(--c);
+  line-height:1.2}
+.gap h4{font-size:15.5px}
+.gap p{font-size:13.8px; color:var(--ink-2); margin-top:5px}
+.gap .fix{margin-top:8px; font-size:13.4px; color:var(--ink)}
+.gap .fix b{color:var(--c)}
+
+.back{display:inline-flex; align-items:center; gap:7px; margin-top:22px;
+  color:rgba(255,255,255,.92); text-decoration:none; font-size:15px; font-weight:600}
+.back:hover{color:#fff}
+.jump{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+.jump a{display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+  font-family:var(--display); font-weight:800; font-size:15px; padding:11px 19px;
+  border-radius:999px; background:var(--brand); color:#fff}
+.jump a.ghost{background:transparent; border:1.5px solid var(--rule-2); color:var(--ink)}
+.jump a:hover{filter:brightness(1.08)}
+.foot{padding-block:30px; border-top:1px solid var(--rule); color:var(--ink-3); font-size:13.5px}
+.foot p + p{margin-top:8px}
+
+@media (prefers-reduced-motion:no-preference){
+  .step,.phase,.gap{transition:box-shadow .18s ease, transform .18s ease}
+  .step:hover,.phase:hover{box-shadow:var(--sh-lift); transform:translateY(-2px)}
+}
+</style>
+
+<div class="hero"><div class="wrap">
+  <p class="eyebrow">Max&rsquo;s Poo Crew &middot; growth map</p>
+  <h1>How a yard turns into $50,000 a year</h1>
+  <p class="sub">Every step from &ldquo;somebody sees a sign&rdquo; to money arriving every month
+  &mdash; who does what, what it costs, and where the plan currently leaks. The target is
+  <b>$50,000 in recurring revenue</b>, which is smaller than it sounds: about fifty yards and half a
+  working week.</p>
+
+  <div class="dash">
+    <div><b class="num">$4,167</b><span>needed per month</span></div>
+    <div><b class="num">51</b><span>customers at $82 average</span></div>
+    <div><b class="num">5.3</b><span>new customers a month</span></div>
+    <div><b class="num">20 hrs</b><span>of route a week at target</span></div>
+    <div><b class="num">~$79</b><span>to acquire one customer</span></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">The map</span>
+    <h2>Five stages, eleven steps, two loops</h2>
+    <p>Read it top to bottom. Each card says what happens, who does it, and how long it should take.
+    The amber notes are the places the plan leaks today &mdash; those are the whole point of drawing
+    this.</p>
+  </div>
+
+  <!-- 1 · ATTRACT -->
+  <div class="stage" style="--c:var(--s1); --cbg:var(--s1-bg)">
+    <div class="stage-id">
+      <p class="n">STAGE 01</p>
+      <h3>Attract</h3>
+      <p>Somebody who has never heard of you sees something. This is the only stage that costs money
+      up front.</p>
+    </div>
+    <div class="steps">
+      <div class="step" style="--c:var(--s1); --cbg:var(--s1-bg)">
+        <span class="tag">STEP 1</span>
+        <h4>A piece gets in front of them</h4>
+        <p>A door hanger on the handle, a sign at the junction, a trifold at the vet, a Facebook ad,
+        or a neighbour&rsquo;s yard that is obviously clean.</p>
+        <span class="who"><b>Who:</b> Mike, on a fixed weekly rhythm &middot; <b>When:</b> continuous</span>
+      </div>
+      <div class="step" style="--c:var(--s1); --cbg:var(--s1-bg)">
+        <span class="tag">STEP 2</span>
+        <h4>They act on it</h4>
+        <p>They scan the QR, type the domain, or call the number. Roadside signs almost always produce
+        a call; print and ads almost always produce a visit.</p>
+        <span class="who"><b>Measured by:</b> the <code>utm_source</code> on each QR &middot;
+        <b>Target:</b> 190 sessions a month</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 · CONVERT -->
+  <div class="stage" style="--c:var(--s2); --cbg:var(--s2-bg)">
+    <div class="stage-id">
+      <p class="n">STAGE 02</p>
+      <h3>Convert</h3>
+      <p>From stranger to booked appointment. This is where almost all the loss happens, and where the
+      cheapest wins are.</p>
+    </div>
+    <div class="steps">
+      <div class="step" style="--c:var(--s2); --cbg:var(--s2-bg)">
+        <span class="tag">STEP 3</span>
+        <h4>They land on the site</h4>
+        <p>They read one thing: what it costs. The pricing table is the most-visited part of a page
+        like this, which is why the rates live there and not on the print.</p>
+        <span class="who"><b>Target:</b> 4 in 100 visitors reach the form</span>
+      </div>
+      <div class="step" style="--c:var(--s2); --cbg:var(--s2-bg)">
+        <span class="tag">STEP 4</span>
+        <h4>They fill in the form</h4>
+        <p>Every button on the site goes to <code>#quote</code>, which is Jobber&rsquo;s own work
+        request form. Submitting drops a request straight into Jobber &mdash; no inbox in between.</p>
+        <span class="who"><b>Who:</b> the customer &middot; <b>Lands in:</b> Jobber requests</span>
+        <div class="leak"><b>Leak.</b> The form is an iframe on Jobber&rsquo;s domain, so Analytics
+        cannot see the submit. Today you can prove which piece drove a <i>visit</i> and not which
+        piece drove a <i>customer</i>.</div>
+      </div>
+      <div class="step" style="--c:var(--s2); --cbg:var(--s2-bg)">
+        <span class="tag">STEP 5</span>
+        <h4>Somebody answers</h4>
+        <p>A request is a person sitting with their phone in their hand. Reply while they are still
+        there and they book; reply tomorrow and they have called someone else.</p>
+        <span class="who"><b>Who:</b> Mike &middot; <b>Target:</b> under 15 minutes, 7am&ndash;6pm</span>
+        <div class="leak"><b>Leak.</b> No response-time rule exists. This is the single cheapest
+        conversion lever in the whole map &mdash; it costs nothing but a notification.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 · DELIVER -->
+  <div class="stage" style="--c:var(--s3); --cbg:var(--s3-bg)">
+    <div class="stage-id">
+      <p class="n">STAGE 03</p>
+      <h3>Deliver</h3>
+      <p>The free first cleanup. It is the offer, the sales pitch and the audition, and it is the only
+      part of the funnel the competition cannot copy cheaply.</p>
+    </div>
+    <div class="steps">
+      <div class="step" style="--c:var(--s3); --cbg:var(--s3-bg)">
+        <span class="tag">STEP 6</span>
+        <h4>The free first cleanup</h4>
+        <p>Scheduled in Jobber, done properly however bad the yard is. Cost: about twenty minutes of
+        labour and the disposal &mdash; roughly $25 of the $79 it takes to win a customer.</p>
+        <span class="who"><b>Who:</b> the crew &middot; <b>Condition:</b> with any residential plan</span>
+      </div>
+      <div class="step" style="--c:var(--s3); --cbg:var(--s3-bg)">
+        <span class="tag">STEP 7</span>
+        <h4>They go on the schedule</h4>
+        <p>Service agreement signed in Jobber, card on file, a day and a frequency chosen. Recurring
+        revenue starts here and not one step earlier.</p>
+        <span class="who"><b>Target:</b> 7 in 10 free cleanups become paying plans</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 · KEEP -->
+  <div class="stage" style="--c:var(--s4); --cbg:var(--s4-bg)">
+    <div class="stage-id">
+      <p class="n">STAGE 04</p>
+      <h3>Keep</h3>
+      <p>Churn is the silent competitor. Losing four customers a month while winning five is a plan
+      that never arrives.</p>
+    </div>
+    <div class="steps">
+      <div class="step" style="--c:var(--s4); --cbg:var(--s4-bg)">
+        <span class="tag">STEP 8</span>
+        <h4>The weekly visit nobody notices</h4>
+        <p>Same tech, same day, a text on the way and a text when it is clear. The texts are the
+        product as much as the scooping &mdash; they are the only proof anyone came.</p>
+        <span class="who"><b>Target:</b> keep monthly churn under 4%</span>
+      </div>
+      <div class="step" style="--c:var(--s4); --cbg:var(--s4-bg)">
+        <span class="tag">STEP 9</span>
+        <h4>Something goes wrong, and you fix it fast</h4>
+        <p>A missed spot re-serviced free inside 48 hours costs one trip. The same complaint ignored
+        costs $2,050, which is what a customer is worth over their life.</p>
+        <span class="who"><b>Who:</b> Mike &middot; <b>Rule:</b> re-service, do not argue</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 · MULTIPLY -->
+  <div class="stage" style="--c:var(--s5); --cbg:var(--s5-bg)">
+    <div class="stage-id">
+      <p class="n">STAGE 05</p>
+      <h3>Multiply</h3>
+      <p>Where the economics stop being linear. A customer is worth more than their invoice if they
+      bring the street with them.</p>
+    </div>
+    <div class="steps">
+      <div class="step" style="--c:var(--s5); --cbg:var(--s5-bg)">
+        <span class="tag">STEP 10</span>
+        <h4>The two doors either side</h4>
+        <p>After every new yard, hang the neighbour door hanger on the houses left and right. The
+        truck is already there and the yard is the proof.</p>
+        <span class="who"><b>Who:</b> the crew, same visit &middot; <b>Cost:</b> about 40&cent;</span>
+      </div>
+      <div class="step" style="--c:var(--s5); --cbg:var(--s5-bg)">
+        <span class="tag">STEP 11</span>
+        <h4>They tell someone</h4>
+        <p>The referral is the cheapest customer in the business and the only one with no acquisition
+        cost at all. It has to be asked for, in the &ldquo;yard&rsquo;s clear&rdquo; text.</p>
+        <span class="who"><b>Target:</b> 1 referred customer a month at full base</span>
+        <div class="leak"><b>Leak.</b> The referral offer exists on the website but nothing in the
+        service asks for it. A line in the after-visit text is the entire fix.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">The two loops</span>
+    <h2>What makes it compound instead of just add up</h2>
+    <p>A funnel that only runs forwards needs constant fuel. These two send customers back to the top
+    of the map for free, and they are the difference between a plan that stalls at thirty and one that
+    reaches fifty.</p>
+  </div>
+  <div class="loops">
+    <div class="loop" style="--c:var(--s5); --cbg:var(--s5-bg)">
+      <h3>The street loop</h3>
+      <div class="ring">
+        <span>New yard</span><i>&rarr;</i><span>Hangers next door</span><i>&rarr;</i>
+        <span>Neighbour signs up</span><i>&rarr;</i><span>Denser route</span><i>&#8630;</i>
+      </div>
+      <p>Every yard added to a street the truck already visits costs almost nothing in drive time, so
+      the same hour of work earns more. This is why a clustered route is worth more than a scattered
+      one at the same customer count &mdash; and why the door hangers matter more than the ads.</p>
+    </div>
+    <div class="loop" style="--c:var(--s4); --cbg:var(--s4-bg)">
+      <h3>The trust loop</h3>
+      <div class="ring">
+        <span>Visit done right</span><i>&rarr;</i><span>Text with proof</span><i>&rarr;</i>
+        <span>Review or referral</span><i>&rarr;</i><span>Next stranger trusts you</span><i>&#8630;</i>
+      </div>
+      <p>A stranger is handing over a gate code. Reviews and a neighbour&rsquo;s word are the only
+      things that answer that before the first call, which is why they are worth chasing as
+      deliberately as any ad.</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">The arithmetic</span>
+    <h2>How many customers, and how long</h2>
+    <p>Drag the numbers. The average revenue and the churn rate are the two that decide everything,
+    and neither is known yet &mdash; these are the industry starting points to replace with real
+    figures after one season.</p>
+  </div>
+
+  <div class="calc">
+    <div class="controls">
+      <div class="ctl">
+        <label for="c-target">Annual revenue target <output id="o-target">$50,000</output></label>
+        <input id="c-target" type="range" min="20000" max="120000" step="5000" value="50000">
+      </div>
+      <div class="ctl">
+        <label for="c-arpu">Average per customer, monthly <output id="o-arpu">$82</output></label>
+        <input id="c-arpu" type="range" min="65" max="110" step="1" value="82">
+        <p class="hint">$82 is the published rate table weighted to a realistic mix of frequencies and
+        dog counts. Weekly for one dog is $80.</p>
+      </div>
+      <div class="ctl">
+        <label for="c-churn">Monthly churn <output id="o-churn">4%</output></label>
+        <input id="c-churn" type="range" min="1" max="10" step="0.5" value="4">
+        <p class="hint">The share who cancel each month. Every point of churn is a customer you have to
+        win twice.</p>
+      </div>
+      <div class="ctl">
+        <label for="c-adds">New customers a month <output id="o-adds">5</output></label>
+        <input id="c-adds" type="range" min="1" max="15" step="1" value="5">
+        <p class="hint">Gross additions, before losses. The channel table below adds up to 5.3.</p>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="kpis">
+        <div class="kpi"><b class="num" id="k-cust">51</b><span>customers needed</span></div>
+        <div class="kpi"><b class="num" id="k-months">13</b><span>months to get there</span></div>
+        <div class="kpi"><b class="num" id="k-ceiling">125</b><span>ceiling at this pace</span></div>
+        <div class="kpi"><b class="num" id="k-hours">20 h</b><span>route a week at target</span></div>
+      </div>
+      <p class="verdict" id="verdict"></p>
+      <div class="chart" id="chart"></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Channels</span>
+    <h2>Where 5.3 customers a month actually come from</h2>
+    <p>No single channel gets there, which is the point of having forty-one pieces. The last column is
+    what each one is expected to produce once it is running &mdash; not on week one.</p>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr>
+      <th>Channel</th><th>Which pieces</th><th>The work, monthly</th>
+      <th class="n">Cost / mo</th><th class="n">New customers</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>Door hangers</b><br><span class="pill" style="--c:var(--s5);--cbg:var(--s5-bg)">highest leverage</span></td>
+        <td>5 hangers, front and back</td>
+        <td>200 a week on the streets already on the route, plus both neighbours of every new yard</td>
+        <td class="n">$35</td><td class="n">1.5</td></tr>
+      <tr><td><b>Facebook ads</b></td><td>5 ads, 1080&times;1080</td>
+        <td>Run all five, kill the two worst after three weeks, tight radius around the route</td>
+        <td class="n">$200</td><td class="n">1.2</td></tr>
+      <tr><td><b>Referrals</b></td><td>The after-visit text, refer page</td>
+        <td>Ask in every &ldquo;yard&rsquo;s clear&rdquo; message. Costs nothing and is not happening yet</td>
+        <td class="n">$0</td><td class="n">1.0</td></tr>
+      <tr><td><b>Vets, daycares, groomers</b></td><td>Trifolds A&ndash;K, menus, flyers</td>
+        <td>Ten partners, restocked once a month in person &mdash; the visit is the relationship</td>
+        <td class="n">$25</td><td class="n">0.8</td></tr>
+      <tr><td><b>Signs, truck, organic</b></td><td>5 signs, magnets, decals</td>
+        <td>Move the signs every few weeks; the truck advertises for free all day</td>
+        <td class="n">$20</td><td class="n">0.8</td></tr>
+      <tr><td><b>Commercial &amp; HOA</b></td><td>Trifold J, menu E</td>
+        <td>Fifteen property managers in year one. One account is worth eleven houses</td>
+        <td class="n">$10</td><td class="n">see below</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="3">Per month</td><td class="n">$290</td><td class="n">5.3</td></tr></tfoot>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Twelve months</span>
+    <h2>The plan, in four moves</h2>
+    <p>Two ways to land the same number: fifty-one houses, or thirty-nine houses and two commercial
+    accounts. The second is less driving for the same money, which is why phase four exists.</p>
+  </div>
+  <div class="phases">
+    <div class="phase" style="--c:var(--s1); --cbg:var(--s1-bg)">
+      <header><p class="when">WEEKS 1&ndash;2</p><h3>Unblock</h3></header>
+      <div class="body"><ul>
+        <li><b>Merge the website.</b> Every QR and every ad points at a domain still serving the old
+        site. Nothing below works until this ships.</li>
+        <li>Add &ldquo;how did you hear about us&rdquo; to the Jobber form, with the same options as
+        the QR tags.</li>
+        <li>Claim and fill the Google Business Profile &mdash; photos, hours, service area.</li>
+        <li>Magnets on the truck, first print run ordered.</li>
+      </ul></div>
+      <footer><span>Spend</span><b class="num">~$780</b></footer>
+    </div>
+
+    <div class="phase" style="--c:var(--s2); --cbg:var(--s2-bg)">
+      <header><p class="when">MONTHS 1&ndash;3</p><h3>Own a few streets</h3></header>
+      <div class="body"><ul>
+        <li>Door hangers around every existing customer, every week without exception.</li>
+        <li>Four signs out, moved fortnightly.</li>
+        <li>Facebook at $150 a month, all five creatives, tight radius.</li>
+        <li>Answer every request inside fifteen minutes.</li>
+      </ul></div>
+      <footer><span>15 customers</span><b class="num">$1,230/mo</b></footer>
+    </div>
+
+    <div class="phase" style="--c:var(--s3); --cbg:var(--s3-bg)">
+      <header><p class="when">MONTHS 4&ndash;7</p><h3>Partners and referrals</h3></header>
+      <div class="body"><ul>
+        <li>Ten vets, daycares and groomers carrying trifolds and a counter menu.</li>
+        <li>Referral ask added to the after-visit text, every visit.</li>
+        <li>Chase reviews from the first fifteen customers, by name.</li>
+        <li>Kill the two worst ads, put the budget on the two best.</li>
+      </ul></div>
+      <footer><span>32 customers</span><b class="num">$2,620/mo</b></footer>
+    </div>
+
+    <div class="phase" style="--c:var(--s4); --cbg:var(--s4-bg)">
+      <header><p class="when">MONTHS 8&ndash;12</p><h3>Commercial, and density</h3></header>
+      <div class="body"><ul>
+        <li>Trifold J to fifteen apartment offices and HOA boards. Two saying yes is the phase.</li>
+        <li>Keep the residential engine running at five a month.</li>
+        <li>Route review: drop or reprice anything more than fifteen minutes off a cluster.</li>
+        <li>Replace every assumption on this page with a measured number.</li>
+      </ul></div>
+      <footer><span>39 houses + 2 accounts</span><b class="num">$4,198/mo</b></footer>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Honest list</span>
+    <h2>What is missing, worst first</h2>
+    <p>Ranked by what it costs to fix against what it is costing now. The first three are free.</p>
+  </div>
+  <div class="gaps">
+    <div class="gap" style="--c:var(--stop)">
+      <div class="rank">01</div>
+      <div>
+        <h4>The new website is not live</h4>
+        <p>It is sitting in an unmerged pull request. Every QR code on forty-one pieces, and every ad,
+        sends people to the old site. An ad click that lands on the wrong page is money spent twice.</p>
+        <p class="fix"><b>Fix:</b> merge the PR. It is the only item here that blocks everything else.</p>
+      </div>
+    </div>
+    <div class="gap" style="--c:var(--stop)">
+      <div class="rank">02</div>
+      <div>
+        <h4>You cannot see which piece produces customers</h4>
+        <p>Analytics is installed and the QR codes are tagged, so traffic by source is measurable. But
+        the request form is an iframe on Jobber&rsquo;s domain and the submit happens out of sight.
+        Spend and revenue can never be connected without closing that gap.</p>
+        <p class="fix"><b>Fix:</b> a required &ldquo;how did you hear about us&rdquo; on the Jobber
+        form, with options that match the QR tags. Jobber then becomes the scoreboard.</p>
+      </div>
+    </div>
+    <div class="gap" style="--c:var(--warn)">
+      <div class="rank">03</div>
+      <div>
+        <h4>Nobody owns the response time</h4>
+        <p>A request that sits for a day is usually lost to whoever answered first, and it is lost
+        after the money to generate it has already been spent.</p>
+        <p class="fix"><b>Fix:</b> Jobber notifications on the phone, and a stated rule &mdash; fifteen
+        minutes, 7am to 6pm.</p>
+      </div>
+    </div>
+    <div class="gap" style="--c:var(--warn)">
+      <div class="rank">04</div>
+      <div>
+        <h4>A request that does not book gets nothing</h4>
+        <p>Somebody who asked for a quote and went quiet is the warmest lead there is, and there is no
+        second touch of any kind.</p>
+        <p class="fix"><b>Fix:</b> two follow-ups &mdash; a text at 48 hours and one more a week
+        later. Both can be templates.</p>
+      </div>
+    </div>
+    <div class="gap" style="--c:var(--warn)">
+      <div class="rank">05</div>
+      <div>
+        <h4>No systematic ask for reviews</h4>
+        <p>For a local service, the review count on the map listing does more work than any ad, and it
+        is the one asset that compounds without spend.</p>
+        <p class="fix"><b>Fix:</b> ask after the third clean visit, not the first &mdash; by then they
+        have something to say.</p>
+      </div>
+    </div>
+    <div class="gap" style="--c:var(--warn)">
+      <div class="rank">06</div>
+      <div>
+        <h4>&ldquo;No contracts&rdquo; is still on the website</h4>
+        <p>It has been removed from all forty-one printed pieces because Jobber has customers sign a
+        service agreement. The site still says it in nine places, including Terms &amp; Conditions.</p>
+        <p class="fix"><b>Fix:</b> the marketing copy is a find-and-replace; the Terms page is legal
+        wording and Mike should read it before it changes.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Next</span>
+    <h2>The pieces that do the work</h2>
+    <p>Every channel in the table above points at something that already exists: eleven trifolds,
+    five flyers, five door hangers, five signs, five service menus, five vehicle graphics and five
+    Facebook ads, all print-ready.</p>
+  </div>
+  <div class="jump">
+    <a href="../print/">Open the print collateral</a>
+    <a class="ghost" href="../">Back to the website</a>
+  </div>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <p><b>Where the numbers come from.</b> Rates, plan names and the service promises are the published
+  ones from maxspoocrew.com. The $82 average is that table weighted to an assumed mix. Conversion
+  rates, churn and per-channel yields are industry starting points for a local recurring service, not
+  measurements of this business &mdash; they are here to be replaced after one season, which is the
+  entire reason the QR codes are tagged.</p>
+  <p>Route time assumes 20 minutes on site and 6 minutes between stops. Customer lifetime value uses
+  revenue, not profit.</p>
+</div></div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var els = {
+    target: $('c-target'), arpu: $('c-arpu'), churn: $('c-churn'), adds: $('c-adds'),
+    oTarget: $('o-target'), oArpu: $('o-arpu'), oChurn: $('o-churn'), oAdds: $('o-adds'),
+    cust: $('k-cust'), months: $('k-months'), ceiling: $('k-ceiling'), hours: $('k-hours'),
+    verdict: $('verdict'), chart: $('chart')
+  };
+  var money = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+
+  // Visits per customer per month, from the same frequency mix that produces the
+  // $82 average: weekly 55%, twice weekly 12%, every other week 25%, monthly 8%.
+  var VISITS_PER_CUSTOMER = 0.55 * 4.33 + 0.12 * 8.67 + 0.25 * 2.17 + 0.08 * 1;
+  var MINUTES_PER_VISIT = 26;          // 20 on site, 6 driving
+
+  function model() {
+    var target = +els.target.value, arpu = +els.arpu.value;
+    var churn = +els.churn.value / 100, adds = +els.adds.value;
+    var need = Math.ceil(target / 12 / arpu);
+    var ceiling = adds / churn;          // where the base settles: adds = losses
+
+    // Month by month: keep last month's base minus churn, plus this month's adds.
+    var series = [0], n = 0, hit = null;
+    for (var m = 1; m <= 60; m++) {
+      n = n * (1 - churn) + adds;
+      series.push(n);
+      if (hit === null && n >= need) hit = m;
+    }
+    var hours = need * VISITS_PER_CUSTOMER * MINUTES_PER_VISIT / 60 / 4.33;
+    return {target: target, arpu: arpu, need: need, ceiling: ceiling,
+            hit: hit, series: series, hours: hours};
+  }
+
+  function draw(r) {
+    var W = 520, H = 190, pad = {t: 12, r: 14, b: 22, l: 34};
+    var months = 36;
+    var top = Math.max(r.need * 1.25, r.ceiling * 1.1, 10);
+    var x = function (i) { return pad.l + i / months * (W - pad.l - pad.r); };
+    var y = function (v) { return H - pad.b - (v / top) * (H - pad.t - pad.b); };
+
+    var pts = [], area = ['M' + x(0) + ' ' + y(0)];
+    for (var i = 0; i <= months; i++) {
+      var v = r.series[i] || 0;
+      pts.push(x(i).toFixed(1) + ',' + y(v).toFixed(1));
+      area.push('L' + x(i).toFixed(1) + ' ' + y(v).toFixed(1));
+    }
+    area.push('L' + x(months) + ' ' + y(0) + ' Z');
+
+    var ticks = '';
+    for (var g = 0; g <= 4; g++) {
+      var vy = y(top * g / 4);
+      ticks += '<line class="grid-l" x1="' + pad.l + '" x2="' + (W - pad.r) + '" y1="' + vy.toFixed(1) +
+               '" y2="' + vy.toFixed(1) + '"/>' +
+               '<text x="' + (pad.l - 6) + '" y="' + (vy + 3.5).toFixed(1) + '" text-anchor="end">' +
+               Math.round(top * g / 4) + '</text>';
+    }
+    var xlab = '';
+    [0, 6, 12, 18, 24, 30, 36].forEach(function (m) {
+      xlab += '<text x="' + x(m).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + m + '</text>';
+    });
+
+    var hitMark = '';
+    if (r.hit && r.hit <= months) {
+      hitMark = '<line class="target" x1="' + x(r.hit).toFixed(1) + '" x2="' + x(r.hit).toFixed(1) +
+                '" y1="' + pad.t + '" y2="' + (H - pad.b) + '" style="stroke-dasharray:2 3"/>' +
+                '<circle cx="' + x(r.hit).toFixed(1) + '" cy="' + y(r.need).toFixed(1) +
+                '" r="4" fill="var(--brand)"/>';
+    }
+
+    els.chart.innerHTML =
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Customer count by month, ' +
+      'against the number needed">' + ticks +
+      '<path class="fill" d="' + area.join(' ') + '"/>' +
+      '<polyline class="ramp" points="' + pts.join(' ') + '"/>' +
+      '<line class="target" x1="' + pad.l + '" x2="' + (W - pad.r) + '" y1="' + y(r.need).toFixed(1) +
+      '" y2="' + y(r.need).toFixed(1) + '"/>' +
+      '<text x="' + (W - pad.r) + '" y="' + (y(r.need) - 5).toFixed(1) + '" text-anchor="end" ' +
+      'style="fill:var(--brand)">' + r.need + ' needed</text>' +
+      hitMark + xlab +
+      '<text x="' + x(months / 2).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle" ' +
+      'style="opacity:0">months</text></svg>';
+  }
+
+  function render() {
+    var r = model();
+    els.oTarget.textContent = money(r.target);
+    els.oArpu.textContent = '$' + els.arpu.value;
+    els.oChurn.textContent = els.churn.value + '%';
+    els.oAdds.textContent = els.adds.value;
+
+    els.cust.textContent = r.need;
+    els.ceiling.textContent = Math.round(r.ceiling);
+    els.hours.textContent = Math.round(r.hours) + ' h';
+    els.months.textContent = r.hit ? r.hit : '—';
+
+    var v = els.verdict, reachable = r.ceiling >= r.need;
+    v.dataset.bad = reachable ? '0' : '1';
+    if (!reachable) {
+      v.innerHTML = 'At ' + els.adds.value + ' new customers a month and ' + els.churn.value +
+        '% churn, the base settles at about <b>' + Math.round(r.ceiling) + '</b> and never reaches ' +
+        r.need + '. Churn is winning. Either add more each month or keep the ones you have.';
+    } else if (r.hit && r.hit <= 18) {
+      v.innerHTML = 'Reaches ' + r.need + ' customers in <b>month ' + r.hit + '</b> and settles near ' +
+        Math.round(r.ceiling) + '. That is ' + money(r.need * r.arpu) +
+        ' a month, on about <b>' + Math.round(r.hours) + ' hours</b> of route a week — one person, one truck.';
+    } else {
+      v.innerHTML = 'Gets there in <b>month ' + (r.hit || '36+') +
+        '</b>. Reachable, but slow enough that one bad quarter of churn undoes a season of selling.';
+    }
+    draw(r);
+  }
+
+  ['target', 'arpu', 'churn', 'adds'].forEach(function (k) {
+    els[k].addEventListener('input', render);
+  });
+  render();
+})();
+</script>
+
+</body>
+</html>
