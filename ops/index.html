@@ -295,10 +295,15 @@ td .sub{display:block; font-size:12.3px; color:var(--ink-3); margin-top:2px}
 .no{color:var(--ink-3)}
 .hl{background:var(--s2-bg)}
 tbody tr.hl td{border-bottom-color:var(--rule-2)}
+/* A row the sources disagreed on. Marked rather than guessed. */
+.dis td{background:var(--s2-bg)}
+.dis td:first-child{border-left:3px solid var(--warn)}
+.dis td.n{font-family:var(--mono); font-weight:700; color:var(--warn)}
+th .sub{display:block; font-size:11px; color:var(--ink-3); margin-top:2px; font-weight:600;
+  letter-spacing:0; text-transform:none; font-family:var(--mono)}
 .src{font-size:12.5px; color:var(--ink-3); margin-top:10px}
 .src a{color:var(--ink-2)}
 </style>
-
 </head>
 <body>
 
@@ -339,9 +344,9 @@ tbody tr.hl td{border-bottom-color:var(--rule-2)}
     <div class="vcard" style="--c:var(--s4)">
       <p class="lab">SOFTWARE</p>
       <h3>Find out which Jobber plan you are on</h3>
-      <p>The growth plan needs on-my-way texts, quote follow-ups and route optimisation. On Jobber
-      those sit above the entry tier. If you are on Core today, <b>you cannot run the plan as
-      written</b> &mdash; and that makes this the moment to compare properly.</p>
+      <p>Core cannot charge a subscription automatically &mdash; that starts at Connect. For a
+      business that <i>is</i> a subscription, being on Core means charging every card by hand every
+      month. If that is where the account sits, <b>this is the moment to compare properly</b>.</p>
       <p class="cost">Decision: <b>$0 to check</b>, and it changes everything below</p>
     </div>
   </div>
@@ -364,13 +369,14 @@ tbody tr.hl td{border-bottom-color:var(--rule-2)}
         Facebook, neighbour, other.</p>
         <span class="tier">ANY PLAN</span></div>
     </div>
-    <div class="set" style="--c:var(--s3); --cbg:var(--s3-bg)">
+    <div class="set" style="--c:var(--s2); --cbg:var(--s2-bg)">
       <span class="n"></span>
-      <div><h4>Saved cards and automatic payments on every recurring job</h4>
-        <p>Card on file at signup, charged automatically on the recurring schedule. It removes the
-        monthly &ldquo;do I still want this&rdquo; moment, which is where a lot of churn actually
-        happens &mdash; not in a decision, but in an unpaid invoice.</p>
-        <span class="tier">ANY PLAN</span></div>
+      <div><h4>Saved payment method and automatic charging on every recurring job</h4>
+        <p>Payment method on file at signup, charged automatically on the recurring schedule. It
+        removes the monthly &ldquo;do I still want this&rdquo; moment, which is where a lot of churn
+        actually happens &mdash; not in a decision, but in an unpaid invoice. Ask for the <b>bank
+        account, not the card</b>: same convenience to the customer, a third of the fee.</p>
+        <span class="tier">CONNECT AND UP</span></div>
     </div>
     <div class="set" style="--c:var(--s3); --cbg:var(--s3-bg)">
       <span class="n"></span>
@@ -393,7 +399,7 @@ tbody tr.hl td{border-bottom-color:var(--rule-2)}
         <p>The texts are the product as much as the scooping &mdash; they are the only proof anyone
         came while the customer was at work. Put the referral ask in the job-complete message; that
         is a whole acquisition channel for one line of text.</p>
-        <span class="tier">CONNECT AND UP</span></div>
+        <span class="tier">TIER DISPUTED &mdash; CHECK</span></div>
     </div>
     <div class="set" style="--c:var(--s2); --cbg:var(--s2-bg)">
       <span class="n"></span>
@@ -416,75 +422,256 @@ tbody tr.hl td{border-bottom-color:var(--rule-2)}
       <div><h4>Route optimisation</h4>
         <p>Worth real money only once the route is dense enough to have an order worth optimising.
         Below about twenty stops a day, a sensibly hand-built route gets most of the benefit &mdash;
-        so this is the one to delay, not rush.</p>
-        <span class="tier">GROW AND UP</span></div>
+        so this is the one to delay, not rush. Sweep&amp;Go includes it at every tier.</p>
+        <span class="tier">TIER DISPUTED &mdash; CHECK</span></div>
     </div>
   </div>
 
   <div class="callout watch">
-    <h4>The tier trap</h4>
-    <p>Jobber&rsquo;s entry plan is <b>Core at $49/month</b>, or $24 prepaid annually. It does not
-    include two-way texting, automated quote follow-ups or job forms &mdash; those start at
-    <b>Connect ($139/month, or $80 prepaid)</b> &mdash; and route optimisation starts at
-    <b>Grow ($199/month, or $120 prepaid)</b>. Four of the eight items above therefore cost money to
-    unlock. <b>Confirm what is active on the account before assuming any of it works</b>: the
-    industry page markets these features without saying which tier carries them, and third-party
-    reviews quote older prices. Figures checked August 2026.</p>
+    <h4>The tier trap &mdash; and a correction</h4>
+    <p>An earlier version of this page said Core does not include on-my-way texts or automated
+    client notifications. <b>That was stated with more confidence than the evidence supports.</b>
+    Jobber&rsquo;s own pricing page, read twice, gave two different answers, and third-party reviews
+    disagree again. It is on the verify list below rather than asserted here either way.</p>
+    <p>What <b>is</b> consistent across every source: Core does not do <b>automatic recurring
+    payments</b>, automated quote follow-ups, or job forms. For a business whose entire model is a
+    monthly subscription, the first of those is the one that bites &mdash; it means charging cards by
+    hand, every month, for every customer.</p>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="shead">
-    <span class="eyebrow">The alternatives</span>
-    <h2>Yes, software exists just for this</h2>
-    <p>Pet waste removal is a big enough niche to have its own tools, and they know things a general
-    field-service app does not &mdash; that a client has dogs with names, that one of them bites, and
-    that the gate code changes.</p>
+    <span class="eyebrow">Jobber, every tier</span>
+    <h2>All four plans, feature by feature</h2>
+    <p>Prices are Jobber&rsquo;s own, checked August 2026: the first figure is prepaid annually, the
+    second is month to month. Every tier includes one user; extra users are $29 each.</p>
   </div>
   <div class="scroll"><table>
     <thead><tr>
-      <th>Tool</th><th>Built for</th><th>What it knows that a general tool does not</th>
-      <th class="n">Entry price</th><th>Verdict</th>
+      <th>Feature</th><th class="n">Core<span class="sub">$24 / $49</span></th>
+      <th class="n">Connect<span class="sub">$80 / $139</span></th>
+      <th class="n">Grow<span class="sub">$120 / $199</span></th>
+      <th class="n">Plus<span class="sub">$320 / $499</span></th>
     </tr></thead>
     <tbody>
-      <tr class="hl"><td><b>Sweep&amp;Go</b><span class="sub">sweepandgo.com</span></td>
-        <td>Pet waste removal, only</td>
-        <td>Dog profiles per client, <b>unsafe-dog notices</b> for tech safety, client-editable gate
-        info, cleanup notifications, routing built for scooping runs</td>
-        <td class="n">$29<span class="sub">per staff / mo</span></td>
-        <td class="yes">Best fit on paper</td></tr>
-      <tr><td><b>Jobber</b><span class="sub">current tool</span></td>
-        <td>All home services</td>
-        <td>Nothing dog-specific, but the deepest general toolkit and the form already wired into the
-        website</td>
-        <td class="n">$49<span class="sub">Core, 1 user</span></td>
-        <td>Incumbent</td></tr>
-      <tr><td><b>ScooperOne</b></td><td>Pet waste removal</td>
-        <td>Recurring weekly / biweekly / monthly schedules with interactive route maps</td>
-        <td class="n"><span class="no">not published</span></td>
-        <td class="no">Worth a look</td></tr>
-      <tr><td><b>Time To Pet</b></td><td>Pet care generally</td>
-        <td>Unlimited custom services &mdash; useful only if waste removal sits beside walking,
-        boarding or daycare</td>
-        <td class="n"><span class="no">not checked</span></td>
-        <td class="no">Only if K9 Club merges in</td></tr>
+      <tr><td>Scheduling, quoting, invoicing, client hub, online booking</td>
+        <td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Online payment collection</td>
+        <td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr class="hl"><td><b>Automatic recurring payments</b>
+        <span class="sub">the whole model runs on this</span></td>
+        <td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr class="hl"><td><b>Automated quote follow-ups</b>
+        <span class="sub">the leads that go quiet</span></td>
+        <td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Automated invoice follow-ups</td>
+        <td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr class="hl"><td><b>Job forms and checklists</b>
+        <span class="sub">the proof a visit happened</span></td>
+        <td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Time and expense tracking</td>
+        <td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>QuickBooks Online sync</td>
+        <td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Two-way text messaging</td>
+        <td class="n no">&mdash;</td><td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Quote add-ons and optional line items</td>
+        <td class="n no">&mdash;</td><td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Job costing and financial reporting</td>
+        <td class="n no">&mdash;</td><td class="n no">&mdash;</td><td class="n yes">&check;</td><td class="n yes">&check;</td></tr>
+      <tr><td>Marketing Suite, Pipeline, AI Receptionist</td>
+        <td class="n" colspan="3" style="text-align:center">add-ons &mdash; $79 and $99 a month</td>
+        <td class="n yes">included</td></tr>
+      <tr class="dis"><td><b>Automated notifications, visit reminders, on-my-way texts</b>
+        <span class="sub">sources disagree &mdash; verify in the account</span></td>
+        <td class="n">?</td><td class="n">?</td><td class="n">?</td><td class="n">?</td></tr>
+      <tr class="dis"><td><b>Route optimisation</b>
+        <span class="sub">four sources, four answers &mdash; verify in the account</span></td>
+        <td class="n">?</td><td class="n">?</td><td class="n">?</td><td class="n">?</td></tr>
     </tbody>
   </table></div>
-  <p class="src">Sweep&amp;Go entry tier caps at <b>15 jobs per technician per day</b>, which is above
-  the ~11 stops a day the $50K target needs but would bind before one truck is full. Prices checked
-  August 2026 and quoted from each vendor&rsquo;s own pricing page.</p>
+  <p class="src">Card processing is 2.9% + $0.30 on top of any tier; bank payments are 1%. The two
+  rows marked <b>?</b> came back differently from Jobber&rsquo;s pricing page, its help centre and
+  two review sites &mdash; they are the reason to open the account rather than trust a table.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Sweep&amp;Go, every tier</span>
+    <h2>Three plans that are the same plan</h2>
+    <p>The unusual bit: all three tiers carry an identical feature set. What you buy going up is
+    <b>capacity</b>, not capability &mdash; and what changes the price is how many people are on the
+    payroll, not which plan you pick.</p>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr>
+      <th>Staff on the account</th>
+      <th class="n">EntreMANURE<span class="sub">15 jobs / tech / day</span></th>
+      <th class="n">Scoop&amp;Go<span class="sub">100 jobs / tech / day</span></th>
+      <th class="n">POOfessional<span class="sub">100 jobs / tech / day</span></th>
+    </tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>1&ndash;3</b><span class="sub">where this business is</span></td>
+        <td class="n"><b>$29</b></td><td class="n">$69</td><td class="n">$99</td></tr>
+      <tr><td>4&ndash;9</td><td class="n">$25</td><td class="n">$49</td><td class="n">$79</td></tr>
+      <tr><td>10&ndash;17</td><td class="n">$20</td><td class="n">$39</td><td class="n">$69</td></tr>
+      <tr><td>18+</td><td class="n">$15</td><td class="n">$29</td><td class="n">$59</td></tr>
+    </tbody>
+    <tfoot><tr><td>Per active staff member, per month</td>
+      <td class="n" colspan="3">plus a one-time setup fee of $39&ndash;79</td></tr></tfoot>
+  </table></div>
+  <p class="src">Every tier includes the field app, recurring scheduling, dispatch board, route
+  optimisation and route manager, client portal, automated payments, billing subscriptions, master
+  map, GPS breadcrumbs, payroll calculation, QuickBooks sync, open API and the client onboarding
+  form. The niche pieces &mdash; dog profiles, <b>unsafe-dog notices</b>, client-editable gate info,
+  per-dog billing tiers, zone-based routing &mdash; are what a general tool has no reason to build.
+  15-day free trial.</p>
+
+  <div class="callout watch">
+    <h4>The cap is the only decision</h4>
+    <p>At the $50K target the route is about <b>11 stops a day</b>, so the $29 tier fits with room to
+    spare. It stops fitting at 15 &mdash; roughly 70 weekly customers, or about $69,000 a year &mdash;
+    and the step up to Scoop&amp;Go is <b>$29 to $69</b>. Worth knowing in advance so it is a planned
+    upgrade rather than a surprise.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">The whole field</span>
+    <h2>Everything else worth knowing about</h2>
+    <p>Nine tools, entry price for a solo operator, and an honest verdict for <i>this</i> business
+    &mdash; a one-truck recurring residential route in St.&nbsp;Louis, not a general home-services
+    company.</p>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr>
+      <th>Tool</th><th>Built for</th><th class="n">Solo price</th>
+      <th>What stands out</th><th>Verdict here</th>
+    </tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>Sweep&amp;Go</b></td><td>Pet waste removal only</td>
+        <td class="n">$29<span class="sub">/staff/mo</span></td>
+        <td>Dog profiles, unsafe-dog notices, per-dog billing, zone routing, client-editable gate info</td>
+        <td class="yes">Best fit for the niche</td></tr>
+      <tr class="hl"><td><b>Jobber</b><span class="sub">incumbent</span></td><td>All home services</td>
+        <td class="n">$24&ndash;120<span class="sub">annual, by tier</span></td>
+        <td>Deepest general toolkit, and the request form is already wired into the website</td>
+        <td class="yes">Keep unless Core</td></tr>
+      <tr><td><b>Time To Pet</b></td><td>Pet care generally</td>
+        <td class="n">$25<span class="sub">solo</span></td>
+        <td>Pet profiles, visit report cards with photos, geo scheduling</td>
+        <td>Only if it merges with K9&nbsp;Club</td></tr>
+      <tr><td><b>ScooperOne</b></td><td>Pet waste removal</td>
+        <td class="n"><span class="no">on request</span></td>
+        <td>Recurring weekly/biweekly/monthly schedules, interactive route maps, a free starting tier</td>
+        <td>Worth a call, price unpublished</td></tr>
+      <tr><td><b>PoopBossPro</b></td><td>Pet waste removal</td>
+        <td class="n"><span class="no">on request</span></td>
+        <td>Per-dog billing, automatic scheduling</td>
+        <td>Thin public information</td></tr>
+      <tr><td><b>DoTimely</b></td><td>Pet care, budget end</td>
+        <td class="n">$0&ndash;15</td>
+        <td>The only genuine free tier; GPS tracking with photo verification</td>
+        <td>Cheap, but you get what you pay for</td></tr>
+      <tr><td><b>Flowcarve</b></td><td>Small crews</td>
+        <td class="n">$39<span class="sub">up to 5 users</span></td>
+        <td>Flat price with no per-seat escalation, 30-day trial</td>
+        <td>Good value at 3&ndash;5 people</td></tr>
+      <tr><td><b>Housecall Pro</b></td><td>Growing home service teams</td>
+        <td class="n">$59<span class="sub">annual</span></td>
+        <td>Booking widget, built-in postcard and email marketing</td>
+        <td>Pricier than Jobber, no niche gain</td></tr>
+      <tr><td><b>QuoteIQ</b></td><td>Solo to 20+ crews</td>
+        <td class="n">$29.99</td>
+        <td>Review multiplier, self-booking at higher tiers</td>
+        <td class="no">Rated by its own blog &mdash; discount accordingly</td></tr>
+      <tr><td><b>FieldCamp</b></td><td>AI-forward operators</td>
+        <td class="n">$35<span class="sub">/user/mo</span></td>
+        <td>Chat-command scheduling, predictive dashboards</td>
+        <td>Solving problems this business does not have yet</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">What it really costs</span>
+    <h2>The fee nobody compares</h2>
+    <p>At the $50K target, on 51 customers billed monthly, <b>card processing costs more than every
+    software plan on this page except Jobber Plus.</b> It is the line that never appears in a
+    comparison because it is not on anybody&rsquo;s pricing page as a plan.</p>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>How you collect</th><th class="n">Charges a year</th>
+      <th class="n">Fees a year</th><th class="n">Share of revenue</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>Card, billed monthly</b><span class="sub">what happens by default</span></td>
+        <td class="n">612</td><td class="n"><b>$1,639</b></td><td class="n">3.27%</td></tr>
+      <tr><td>Card, billed quarterly</td><td class="n">204</td>
+        <td class="n">$1,517</td><td class="n">3.02%</td></tr>
+      <tr><td>Bank payment (ACH), billed monthly</td><td class="n">612</td>
+        <td class="n">$502</td><td class="n">1.00%</td></tr>
+      <tr class="hl"><td><b>Bank payment, billed quarterly</b><span class="sub">what to aim for</span></td>
+        <td class="n">204</td><td class="n"><b>$502</b></td><td class="n">1.00%</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="3">Moving from the first row to the last</td>
+      <td class="n"><b>saves $1,137</b></td></tr></tfoot>
+  </table></div>
+  <p class="src">Assumes $50,184 of annual card volume at 2.9% + $0.30, or 1% for bank payments
+  &mdash; the published Jobber and Stripe rates, which both platforms use. Quarterly billing cuts the
+  fixed 30&cent; a hundred times over and, separately, cuts churn.</p>
 
   <div class="callout win">
-    <h4>The honest recommendation</h4>
-    <p><b>If the account is already on Connect or above, stay on Jobber.</b> The dog-specific features
-    are nice, not decisive, and switching means rebuilding the website&rsquo;s embedded form and
-    migrating every client &mdash; real work for a modest gain.</p>
-    <p><b>If the account is on Core, this is the moment to compare.</b> You are about to pay Jobber
-    more anyway. Sweep&amp;Go&rsquo;s entry tier at $29 per staff member includes client notifications
-    and route optimisation, which Jobber puts behind Connect and Grow. Run the 15-day trial in
-    parallel before upgrading, and decide with both in front of you. The operator who took this
-    business to $3M runs <b>both</b> &mdash; Sweep&amp;Go for routing, Jobber as the CRM &mdash; which
-    is a reasonable end state and not a contradiction.</p>
+    <h4>Which is to say</h4>
+    <p>Getting customers onto <b>bank payment and quarterly billing saves $1,137 a year &mdash; more
+    than the entire cost of Jobber Connect</b>, which is $960. The software decision on this page is
+    worth real money, but it is the second-biggest number here. Argue about the plan after the
+    payment method is settled.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">The decision</span>
+    <h2>What to actually do</h2>
+    <p>Three cases, and the answer for each. All of them start with opening the account and reading
+    the current plan, which takes a minute and is the only unknown that matters.</p>
+  </div>
+  <div class="verdict-grid">
+    <div class="vcard" style="--c:var(--s3)">
+      <p class="lab">IF ON CONNECT OR ABOVE</p>
+      <h3>Stay on Jobber</h3>
+      <p>You already have automatic recurring payments, quote follow-ups and job forms &mdash; the
+      three that matter. The dog-specific features Sweep&amp;Go adds are genuinely nice and genuinely
+      not worth rebuilding the website&rsquo;s embedded form and migrating every client for.</p>
+      <p class="cost">Next: <b>switch on the eight settings above</b> and move billing to ACH</p>
+    </div>
+    <div class="vcard" style="--c:var(--s2)">
+      <p class="lab">IF ON CORE</p>
+      <h3>Compare properly, once</h3>
+      <p>Core cannot charge a subscription automatically, which is the business. You are about to pay
+      more either way, so this is the one moment the comparison is free. Run Sweep&amp;Go&rsquo;s
+      15-day trial alongside, with real customers in both.</p>
+      <p class="cost">Jobber Connect <b>$960/yr</b> vs Sweep&amp;Go <b>$348/yr</b></p>
+    </div>
+    <div class="vcard" style="--c:var(--s4)">
+      <p class="lab">EITHER WAY</p>
+      <h3>Do not buy Grow or Plus yet</h3>
+      <p>Two-way texting, job costing and financial reporting are real features that solve problems a
+      51-customer route does not have. Plus at $3,840 a year is 7.7% of the target revenue for
+      tooling. Revisit at a full truck, not before.</p>
+      <p class="cost">Saved by waiting: <b>$480&ndash;2,880 a year</b></p>
+    </div>
+  </div>
+
+  <div class="callout watch">
+    <h4>Verify these four in the account, not from this page</h4>
+    <p>Which plan is active today &middot; whether automated visit reminders and on-my-way texts are
+    switched on &middot; which tier carries route optimisation &middot; whether bank payment (ACH) is
+    enabled for clients. Public sources contradicted each other on the middle two, and the last one
+    is worth more than the plan choice.</p>
   </div>
 </div></section>
 
@@ -654,6 +841,11 @@ tbody tr.hl td{border-bottom-color:var(--rule-2)}
   <a href="https://www.getjobber.com/industries/pooper-scooper-software/">Jobber&rsquo;s pooper scooper page</a>.
   Recurring-schedule and mapping notes from <a href="https://www.scooperone.com/">ScooperOne</a> and
   <a href="https://www.timetopet.com/blog/using-software-for-your-pooper-scooper-business">Time To Pet</a>.
+  The nine-tool field and the add-on and processing rates from
+  <a href="https://myquoteiq.com/top-8-softwares-for-pet-waste-removal-businesses-in-2026/">a QuoteIQ
+  round-up</a> and <a href="https://myquoteiq.com/jobber-pricing-breakdown-2026/">their Jobber
+  breakdown</a> &mdash; both published by a competitor, so the rankings are discounted and only the
+  prices are used.
   Growth tactics, churn and capacity figures from the
   <a href="https://www.sidehustlenation.com/pet-waste-removal-business/">Side Hustle Nation interview with a $3M pet waste operator</a>,
   with route-density and per-technician benchmarks corroborated by
