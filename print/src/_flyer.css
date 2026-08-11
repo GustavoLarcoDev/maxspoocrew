@@ -1,0 +1,131 @@
+/* =============================================================================
+   Shared skeleton for the single-page 8.5 x 11 flyers.
+   -----------------------------------------------------------------------------
+   Load after _base.css. Each flyer then carries almost nothing but content,
+   which is the point: ten pieces that argue ten different things should still
+   look like they came from the same company.
+
+   Structure every flyer follows:
+
+     .sheet
+       header.top      red band - eyebrow, headline, lede, logo
+       .body           whatever the argument needs
+       footer.foot     fine print and the domain
+
+   Sizes are tuned so a flyer with a header, two or three body blocks and a CTA
+   lands comfortably inside 11.25in. If one overruns, cut content rather than
+   shaving margins - .cta uses margin-top:auto, so it eats any gap you free up
+   and the total height does not move.
+   ========================================================================== */
+
+@page{ size: 8.75in 11.25in; margin:0 }
+
+.sheet{width:8.75in;height:11.25in;display:flex;flex-direction:column;
+  background:var(--cream)}
+
+/* --- header -------------------------------------------------------------- */
+.top{padding:.42in .625in .3in;position:relative;
+  background:linear-gradient(160deg,var(--red),var(--red-deep));color:#fff}
+.top .logo--boxed{width:1.2in;position:absolute;top:.38in;right:.55in;padding:.055in}
+.top .logo--boxed img{width:100%;height:auto;display:block}
+.top h1{font-size:.56in;color:#fff;margin-top:.11in;max-width:5.1in;line-height:1}
+.top h1.tight{font-size:.5in}
+.top h1.big{font-size:.68in}
+.top .lede{color:rgba(255,255,255,.94);font-size:.128in;max-width:5.3in;
+  margin-top:.13in;line-height:1.5}
+.top .pill{margin-top:.16in;font-size:.112in}
+
+/* A thin dark strip under the header, for the one line that has to be read. */
+.strap{background:var(--ink);color:var(--cream);padding:.15in .625in;
+  display:flex;justify-content:space-between;align-items:center;gap:.2in}
+.strap p{font-family:var(--display);font-size:.17in;color:var(--butter)}
+.strap span{font-family:var(--body);font-weight:700;font-size:.105in;
+  color:rgba(255,241,235,.85)}
+
+/* --- body ---------------------------------------------------------------- */
+.body{flex:1;padding:.28in .625in .16in;display:flex;flex-direction:column}
+
+.eyebrow{display:block}
+h2{font-size:.235in}
+h3{font-size:.16in}
+.rule{margin:.1in 0 .13in}
+
+/* two or three columns of running copy */
+.cols{display:flex;gap:.26in}
+.cols .col{flex:1}
+.cols p{font-size:.113in;color:var(--ink-2);line-height:1.46}
+.cols p+p{margin-top:.08in}
+
+/* small white cards in a row */
+.cards{display:flex;gap:.15in}
+.cards .b{flex:1;background:#fff;border-radius:.12in;padding:.16in}
+.cards .b .k{font-family:var(--display);font-size:.155in;color:var(--red);
+  line-height:1.12}
+.cards .b p{font-size:.098in;color:var(--ink-2);line-height:1.4;margin-top:.06in}
+
+/* numbered steps */
+.steps{display:flex;gap:.16in}
+.steps .s{flex:1}
+.steps .n{width:.3in;height:.3in;border-radius:.085in;background:var(--red);
+  color:#fff;font-family:var(--display);font-size:.15in;display:grid;
+  place-items:center;margin-bottom:.08in}
+.steps h3{font-size:.135in}
+.steps p{font-size:.098in;color:var(--ink-2);line-height:1.42;margin-top:.04in}
+
+/* the price row, used by more than one flyer */
+.rates{display:flex;gap:.14in}
+.rates .p{flex:1;background:#fff;border-radius:.13in;padding:.15in;text-align:center}
+.rates .n{font-family:var(--body);font-weight:700;font-size:.085in;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.rates .v{font-family:var(--display);font-size:.32in;color:var(--red);
+  line-height:1;margin-top:.05in;letter-spacing:-.02em}
+.rates small{display:block;font-size:.082in;color:var(--ink-3);margin-top:.04in}
+.rates .p--best{background:var(--ink)}
+.rates .p--best .n{color:var(--butter)}
+.rates .p--best .v{color:#fff}
+.rates .p--best small{color:#C9A79C}
+
+/* a tinted panel for lists */
+.panel{background:var(--cream-2);border-radius:.13in;padding:.19in .22in}
+.panel .k{font-family:var(--body);font-weight:700;font-size:.088in;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:.09in}
+.panel ul{margin:0;padding:0;list-style:none;display:grid;
+  grid-template-columns:1fr 1fr;gap:.03in .28in}
+.panel ul.one{grid-template-columns:1fr}
+.panel li{font-size:.105in;color:var(--ink-2);line-height:1.44;
+  padding-left:.15in;position:relative}
+.panel li::before{content:"";position:absolute;left:.03in;top:.06in;
+  width:.05in;height:.05in;border-radius:50%;background:var(--rule-2)}
+
+/* comparison / question tables */
+table{width:100%;border-collapse:collapse}
+th,td{padding:.1in .1in;border-bottom:1px solid var(--rule-2);vertical-align:top}
+thead th{font-family:var(--body);font-weight:700;font-size:.088in;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+  border-bottom:2px solid var(--ink);text-align:left}
+tbody th{text-align:left;font-family:var(--display);font-size:.128in;
+  color:var(--ink);letter-spacing:-.01em}
+td{font-size:.104in;color:var(--ink-2);line-height:1.42}
+
+/* --- call to action ------------------------------------------------------ */
+.cta{margin-top:auto;display:flex;gap:.22in;align-items:center;
+  background:var(--ink);border-radius:.14in;padding:.19in .24in;color:var(--cream)}
+.cta .qr{width:.95in;flex:none;padding:0;background:none}
+.cta .qr img{width:100%;height:auto;display:block;background:#fff;
+  border-radius:.03in}
+.cta h3{font-size:.2in;color:#fff}
+.cta p{font-size:.102in;color:#C9A79C;line-height:1.4;margin-top:.04in}
+.cta .num{font-family:var(--display);font-size:.3in;color:var(--butter);
+  margin-top:.05in;letter-spacing:-.02em}
+.cta--light{background:var(--cream-2);color:var(--ink)}
+.cta--light h3{color:var(--ink)}
+.cta--light p{color:var(--ink-2)}
+.cta--light .num{color:var(--red)}
+
+/* --- footer -------------------------------------------------------------- */
+.foot{padding:.12in .625in .3in;display:flex;justify-content:space-between;
+  align-items:flex-end;gap:.2in}
+.foot .fine{font-size:.088in;color:var(--ink-3);line-height:1.38;max-width:5.4in}
+.foot .tag{font-family:var(--display);font-size:.13in;color:var(--red-ink);
+  flex:none}

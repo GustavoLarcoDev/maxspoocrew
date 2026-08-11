@@ -28,6 +28,16 @@ primero.
 | `ai-magnet-emblem.html` | Imán con emblema retro generado | 12 × 8 in |
 | `ai-sticker-round.html` | Calcomanía redonda troquelada | 6 in ø |
 | `ai-sticker-bumper.html` | Calcomanía de paragolpes | 10 × 3 in |
+| `flyer-h-price.html` … `flyer-q-move.html` | Los diez flyers de `/flyers/` | 8.5 × 11 in |
+
+Los diez flyers H–Q comparten `src/_flyer.css`, que trae el esqueleto de una hoja
+(cabecera, cuerpo, CTA, pie) y la regla `@page`. Por eso cada archivo lleva casi puro
+contenido: diez piezas que discuten diez cosas distintas tienen que seguir pareciendo de
+la misma empresa. Se ven lado a lado en **`/flyers/`**.
+
+Ojo con una trampa del esqueleto: `.cta` usa `margin-top:auto`, así que se come cualquier
+espacio que liberes achicando márgenes y la altura total no se mueve. Si un flyer se
+desborda hay que **sacar contenido**, no apretar el espaciado.
 
 ## Cómo se compila
 

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ten flyers, side by side — Max's Poo Crew</title>
+<meta name="description" content="Ten one-page flyers for Max's Poo Crew, shown side by side so they can be compared before printing.">
+<meta name="theme-color" content="#C8102E">
+<!-- For choosing artwork, not for customers. Keep it out of search. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/maxspoocrew/img/logo-mark.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================================================
+   Same tokens as /print/, held locally so this page does not break if that one
+   is refactored. The job here is different though: /print/ is a catalogue you
+   scroll, this is a comparison you scan. Hence the strip at the top - ten
+   flyers in one eyeful, which is the only way to tell whether they actually
+   argue ten different things or just three things three times over.
+   ========================================================================== */
+:root{
+  --red:#C8102E; --red-ink:#A50D26; --butter:#FFD166;
+  --cream:#FFF1EB; --cream-2:#FFE3DA; --surface:#fff;
+  --ink:#331411; --ink-2:#6E433A; --ink-3:#9C6E62;
+  --rule:#F3D3C7; --rule-2:#E6BCAC;
+  --display:ui-rounded,"SF Pro Rounded","Archivo Black",Archivo,system-ui,sans-serif;
+  --body:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --sh:0 4px 10px rgba(140,20,30,.07),0 26px 52px -26px rgba(140,20,30,.34);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --red:#E23048; --red-ink:#FF9182; --cream:#1F0D0A; --cream-2:#2A1310;
+  --surface:#2C1512; --ink:#FFF1EA; --ink-2:#D6ADA2; --ink-3:#A97E74;
+  --rule:#412019; --rule-2:#552C23;
+  --sh:0 4px 10px rgba(0,0,0,.36),0 26px 52px -26px rgba(0,0,0,.66);
+}}
+:root[data-theme="dark"]{
+  --red:#E23048; --red-ink:#FF9182; --cream:#1F0D0A; --cream-2:#2A1310;
+  --surface:#2C1512; --ink:#FFF1EA; --ink-2:#D6ADA2; --ink-3:#A97E74;
+  --rule:#412019; --rule-2:#552C23;
+  --sh:0 4px 10px rgba(0,0,0,.36),0 26px 52px -26px rgba(0,0,0,.66);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(18px,4vw,34px)}
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;line-height:1.06;
+  letter-spacing:-.022em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
+
+.hero{background:linear-gradient(160deg,var(--red),#8E0B20);color:#fff;
+  padding:clamp(34px,6vw,60px) 0 clamp(30px,5vw,50px)}
+.hero h1{font-size:clamp(29px,5vw,47px);color:#fff}
+.hero p{margin-top:14px;max-width:62ch;color:rgba(255,255,255,.93);
+  font-size:clamp(16px,1.8vw,18.5px)}
+.hero .hero-note{margin-top:10px;font-family:var(--display);font-size:14px;
+  letter-spacing:.06em;color:var(--butter);text-transform:uppercase}
+.eyebrow{display:inline-flex;gap:8px;font-size:12.5px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--butter)}
+.back{display:inline-flex;align-items:center;gap:7px;margin-top:20px;
+  color:rgba(255,255,255,.9);text-decoration:none;font-size:15px;font-weight:600}
+.back:hover{color:#fff}
+
+section{padding-block:clamp(34px,5.5vw,58px)}
+section+section{border-top:1px solid var(--rule)}
+.shead{margin-bottom:clamp(20px,3.5vw,32px)}
+.shead .eyebrow{color:var(--red-ink)}
+.shead h2{font-size:clamp(23px,3.4vw,34px);margin-top:9px}
+.shead p{color:var(--ink-2);margin-top:11px;max-width:68ch}
+
+/* --- the side-by-side strip --------------------------------------------- */
+/* Ten sheets in a row that scrolls horizontally. On a wide screen roughly
+   five are visible at once, which is enough to compare a pair without
+   losing the set. */
+.strip{overflow-x:auto;padding-bottom:14px;-webkit-overflow-scrolling:touch}
+.strip-inner{display:flex;gap:16px;width:max-content;padding-inline:2px}
+.strip figure{margin:0;width:190px;flex:none}
+.strip img{width:100%;height:auto;display:block;border-radius:8px;
+  border:1px solid var(--rule-2);background:var(--surface);cursor:zoom-in}
+.strip figcaption{margin-top:7px;font-size:12px;line-height:1.35;
+  color:var(--ink-3);font-weight:600}
+.strip figcaption b{display:block;color:var(--ink);font-size:12.5px;
+  letter-spacing:.04em;text-transform:uppercase}
+.striphint{font-size:13.5px;color:var(--ink-3);margin-top:6px}
+
+/* --- the detail grid ----------------------------------------------------- */
+.grid{display:grid;gap:clamp(18px,2.6vw,26px)}
+@media(min-width:760px){.grid--2{grid-template-columns:repeat(2,1fr)}}
+
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:20px;
+  overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column}
+.card-h{padding:20px clamp(16px,2.2vw,22px) 6px;display:flex;gap:12px;
+  align-items:flex-start}
+.tag{flex:none;width:32px;height:32px;border-radius:10px;background:var(--red);
+  color:#fff;font-family:var(--display);font-size:16px;display:grid;place-items:center}
+.card-h h3{font-size:19.5px}
+.role{font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--red-ink);margin-top:3px}
+.card-b{padding:10px clamp(16px,2.2vw,22px) 16px}
+.card-b p{color:var(--ink-2);font-size:15px}
+.use{margin-top:12px;padding:12px 14px;background:var(--cream-2);border-radius:12px;
+  font-size:14.5px;color:var(--ink-2)}
+.use b{color:var(--ink)}
+.shots{padding:0 clamp(16px,2.2vw,22px)}
+.shots img{width:100%;height:auto;display:block;border-radius:10px;
+  border:1px solid var(--rule-2);cursor:zoom-in;background:var(--cream-2)}
+.cap{font-size:11.5px;color:var(--ink-3);margin-top:5px;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase}
+.dl{margin:16px clamp(16px,2.2vw,22px) 20px;display:flex;gap:10px;align-items:center;
+  flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;
+  text-decoration:none;font-family:var(--display);font-weight:800;font-size:15.5px;
+  padding:12px 20px;border-radius:999px;transition:transform .16s,background-color .16s}
+.btn:hover{background:var(--red-ink);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+.meta{font-size:13px;color:var(--ink-3)}
+
+.note{background:var(--surface);border:1px solid var(--rule);
+  border-left:5px solid var(--red);border-radius:14px;padding:18px 20px;margin-top:16px}
+.note h3{font-size:17.5px}
+.note p{color:var(--ink-2);margin-top:7px;font-size:15.5px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;
+  background:var(--cream-2);padding:.1em .35em;border-radius:5px}
+
+footer.end{padding-block:40px;border-top:1px solid var(--rule);
+  font-size:14.5px;color:var(--ink-3)}
+footer.end a{color:var(--red-ink);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <span class="eyebrow">Max&rsquo;s Poo Crew &middot; for approval</span>
+  <h1>Ten flyers, side by side</h1>
+  <p class="hero-note">All one page &middot; 8.5 &times; 11 in &middot; single sided</p>
+  <p>Ten versions of the same offer, each committing to a different argument, so they can be
+  compared against each other rather than read one at a time. A flyer gets a single glance from
+  across a corkboard &mdash; the only useful question is which one earns that glance from the
+  people you are actually handing it to.</p>
+  <a class="back" href="../print/">&larr; The full print collateral</a>
+  <a class="back" href="../" style="margin-left:18px">The website &rarr;</a>
+</div></div>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">All ten at once</span>
+    <h2>The comparison strip</h2>
+    <p>Scroll sideways. This is the view worth spending a minute on: at this size you cannot read
+    a word, which is exactly the point &mdash; what you are checking is whether ten flyers look like
+    ten different arguments or like the same flyer printed ten times.</p>
+  </div>
+
+  <div class="strip">
+    <div class="strip-inner">
+      <figure><a href="../print/img/flyer-h-price-p1.jpg"><img src="../print/img/flyer-h-price-p1.jpg" alt="Flyer H, price first" loading="lazy" decoding="async"></a><figcaption><b>H</b> Price first</figcaption></figure>
+      <figure><a href="../print/img/flyer-i-free-p1.jpg"><img src="../print/img/flyer-i-free-p1.jpg" alt="Flyer I, the free cleanup" loading="lazy" decoding="async"></a><figcaption><b>I</b> The free one</figcaption></figure>
+      <figure><a href="../print/img/flyer-j-health-p1.jpg"><img src="../print/img/flyer-j-health-p1.jpg" alt="Flyer J, health" loading="lazy" decoding="async"></a><figcaption><b>J</b> Health</figcaption></figure>
+      <figure><a href="../print/img/flyer-k-time-p1.jpg"><img src="../print/img/flyer-k-time-p1.jpg" alt="Flyer K, cost per visit" loading="lazy" decoding="async"></a><figcaption><b>K</b> The arithmetic</figcaption></figure>
+      <figure><a href="../print/img/flyer-l-street-p1.jpg"><img src="../print/img/flyer-l-street-p1.jpg" alt="Flyer L, already on your street" loading="lazy" decoding="async"></a><figcaption><b>L</b> Your street</figcaption></figure>
+      <figure><a href="../print/img/flyer-m-thaw-p1.jpg"><img src="../print/img/flyer-m-thaw-p1.jpg" alt="Flyer M, spring thaw" loading="lazy" decoding="async"></a><figcaption><b>M</b> Spring thaw</figcaption></figure>
+      <figure><a href="../print/img/flyer-n-people-p1.jpg"><img src="../print/img/flyer-n-people-p1.jpg" alt="Flyer N, run by dog people" loading="lazy" decoding="async"></a><figcaption><b>N</b> Dog people</figcaption></figure>
+      <figure><a href="../print/img/flyer-o-questions-p1.jpg"><img src="../print/img/flyer-o-questions-p1.jpg" alt="Flyer O, questions" loading="lazy" decoding="async"></a><figcaption><b>O</b> Questions</figcaption></figure>
+      <figure><a href="../print/img/flyer-p-compare-p1.jpg"><img src="../print/img/flyer-p-compare-p1.jpg" alt="Flyer P, comparison" loading="lazy" decoding="async"></a><figcaption><b>P</b> Comparison</figcaption></figure>
+      <figure><a href="../print/img/flyer-q-move-p1.jpg"><img src="../print/img/flyer-q-move-p1.jpg" alt="Flyer Q, new house" loading="lazy" decoding="async"></a><figcaption><b>Q</b> New house</figcaption></figure>
+    </div>
+  </div>
+  <p class="striphint">Tap any sheet to open it full size.</p>
+
+  <div class="note">
+    <h3>What to look for, in order</h3>
+    <p>First, the headline &mdash; it is the only thing that gets read from three feet away, so if
+    two flyers have interchangeable headlines one of them is wasted. Second, whether the piece
+    commits: a flyer that argues price <em>and</em> health <em>and</em> trust argues nothing. Third,
+    what the person holding it was doing thirty seconds earlier, which is what actually decides
+    whether M beats H on a given noticeboard.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Ten options</span>
+    <h2>What each one is for</h2>
+    <p>Same trim, same brand, same offer, same phone number. What changes is the reason the piece
+    gives somebody to act, and therefore where it should be left.</p>
+  </div>
+
+  <div class="grid grid--2">
+
+    <article class="card">
+      <div class="card-h"><span class="tag">H</span><div><h3>Sixty-five dollars a month</h3><p class="role">Price first</p></div></div>
+      <div class="card-b"><p>Leads with the number and then prints every other number underneath it, including the surcharge for extra dogs. The argument is that nobody else in this trade will tell you what it costs without a visit first.</p>
+        <div class="use"><b>Best for:</b> price-sensitive neighbourhoods, and anyone who asked &ldquo;how much?&rdquo; on the phone and then went quiet.</div></div>
+      <div class="shots"><img src="../print/img/flyer-h-price-p1.jpg" alt="Flyer H" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-h-price.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.5 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">I</span><div><h3>We will do the worst one for nothing</h3><p class="role">Offer first</p></div></div>
+      <div class="card-b"><p>The word FREE at an inch tall, then an honest explanation of why we give that visit away: it is the one people are too embarrassed to book. Removing the embarrassment is the actual offer.</p>
+        <div class="use"><b>Best for:</b> door drops and anywhere the yards are visibly overdue. The strongest of the ten for cold audiences.</div></div>
+      <div class="shots"><img src="../print/img/flyer-i-free-p1.jpg" alt="Flyer I" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-i-free.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.5 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">J</span><div><h3>It is not just an eyesore</h3><p class="role">Health</p></div></div>
+      <div class="card-b"><p>Parasites, giardia, grass burn and storm-drain runoff, then the point that only removal on a schedule changes any of it. Reaches price last, once there is a reason to care.</p>
+        <div class="use"><b>Best for:</b> vet waiting rooms, groomers, and anywhere people are already thinking about their dog&rsquo;s health rather than their lawn.</div></div>
+      <div class="shots"><img src="../print/img/flyer-j-health-p1.jpg" alt="Flyer J" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-j-health.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.5 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">K</span><div><h3>Eighteen fifty a visit</h3><p class="role">The arithmetic</p></div></div>
+      <div class="card-b"><p>Reframes $80 a month into a per-visit number, then admits the fifteen minutes saved is not really the point &mdash; the schedule is. Also points out the twice-weekly plan is the cheapest per visit, which surprises most people.</p>
+        <div class="use"><b>Best for:</b> anyone who said it sounds expensive. Works better as a follow-up than as a first touch.</div></div>
+      <div class="shots"><img src="../print/img/flyer-k-time-p1.jpg" alt="Flyer K" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-k-time.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.5 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">L</span><div><h3>We are already on your street</h3><p class="role">Route density</p></div></div>
+      <div class="card-b"><p>Explains that the driving is the expensive part, so a house on an existing route is genuinely cheaper to serve. It is the one flyer that gives a real reason the price is what it is instead of just asserting it.</p>
+        <div class="use"><b>Best for:</b> the streets you already run. Do not use it where it is not true &mdash; the whole piece rests on being believable.</div></div>
+      <div class="shots"><img src="../print/img/flyer-l-street-p1.jpg" alt="Flyer L" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-l-street.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.4 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">M</span><div><h3>Everything the snow was hiding</h3><p class="role">Seasonal</p></div></div>
+      <div class="card-b"><p>Built for a six-week window. Explains why the thaw is not just a bigger normal week &mdash; frozen waste pauses rather than breaks down, and it all becomes live at once on turf with no root strength.</p>
+        <div class="use"><b>Best for:</b> February through April, and nothing else. Print a batch and put the rest away until next year.</div></div>
+      <div class="shots"><img src="../print/img/flyer-m-thaw-p1.jpg" alt="Flyer M" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-m-thaw.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.4 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">N</span><div><h3>Run by dog people</h3><p class="role">Trust</p></div></div>
+      <div class="card-b"><p>The only one of the ten with a real photograph &mdash; Max and Simon, from the site. Argues that the gate is the whole job: a stranger is opening it to a space your dog lives in, and we board and train dogs for a living.</p>
+        <div class="use"><b>Best for:</b> nervous first-time buyers, and neighbourhoods where people want to know who is coming. <b>Note:</b> the photo makes this the heaviest file of the ten.</div></div>
+      <div class="shots"><img src="../print/img/flyer-n-people-p1.jpg" alt="Flyer N" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-n-people.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">2.8 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">O</span><div><h3>Eight questions, answered here</h3><p class="role">Objections</p></div></div>
+      <div class="card-b"><p>No headline argument at all &mdash; just the eight things people actually ring up to ask, answered in two lines each. Do I need to be home, where does it go, is there a contract, what if it has been months.</p>
+        <div class="use"><b>Best for:</b> the counter at a pet shop or vet, where somebody has thirty seconds and a specific worry. Also the best one to attach to an email.</div></div>
+      <div class="shots"><img src="../print/img/flyer-o-questions-p1.jpg" alt="Flyer O" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-o-questions.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.4 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">P</span><div><h3>Three ways to deal with it</h3><p class="role">Comparison</p></div></div>
+      <div class="card-b"><p>A table against doing it yourself and against paying a neighbour&rsquo;s kid, including a row where we lose on price. It also names who should <em>not</em> hire us, which is the line that makes the rest of the table credible.</p>
+        <div class="use"><b>Best for:</b> people who are weighing it up rather than deciding. The honesty is the mechanism &mdash; do not soften it.</div></div>
+      <div class="shots"><img src="../print/img/flyer-p-compare-p1.jpg" alt="Flyer P" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-p-compare.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.5 MB</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="tag">Q</span><div><h3>Somebody else&rsquo;s dog left you a yard</h3><p class="role">New movers</p></div></div>
+      <div class="card-b"><p>Aimed at the week somebody takes possession of a house, plus the three neighbouring cases: selling, rental turnover, and a first dog. Offers the one-time cleanup and the plan side by side without pushing either.</p>
+        <div class="use"><b>Best for:</b> estate agents, moving companies, and new-build streets. The one to give a realtor a stack of.</div></div>
+      <div class="shots"><img src="../print/img/flyer-q-move-p1.jpg" alt="Flyer Q" loading="lazy" decoding="async"><p class="cap">8.5 &times; 11 in &middot; single sided</p></div>
+      <div class="dl"><a class="btn" href="../print/pdf/flyer-q-move.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download PDF</a><span class="meta">0.4 MB</span></div>
+    </article>
+
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Before printing</span>
+    <h2>Three things worth knowing</h2>
+  </div>
+
+  <div class="note">
+    <h3>These are editable, and there are seven more flyers elsewhere</h3>
+    <p>All ten are generated from HTML in <code>print/src/</code> and share one stylesheet,
+    <code>print/src/_flyer.css</code> &mdash; which is why ten different arguments still look like one
+    company. Run <code>python print/build.py</code> and every PDF and preview on this page rebuilds.
+    Flyers A through G, plus the two built on generated artwork, live over on
+    <a href="../print/">the main print page</a>.</p>
+  </div>
+
+  <div class="note">
+    <h3>Every price on these sheets is printed, not linked</h3>
+    <p>Ten flyers now carry the rate table in ink. If the rates on the website change, they have to
+    change in the sources too or the printed material starts lying &mdash; the affected files are
+    H, I, K, L, O, P and Q. The QR code goes to <b>maxspoocrew.com</b>, so that part looks after
+    itself.</p>
+  </div>
+
+  <div class="note">
+    <h3>Do not print all ten</h3>
+    <p>Pick two or three that suit where you are actually leaving them, and print those in volume.
+    Ten designs at a hundred copies each costs more per sheet than three at four hundred, and nine
+    of them will sit in a box. The point of having ten is choosing, not distributing.</p>
+  </div>
+</div></section>
+
+<footer class="end"><div class="wrap">
+  <p>Max&rsquo;s Poo Crew &middot; 618-719-3802 &middot;
+  <a href="mailto:maxspoocrew@outlook.com">maxspoocrew@outlook.com</a> &middot;
+  <a href="https://maxspoocrew.com">maxspoocrew.com</a><br>
+  Serving St. Louis and St. Charles County, Missouri &middot; Mon&ndash;Sat, 7am&ndash;6pm</p>
+</div></footer>
+
+</body>
+</html>

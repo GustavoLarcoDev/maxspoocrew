@@ -52,6 +52,9 @@ PAGE_SIZE = re.compile(r"@page[^}]*size:\s*([\d.]+)in\s+([\d.]+)in", re.I)
 EXPECT_PAGES = re.compile(
     r"""<meta\s+name=["']pages["']\s+content=["'](\d+)["']""", re.I
 )
+LINKED_CSS = re.compile(
+    r"""<link[^>]+rel=["']stylesheet["'][^>]+href=["']([^"':]+\.css)["']""", re.I
+)
 
 
 def find_chrome() -> str:
@@ -61,9 +64,23 @@ def find_chrome() -> str:
     sys.exit("Chrome not found. Edit CHROME_CANDIDATES in build.py.")
 
 
+def styles_of(html: Path) -> str:
+    """The piece's own markup plus any local stylesheet it links.
+
+    The @page rule can live in a shared sheet rather than in the piece, which is
+    how the ten flyers keep their trim size in one place instead of ten.
+    """
+    text = html.read_text(encoding="utf-8")
+    for href in LINKED_CSS.findall(text):
+        sheet = (html.parent / href).resolve()
+        if sheet.exists():
+            text += "\n" + sheet.read_text(encoding="utf-8")
+    return text
+
+
 def trim_size(html: Path) -> tuple[float, float]:
     """The @page size, in inches, that this piece declares."""
-    match = PAGE_SIZE.search(html.read_text(encoding="utf-8"))
+    match = PAGE_SIZE.search(styles_of(html))
     if not match:
         sys.exit(f"{html.name}: no '@page {{ size: Win Hin }}' rule found.")
     return float(match.group(1)), float(match.group(2))
