@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Service leave-behind card - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 4 x 6 in. 0.125in bleed all round. Left on the gate or the door after a
+   visit, so the front is a receipt and the back is the upsell. The blanks are
+   meant to be filled in with a pen in the yard. */
+@page{ size: 4.25in 6.25in; margin:0 }
+
+.sheet{width:4.25in;height:6.25in}
+
+/* --- front --------------------------------------------------------------- */
+.front{padding:.4in .38in;text-align:center}
+.front .markbox{width:1.2in;margin:0 auto .18in;background:#fff;border-radius:.12in;
+  padding:.06in}
+.front .markbox img{width:100%;height:auto;display:block}
+.front h1{font-size:.5in;color:#fff;line-height:1}
+.front .lede{color:rgba(255,255,255,.94);font-size:.115in;margin-top:.15in;
+  line-height:1.5}
+
+.slip{background:#fff;border-radius:.13in;padding:.17in;margin-top:.22in;
+  text-align:left}
+.slip .k{font-family:var(--body);font-weight:700;font-size:.072in;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.slip .line{border-bottom:1px solid var(--rule-2);height:.2in;margin-top:.04in}
+.slip .two{display:flex;gap:.16in}
+.slip .two > div{flex:1}
+
+.checks{margin-top:.14in;text-align:left}
+.checks p{font-size:.092in;color:rgba(255,255,255,.95);line-height:1.5;
+  display:flex;gap:.08in;align-items:flex-start}
+.checks p::before{content:"";flex:none;width:.1in;height:.1in;border-radius:.02in;
+  border:1.5px solid var(--butter);margin-top:.035in}
+
+/* --- back ---------------------------------------------------------------- */
+.back{padding:.4in .38in}
+.back h2{font-size:.28in}
+.back .rule{margin:.13in 0 .17in}
+.back .lede{font-size:.105in;line-height:1.5}
+.plans{margin-top:.2in}
+.plan{display:flex;justify-content:space-between;align-items:baseline;
+  padding:.095in 0;border-bottom:1px solid var(--rule)}
+.plan .n{font-family:var(--display);font-size:.125in;color:var(--ink)}
+.plan .n small{display:block;font-family:var(--body);font-weight:600;
+  font-size:.078in;color:var(--ink-3);margin-top:.015in}
+.plan .p{font-family:var(--display);font-size:.2in;color:var(--red);
+  letter-spacing:-.02em}
+.note{background:var(--cream-2);border-radius:.11in;padding:.13in .15in;
+  margin-top:.16in;font-size:.088in;color:var(--ink-2);line-height:1.45}
+
+.qrow{display:flex;gap:.14in;align-items:center;margin-top:.2in}
+.qrow .qr{width:.88in;flex:none;padding:0;background:none}
+.qrow .qr img{width:100%;height:auto;display:block}
+.qrow .num{font-family:var(--display);font-size:.22in;color:var(--ink);
+  letter-spacing:-.02em}
+.qrow p{font-size:.085in;color:var(--ink-2);line-height:1.4;margin-top:.04in}
+</style>
+</head>
+<body>
+
+<!-- front: the receipt -->
+<div class="sheet front panel-red">
+  <div class="markbox">
+    <img src="../../img/logo-full.webp" alt="Max's Poo Crew">
+  </div>
+  <p class="eyebrow eyebrow--on-red">Service complete</p>
+  <h1>We were here.</h1>
+  <p class="lede">Yard is clear, waste is off site, and the gate is latched
+    behind us. Nothing needed from you.</p>
+
+  <div class="slip">
+    <div class="two">
+      <div>
+        <p class="k">Date</p>
+        <div class="line"></div>
+      </div>
+      <div>
+        <p class="k">Time</p>
+        <div class="line"></div>
+      </div>
+    </div>
+    <p class="k" style="margin-top:.11in">Crew</p>
+    <div class="line"></div>
+    <p class="k" style="margin-top:.11in">Notes</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="checks">
+    <p>Full yard swept, corner to corner</p>
+    <p>Waste hauled off site</p>
+    <p>Gate checked and latched</p>
+  </div>
+</div>
+
+<!-- back: the upsell -->
+<div class="sheet back panel-cream">
+  <p class="eyebrow">Not on a plan yet?</p>
+  <h2>This is what<br>it costs.</h2>
+  <span class="rule"></span>
+  <p class="lede">Flat monthly rate for one dog. Month to month, cancel anytime.
+    Two dogs add $10, three or more add $10 to $20.</p>
+
+  <div class="plans">
+    <div class="plan">
+      <p class="n">Twice weekly<small>Busy yards, big dogs</small></p>
+      <p class="p">$90</p>
+    </div>
+    <div class="plan">
+      <p class="n">Weekly<small>Most popular</small></p>
+      <p class="p">$80</p>
+    </div>
+    <div class="plan">
+      <p class="n">Every other week<small>Lighter traffic</small></p>
+      <p class="p">$70</p>
+    </div>
+    <div class="plan">
+      <p class="n">Once a month<small>One reset a month</small></p>
+      <p class="p">$65</p>
+    </div>
+  </div>
+
+  <p class="note"><b>One-time cleanup is $100</b> with no plan needed &mdash; or start
+    any plan and your first cleanup is free.</p>
+
+  <div class="qrow">
+    <span class="qr"><img src="qr-site.svg" alt="QR code to maxspoocrew.com"></span>
+    <div>
+      <p class="num">618-719-3802</p>
+      <p>Call or text, or scan to see the full price list.<br>maxspoocrew.com</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

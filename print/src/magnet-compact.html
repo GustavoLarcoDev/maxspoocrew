@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>Compact car magnet 12x8 - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 12 x 8 in. Sheet carries 0.125in bleed on every side.
+   The size that fits a sedan door, where the 18x12 does not. */
+@page{ size: 12.25in 8.25in; margin:0 }
+
+.sheet{width:12.25in;height:8.25in;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:.46in}
+
+.markbox{width:4.7in;background:#fff;border-radius:.28in;padding:.18in;
+  display:grid;place-items:center}
+.markbox img{width:100%;height:auto;display:block}
+
+.service{font-family:var(--display);font-size:.36in;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--butter);line-height:1;margin-top:.3in}
+.phone{font-family:var(--display);font-size:1.16in;line-height:.94;color:#fff;
+  letter-spacing:-.035em;margin-top:.12in;white-space:nowrap}
+.web{font-family:var(--display);font-size:.46in;color:#fff;margin-top:.1in;
+  letter-spacing:-.02em}
+.pill{font-size:.26in;padding:.12in .26in;margin-top:.22in}
+</style>
+</head>
+<body>
+
+<div class="sheet panel-red">
+  <div class="markbox">
+    <img src="../../img/logo-full.webp" alt="Max's Poo Crew">
+  </div>
+  <p class="service">Dog waste removal</p>
+  <p class="phone">618&#8209;719&#8209;3802</p>
+  <p class="web">maxspoocrew.com</p>
+  <span class="pill">First cleanup free &middot; St.&nbsp;Louis &amp; St.&nbsp;Charles</span>
+</div>
+
+</body>
+</html>

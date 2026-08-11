@@ -1,0 +1,132 @@
+/* =============================================================================
+   Max's Poo Crew — shared print stylesheet
+   -----------------------------------------------------------------------------
+   Every piece in print/src/ links this file. Tokens match the site's site.css
+   and print/index.html so screen and press agree on the same red.
+
+   Units are inches on purpose. A printer thinks in inches, and @page wants a
+   physical size, so keeping the whole sheet in inches means the number in the
+   CSS is the number on the press sheet — no 96dpi arithmetic in your head.
+
+   Bleed convention: sheets that bleed declare .bleed and add 0.125in on every
+   side. Keep live copy inside .safe (0.25in in from the trim).
+   ========================================================================== */
+
+/* Fonts are bundled rather than pulled from Google at render time. A press
+   PDF that silently falls back to Arial because the network hiccuped is not a
+   bug you notice until the box of flyers arrives, so the build stays offline.
+   Archivo and Archivo Black are SIL Open Font License — see fonts/OFL.txt. */
+@font-face{
+  font-family:"Archivo Black";
+  src:url("fonts/ArchivoBlack-Regular.ttf") format("truetype");
+  font-weight:400 900; font-style:normal; font-display:block;
+}
+@font-face{
+  font-family:"Archivo";
+  src:url("fonts/Archivo-Variable.ttf") format("truetype-variations");
+  font-weight:100 900; font-style:normal; font-display:block;
+}
+
+:root{
+  --red:#C8102E;          /* brand red, sampled from the logo */
+  --red-ink:#A50D26;      /* darker red for text on cream */
+  --red-deep:#8E0B20;     /* gradient end / shadows */
+  --butter:#FFD166;       /* the accent yellow */
+  --cream:#FFF1EB;
+  --cream-2:#FFE3DA;
+  --ink:#331411;          /* near-black brown */
+  --ink-2:#6E433A;
+  --ink-3:#9C6E62;
+  --rule:#F3D3C7;
+  --rule-2:#E6BCAC;
+  --white:#fff;
+
+  --display:"Archivo Black",Archivo,system-ui,sans-serif;
+  --body:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html,body{margin:0;padding:0;background:#fff}
+
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  /* Press output must not lighten the big red panels. */
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+/* Every sheet is one .sheet. Its width/height come from the piece's own CSS,
+   which also sets the matching @page size.
+
+   Deliberately NOT overflow:hidden. If a sheet overruns its own height we want
+   Chrome to spill the excess onto an extra page, because build.py compares the
+   page count against the piece's <meta name="pages"> and fails. Clipping would
+   hide the overrun and send a flyer with a chopped-off footer to the printer.
+   A piece that genuinely needs to clip can add .sheet--clip. */
+.sheet{
+  position:relative;
+  background:var(--cream);
+  page-break-after:always;
+  break-after:page;
+}
+.sheet--clip{overflow:hidden}
+.sheet:last-child{page-break-after:auto;break-after:auto}
+
+/* --- Type ---------------------------------------------------------------- */
+h1,h2,h3,h4{font-family:var(--display);font-weight:900;margin:0;line-height:1.02;
+  letter-spacing:-.022em}
+p{margin:0}
+strong,b{font-weight:700}
+
+.eyebrow{font-family:var(--body);font-weight:700;font-size:.105in;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--red-ink)}
+.eyebrow--on-red{color:var(--butter)}
+.eyebrow--on-dark{color:var(--butter)}
+
+.lede{color:var(--ink-2);line-height:1.5}
+.tiny{font-size:.085in;line-height:1.4;color:var(--ink-3)}
+
+/* A short red underline used under headings across most pieces. */
+.rule{width:.62in;height:.045in;background:var(--red);border-radius:.03in;
+  display:block}
+.rule--butter{background:var(--butter)}
+
+/* --- Surfaces ------------------------------------------------------------ */
+.panel-red{background:linear-gradient(160deg,var(--red),var(--red-deep));color:#fff}
+.panel-ink{background:var(--ink);color:var(--cream)}
+.panel-cream{background:var(--cream);color:var(--ink)}
+.card{background:#fff;border-radius:.14in;padding:.2in}
+
+/* --- Price display ------------------------------------------------------- */
+.price{font-family:var(--display);line-height:.92;letter-spacing:-.03em}
+.price sup{font-size:.45em;vertical-align:.55em;margin-right:.02in}
+
+/* --- The offer pill ------------------------------------------------------ */
+.pill{display:inline-block;background:var(--butter);color:var(--ink);
+  font-family:var(--display);border-radius:99in;padding:.07in .17in;
+  font-size:.115in;letter-spacing:-.01em}
+
+/* --- Logo lockup --------------------------------------------------------- */
+.logo{display:block}
+.logo--boxed{background:#fff;border-radius:.12in;padding:.1in}
+
+/* --- Contact block ------------------------------------------------------- */
+.contact dt{font-family:var(--body);font-weight:700;font-size:.075in;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--butter)}
+.contact dd{margin:0 0 .1in;font-family:var(--display);font-size:.125in;
+  letter-spacing:-.01em}
+
+/* --- QR ------------------------------------------------------------------ */
+.qr{background:#fff;padding:.07in;border-radius:.08in;display:block}
+.qr img{display:block;width:100%;height:auto;image-rendering:pixelated}
+
+/* --- Print plumbing ------------------------------------------------------ */
+.bleed-guide{position:absolute;inset:.125in;border:1px dashed rgba(0,0,0,.25);
+  pointer-events:none}
+
+@media print{
+  .screen-only{display:none !important}
+}

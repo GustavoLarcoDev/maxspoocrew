@@ -1,0 +1,3 @@
+# Only needed to turn the rendered PDFs into gallery previews.
+# The PDFs themselves come from headless Chrome, which needs no Python package.
+pymupdf>=1.24

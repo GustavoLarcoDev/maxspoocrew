@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>Rate card - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 8.5 x 11 in, 0.125in bleed all round. The one-page answer to "what does
+   it cost", with every number on the site so nobody has to be quoted twice. */
+@page{ size: 8.75in 11.25in; margin:0 }
+
+.sheet{width:8.75in;height:11.25in;display:flex;flex-direction:column}
+
+.top{padding:.42in .625in .3in;position:relative}
+.top .logo--boxed{width:1.2in;position:absolute;top:.38in;right:.55in;padding:.055in}
+.top .logo--boxed img{width:100%;height:auto;display:block}
+.top h1{font-size:.52in;color:#fff;margin-top:.11in;max-width:5.2in}
+.top .lede{color:rgba(255,255,255,.94);font-size:.125in;max-width:5.2in;margin-top:.13in}
+
+.body{flex:1;padding:.3in .625in .16in}
+
+table{width:100%;border-collapse:collapse}
+th,td{padding:.1in .1in;text-align:center;border-bottom:1px solid var(--rule-2)}
+thead th{font-family:var(--body);font-weight:700;font-size:.094in;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);border-bottom:2px solid var(--ink)}
+tbody th{text-align:left;font-family:var(--display);font-size:.145in;color:var(--ink);
+  letter-spacing:-.01em}
+tbody th small{display:block;font-family:var(--body);font-weight:600;font-size:.09in;
+  color:var(--ink-3);letter-spacing:0;margin-top:.02in}
+td{font-family:var(--display);font-size:.26in;color:var(--ink);letter-spacing:-.02em}
+tr.best{background:#fff}
+tr.best td{color:var(--red)}
+tr.best th{color:var(--red-ink)}
+.bestflag{display:inline-block;background:var(--red);color:#fff;font-family:var(--body);
+  font-weight:700;font-size:.082in;letter-spacing:.09em;text-transform:uppercase;
+  padding:.03in .09in;border-radius:.04in;margin-left:.09in;vertical-align:.05in}
+
+.extras{display:flex;gap:.16in;margin-top:.22in}
+.x{flex:1;background:#fff;border-radius:.13in;padding:.17in}
+.x .k{font-family:var(--body);font-weight:700;font-size:.086in;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.x .v{font-family:var(--display);font-size:.27in;color:var(--red);line-height:1;
+  margin-top:.05in;letter-spacing:-.02em}
+.x p{font-size:.096in;color:var(--ink-2);line-height:1.4;margin-top:.06in}
+
+.cols{display:flex;gap:.26in;margin-top:.22in}
+.col h3{font-size:.165in}
+.col .rule{margin:.09in 0 .11in}
+.col ul{margin:0;padding-left:.16in}
+.col li{font-size:.1in;color:var(--ink-2);line-height:1.44;margin-bottom:.025in}
+
+.cta{margin-top:.22in;display:flex;gap:.22in;align-items:center;
+  background:var(--ink);border-radius:.14in;padding:.19in .24in;color:var(--cream)}
+.cta .qr{width:1.05in;flex:none;padding:0;background:none}
+.cta .qr img{width:100%;height:auto;display:block;background:#fff;border-radius:.04in}
+.cta h3{font-size:.215in;color:#fff}
+.cta p{font-size:.105in;color:#C9A79C;line-height:1.42;margin-top:.05in}
+.cta .num{font-family:var(--display);font-size:.32in;color:var(--butter);
+  margin-top:.06in;letter-spacing:-.02em}
+
+.foot{padding:.14in .625in .34in;display:flex;justify-content:space-between;
+  align-items:flex-end;gap:.2in}
+.foot .fine{font-size:.09in;color:var(--ink-3);line-height:1.4;max-width:5.2in}
+.foot .pill{font-size:.108in;flex:none}
+</style>
+</head>
+<body>
+
+<div class="sheet panel-cream">
+
+  <header class="top panel-red">
+    <span class="logo logo--boxed"><img src="../../img/logo-full.webp" alt="Max's Poo Crew"></span>
+    <p class="eyebrow eyebrow--on-red">Rate card</p>
+    <h1>Every price, on one page.</h1>
+    <p class="lede">Flat monthly rates for standard residential lots up to 1/3 acre
+      in St. Louis and St. Charles County. No quote visit required.</p>
+  </header>
+
+  <div class="body">
+
+    <table>
+      <thead>
+        <tr><th style="text-align:left">How often we come</th><th>1 dog</th><th>2 dogs</th><th>3+ dogs</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Twice weekly<small>Two visits a week. Busy yards, big dogs, or anyone who never wants to see it.</small></th>
+          <td>$90</td><td>$100</td><td>$110</td>
+        </tr>
+        <tr class="best">
+          <th>Weekly<span class="bestflag">Most popular</span><small>One visit a week keeps a standard yard genuinely clean.</small></th>
+          <td>$80</td><td>$90</td><td>$100</td>
+        </tr>
+        <tr>
+          <th>Every other week<small>Twice a month. Good for smaller dogs or yards with less traffic.</small></th>
+          <td>$70</td><td>$80</td><td>$80</td>
+        </tr>
+        <tr>
+          <th>Once a month<small>One reset a month, so it never gets away from you.</small></th>
+          <td>$65</td><td>$75</td><td>$75</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="extras">
+      <div class="x">
+        <p class="k">One-time cleanup</p>
+        <p class="v">$100</p>
+        <p>Any yard, any condition, no plan required.</p>
+      </div>
+      <div class="x">
+        <p class="k">Commercial &amp; HOA</p>
+        <p class="v">Custom</p>
+        <p>Priced by property size and station count. Free walkthrough.</p>
+      </div>
+      <div class="x">
+        <p class="k">Refer a friend</p>
+        <p class="v">$20 each</p>
+        <p>You both get $20 off. No limit on how many times.</p>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="col">
+        <h3>What every visit includes</h3>
+        <span class="rule"></span>
+        <ul>
+          <li>Full yard sweep, corner to corner</li>
+          <li>Beds, fence lines and under the deck</li>
+          <li>Waste hauled away, never left in your bin</li>
+          <li>Gate checked and latched behind us</li>
+          <li>A text when the visit is done</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>How billing works</h3>
+        <span class="rule"></span>
+        <ul>
+          <li>Flat rate, billed at the start of each service month</li>
+          <li>Card or ACH, whichever you prefer</li>
+          <li>Month to month &mdash; pause or cancel with a week&rsquo;s notice</li>
+          <li>One-time cleanups are due on completion</li>
+          <li>No signup fee and no contract to sign</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta">
+      <span class="qr"><img src="qr-site.svg" alt="QR code to maxspoocrew.com"></span>
+      <div>
+        <h3>Start with a free cleanup.</h3>
+        <p>Pick a plan and the first visit is free, however bad the yard is. Tell
+          us how many dogs and we will give you a firm price, not a range.</p>
+        <p class="num">618-719-3802</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <p class="fine">Larger lots, more than three dogs, or a yard that has gone a
+      long time may need a custom quote &mdash; we will tell you before we start, not
+      after. Prices current as of this printing.</p>
+    <span class="pill">maxspoocrew.com</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

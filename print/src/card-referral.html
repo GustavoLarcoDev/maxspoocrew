@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Referral card - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 4 x 6 in. 0.125in bleed all round. Handed to existing customers to pass
+   on. The whole point is the $20 both ways, so that is the front. */
+@page{ size: 4.25in 6.25in; margin:0 }
+
+.sheet{width:4.25in;height:6.25in}
+
+/* --- front --------------------------------------------------------------- */
+.front{padding:.42in .38in;text-align:center}
+.front .markbox{width:1.35in;margin:0 auto .2in;background:#fff;border-radius:.12in;
+  padding:.07in}
+.front .markbox img{width:100%;height:auto;display:block}
+.front h1{font-size:.42in;color:#fff;line-height:1}
+.front .amount{font-family:var(--display);font-size:1.15in;color:var(--butter);
+  line-height:1;margin-top:.16in;letter-spacing:-.03em}
+.front .amount small{display:block;font-family:var(--display);font-size:.19in;
+  color:#fff;letter-spacing:.01em;margin-top:.07in}
+.front .lede{color:rgba(255,255,255,.94);font-size:.115in;margin-top:.2in;
+  line-height:1.5}
+.front .web{font-family:var(--display);font-size:.17in;color:#fff;margin-top:.24in}
+
+/* --- back ---------------------------------------------------------------- */
+.back{padding:.4in .38in}
+.back h2{font-size:.26in}
+.back .rule{margin:.13in 0 .18in}
+.step{display:flex;gap:.13in;margin-bottom:.16in}
+.step .n{flex:none;width:.26in;height:.26in;border-radius:.075in;background:var(--red);
+  color:#fff;font-family:var(--display);font-size:.13in;display:grid;place-items:center}
+.step p{font-size:.1in;color:var(--ink-2);line-height:1.45}
+.step p b{color:var(--ink)}
+
+.namebox{background:#fff;border-radius:.12in;padding:.16in;margin-top:.06in}
+.namebox .k{font-family:var(--body);font-weight:700;font-size:.072in;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.line{border-bottom:1px solid var(--rule-2);height:.22in;margin-top:.05in}
+
+.qrow{display:flex;gap:.14in;align-items:center;margin-top:.2in}
+.qrow .qr{width:.9in;flex:none;padding:0;background:none}
+.qrow .qr img{width:100%;height:auto;display:block}
+.qrow .num{font-family:var(--display);font-size:.22in;color:var(--ink);
+  letter-spacing:-.02em}
+.qrow p{font-size:.088in;color:var(--ink-2);line-height:1.4;margin-top:.04in}
+.back .fine{font-size:.072in;color:var(--ink-3);line-height:1.35;margin-top:.18in}
+</style>
+</head>
+<body>
+
+<!-- front -->
+<div class="sheet front panel-red">
+  <div class="markbox">
+    <img src="../../img/logo-full.webp" alt="Max's Poo Crew">
+  </div>
+  <p class="eyebrow eyebrow--on-red">Refer a friend</p>
+  <h1>You get $20.<br>They get $20.</h1>
+  <p class="amount">$20<small>each, every time</small></p>
+  <p class="lede">Give this card to a neighbour. When they start a plan, they get
+    $20 off month one and we credit $20 to your next invoice.</p>
+  <p class="web">maxspoocrew.com</p>
+</div>
+
+<!-- back -->
+<div class="sheet back panel-cream">
+  <p class="eyebrow">How to use it</p>
+  <h2>Three steps.<br>No limit.</h2>
+  <span class="rule"></span>
+
+  <div class="step">
+    <span class="n">1</span>
+    <p><b>Write your name below</b> so we know who to credit.</p>
+  </div>
+  <div class="step">
+    <span class="n">2</span>
+    <p><b>Hand it to a neighbour</b> whose yard could use us.</p>
+  </div>
+  <div class="step">
+    <span class="n">3</span>
+    <p><b>They call or scan the code.</b> Both credits apply once their first
+      service month starts.</p>
+  </div>
+
+  <div class="namebox">
+    <p class="k">Referred by</p>
+    <div class="line"></div>
+    <p class="k" style="margin-top:.1in">Their address or street</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="qrow">
+    <span class="qr"><img src="qr-site.svg" alt="QR code to maxspoocrew.com"></span>
+    <div>
+      <p class="num">618-719-3802</p>
+      <p>Call or text. Mon&ndash;Sat, 7am&ndash;6pm.<br>maxspoocrew@outlook.com</p>
+    </div>
+  </div>
+
+  <p class="fine">No limit on how many times. Credits apply once the referred
+    customer&rsquo;s first service month begins. Serving St. Louis and St. Charles
+    County, Missouri.</p>
+</div>
+
+</body>
+</html>
