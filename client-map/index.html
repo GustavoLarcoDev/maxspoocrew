@@ -277,6 +277,12 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
 .seg button{appearance:none; border:0; background:transparent; color:var(--ink-2); cursor:pointer;
   font-family:var(--body); font-size:13.5px; font-weight:700; padding:8px 16px}
 .seg button[aria-pressed="true"]{background:var(--brand); color:#fff}
+.chk{display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600;
+  color:var(--ink-2); cursor:pointer}
+.chk input{width:16px; height:16px; accent-color:var(--brand); cursor:pointer}
+.comm{background:#7B3FA0; border:1.5px solid #fff; border-radius:3px;
+  box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.comm--dog{background:#2FA36B}
 .legend{display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; align-items:center;
   font-size:12.6px; color:var(--ink-2)}
 .legend .sw{display:inline-flex; align-items:center; gap:6px}
@@ -328,6 +334,8 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
       <button type="button" data-mode="competition" aria-pressed="false">Competition</button>
       <button type="button" data-mode="commercial" aria-pressed="false">Commercial</button>
     </div>
+    <label class="chk"><input type="checkbox" id="show-comms">
+      Show the 70 named apartment communities</label>
   </div>
 
   <div id="map"><p id="mapfail">The map needs to load Leaflet and its basemap tiles from the
@@ -376,6 +384,42 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
       with a property manager. It does not name the buildings.</p>
       <p class="cost">Named communities: <b>being researched separately</b></p>
     </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">One call, not forty doors</span>
+    <h2>Who manages the buildings</h2>
+    <p>70 communities are pinned on the map above. They are not 70 separate sales
+    &mdash; a dozen companies control most of them, and a vendor approved once is a vendor at every
+    property that company runs.</p>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Company</th><th class="n">Local properties</th><th>Why them</th><th></th></tr></thead>
+    <tbody><tr><td><b>Monarch Investment & Management</b><span class="sub">apartments</span></td><td class="n">29</td><td class="note">twenty-nine suburban garden-style properties on one regional portal, and one decision-maker behind all of them. The single highest-leverage call on this page.</td><td><a href="https://saintlouisapts.com/">site</a></td></tr>
+<tr><td><b>G.S. Phillips & Co.</b><span class="sub">HOA, condo and villa</span></td><td class="n">22</td><td class="note">HOA common ground is the highest-margin version of this service, and they are publicly expanding into both counties.</td><td><a href="https://www.gsphillips.com/">site</a></td></tr>
+<tr><td><b>The Century Group</b><span class="sub">apartments and townhomes</span></td><td class="n">19</td><td class="note">nineteen properties, all in St. Louis County, and small enough that the phone reaches somebody who can say yes.</td><td><a href="https://centurygroupinc.com/communities/">site</a></td></tr>
+<tr><td><b>Associa — Smith Management Group</b><span class="sub">HOA and condo</span></td><td class="n">&mdash;</td><td class="note">the largest St. Louis-local HOA manager found; vendors are approved at branch level rather than nationally.</td><td><a href="https://www.smithmgmt.com/">site</a></td></tr>
+<tr><td><b>2B Residential / Balke Brown</b><span class="sub">class-A apartments</span></td><td class="n">11</td><td class="note">Bold on Blvd, Heartland View, Bemiston Place, Parq at Chesterfield.</td><td><a href="https://www.2bresidential.com/communities/">site</a></td></tr>
+<tr><td><b>The Michelson Organization</b><span class="sub">apartments</span></td><td class="n">4</td><td class="note">every one of their properties already advertises a bark park or pet stations, so they buy this today from somebody.</td><td><a href="https://michelsonorg.com">site</a></td></tr>
+<tr><td><b>Somerset Apartment Management</b><span class="sub">apartments</span></td><td class="n">4</td><td class="note">four Creve Coeur properties, about 1,200 units, inside three miles of each other.</td><td>&mdash;</td></tr>
+<tr><td><b>Timberland Partners</b><span class="sub">apartments</span></td><td class="n">4</td><td class="note">Meadowridge, Grand Central, Synergy, Willowbend.</td><td><a href="https://timberlandpartners.com">site</a></td></tr>
+<tr><td><b>Midwest Diversified</b><span class="sub">apartments</span></td><td class="n">5</td><td class="note">Country Club Place, Remington, Baxter Crossings — over 1,500 units.</td><td>&mdash;</td></tr>
+<tr><td><b>Sentry Management</b><span class="sub">HOA and condo</span></td><td class="n">&mdash;</td><td class="note">two offices, St. Louis and St. Peters, covering O'Fallon, Wentzville and Lake St. Louis.</td><td><a href="https://www.sentrymgt.com/offices/st-louis/">site</a></td></tr>
+<tr><td><b>TreeStone Properties</b><span class="sub">HOA master associations</span></td><td class="n">6</td><td class="note">Dardenne Master, Villages of Stonegate, Harbors at Lake Chesterfield.</td><td><a href="https://www.treestoneproperties.com/">site</a></td></tr>
+<tr><td><b>Trinity Property Consultants</b><span class="sub">apartments</span></td><td class="n">4</td><td class="note">Chesterfield Place, ReNew Chesterfield, The Magnolia.</td><td>&mdash;</td></tr></tbody>
+  </table></div>
+  <p class="src">Green pins on the map already advertise a dog park or waste stations, so somebody
+  is servicing them. Purple pins advertise none &mdash; on a large pet-friendly property that is
+  usually the better lead, not the worse one.</p>
+
+  <div class="callout watch">
+    <h4>What is missing from those pins</h4>
+    <p>Eighty-six communities were verified and seventy-nine geocoded; the seven that could not be placed are listed rather than approximated. Coverage leans on RentCafe, ApartmentGuide and rent.com because apartments.com, Zillow and most Yardi-hosted community sites block automated access, so Maryland Heights in particular has several near-certain qualifiers that are not here. Brentwood returned nothing at all — it is retail and single-family, with no community above 150 units. And one community already buys a competing product: Meadowridge charges residents a $55 PooPrints DNA registration fee, which makes it a displacement sale rather than a new one.</p>
+    <p><b>Found, real, and deliberately not plotted</b> because no trustworthy coordinate could be
+    produced: Reserve at Mid Rivers (St. Peters, 460 units), Timber Club (St. Peters, 316 units), Terraces at Wildhorse Village (Chesterfield, 266 units), Chapter at the Streets of St. Charles (St. Charles, 245 units), Station at St. Peters (St. Peters, 180 units), Montage at Hawk Ridge (Lake St. Louis), Westpark Apartments (unknown). A pin in the wrong place is worse than a missing pin &mdash; these are
+    worth adding by hand from a map.</p>
   </div>
 </div></section>
 
@@ -717,6 +761,33 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
 
   var layer = L.layerGroup().addTo(map);
   var mode = 'opportunity';
+
+  // Named communities, as squares rather than circles so they never read as
+  // another municipality. Off by default: sixty-nine pins on top of sixty-eight
+  // circles is a mess unless you went looking for them.
+  var COMMS = [{"name": "Baxter Crossings", "city": "Chesterfield", "units": 695, "dog": "unknown", "lat": 38.6515, "lon": -90.582, "mgr": "Midwest Diversified"}, {"name": "15Seventy Chesterfield", "city": "Chesterfield", "units": 489, "dog": "unknown", "lat": 38.6466, "lon": -90.5736, "mgr": "Fogelman"}, {"name": "Schoettler Village", "city": "Chesterfield", "units": 300, "dog": "pet park", "lat": 38.6483, "lon": -90.5539, "mgr": "BH Management"}, {"name": "Village Green", "city": "Chesterfield", "units": 252, "dog": "pet park", "lat": 38.6264, "lon": -90.5213, "mgr": "Mills Properties"}, {"name": "Aventura at Wild Horse Creek", "city": "Chesterfield", "units": 240, "dog": "unknown", "lat": 38.6605, "lon": -90.5753, "mgr": null}, {"name": "Chesterfield Place", "city": "Chesterfield", "units": 192, "dog": "outdoor pet areas", "lat": 38.6754, "lon": -90.5303, "mgr": "Trinity Property"}, {"name": "ReNew Chesterfield", "city": "Chesterfield", "units": 192, "dog": "unknown", "lat": 38.6263, "lon": -90.5208, "mgr": "Trinity Property"}, {"name": "Woodchase Apartments", "city": "Chesterfield", "units": 186, "dog": "pet park", "lat": 38.6804, "lon": -90.4966, "mgr": "ZM Management"}, {"name": "Peachtree", "city": "Chesterfield", "units": 156, "dog": "pet park", "lat": 38.6565, "lon": -90.5512, "mgr": null}, {"name": "Parq at Chesterfield", "city": "Chesterfield", "units": null, "dog": "unknown", "lat": 38.6504, "lon": -90.5719, "mgr": "2B Residential"}, {"name": "Wildhorse", "city": "Chesterfield", "units": null, "dog": "unknown", "lat": 38.6608, "lon": -90.5734, "mgr": "2B Residential"}, {"name": "Waterfront Crossing", "city": "Creve Coeur", "units": 591, "dog": "unknown", "lat": 38.671, "lon": -90.4555, "mgr": "Somerset"}, {"name": "Vicino on the Lake", "city": "Creve Coeur", "units": 359, "dog": "pet park", "lat": 38.6776, "lon": -90.4739, "mgr": "Monarch"}, {"name": "Cove West", "city": "Creve Coeur", "units": 276, "dog": "pet park and stations", "lat": 38.6721, "lon": -90.459, "mgr": "Somerset"}, {"name": "Vanguard Heights", "city": "Creve Coeur", "units": 174, "dog": "pet care area", "lat": 38.6754, "lon": -90.4084, "mgr": "Somerset"}, {"name": "Westchase Apartments", "city": "Creve Coeur", "units": 160, "dog": "pet stations", "lat": 38.6737, "lon": -90.4184, "mgr": "Somerset"}, {"name": "Cedar Trace", "city": "Maryland Heights", "units": 372, "dog": "unknown", "lat": 38.7162, "lon": -90.4496, "mgr": "Monarch"}, {"name": "Westport Edge", "city": "Maryland Heights", "units": 292, "dog": "unknown", "lat": 38.7125, "lon": -90.4086, "mgr": "KH Properties"}, {"name": "Haven on the Lake", "city": "Maryland Heights", "units": 271, "dog": "unknown", "lat": 38.7142, "lon": -90.4682, "mgr": "Monument RES"}, {"name": "The Anchor", "city": "Bridgeton", "units": 416, "dog": "unknown", "lat": 38.754, "lon": -90.4155, "mgr": null}, {"name": "Cypress Village", "city": "St. Ann", "units": 330, "dog": "unknown", "lat": 38.7377, "lon": -90.3906, "mgr": null}, {"name": "Westport Crossing", "city": "St. Ann", "units": 292, "dog": "unknown", "lat": 38.7233, "lon": -90.4042, "mgr": null}, {"name": "Cabana Club", "city": "St. Ann", "units": 238, "dog": "unknown", "lat": 38.7358, "lon": -90.377, "mgr": null}, {"name": "Two Twelve Clayton", "city": "Clayton", "units": 250, "dog": "unknown", "lat": 38.6475, "lon": -90.34, "mgr": "Briar Capital"}, {"name": "Bemiston Place", "city": "Clayton", "units": 237, "dog": "dog park and pet spa", "lat": 38.6503, "lon": -90.3369, "mgr": "2B Residential"}, {"name": "Clayton on the Park", "city": "Clayton", "units": 213, "dog": "pet spa", "lat": 38.6478, "lon": -90.3405, "mgr": "Briar Capital"}, {"name": "Altair at The Heights", "city": "Richmond Heights", "units": 187, "dog": "unknown", "lat": 38.629, "lon": -90.3278, "mgr": "Avenue5"}, {"name": "Alinea Town & Country", "city": "Des Peres", "units": 254, "dog": "dog park", "lat": 38.6067, "lon": -90.4545, "mgr": "Michelson"}, {"name": "Willowbend", "city": "Town and Country", "units": 208, "dog": "dog park and stations", "lat": 38.632, "lon": -90.5182, "mgr": "Timberland"}, {"name": "The James", "city": "Kirkwood", "units": null, "dog": "pet spa and dog run", "lat": 38.5849, "lon": -90.4062, "mgr": "Greystar"}, {"name": "Retreat at Seven Trails", "city": "Ballwin", "units": 532, "dog": "private bark park", "lat": 38.5983, "lon": -90.5412, "mgr": "Monarch"}, {"name": "Kensington West", "city": "Ballwin", "units": 276, "dog": "bark park and stations", "lat": 38.5907, "lon": -90.5498, "mgr": "Michelson"}, {"name": "Madison Rockwood", "city": "Ballwin", "units": 251, "dog": "dog park", "lat": 38.5965, "lon": -90.5518, "mgr": "Madison Apt Group"}, {"name": "Waterford Manors", "city": "Ballwin", "units": 244, "dog": "dog park, no breed limits", "lat": 38.5728, "lon": -90.479, "mgr": "Mills Properties"}, {"name": "Reflection Cove", "city": "Manchester", "units": 194, "dog": "dog park", "lat": 38.5935, "lon": -90.4858, "mgr": null}, {"name": "Cherry Creek", "city": "Manchester", "units": 176, "dog": "unknown", "lat": 38.5918, "lon": -90.4924, "mgr": null}, {"name": "Orchard Village", "city": "Manchester", "units": null, "dog": "bark park and stations", "lat": 38.5913, "lon": -90.4985, "mgr": "Michelson"}, {"name": "Vanderbilt Apartments", "city": "St. Peters", "units": 304, "dog": "leash-less dog park", "lat": 38.7895, "lon": -90.6082, "mgr": "Envolve"}, {"name": "Bold on Blvd", "city": "St. Peters", "units": 272, "dog": "pet park and wash", "lat": 38.7947, "lon": -90.5957, "mgr": "2B Residential"}, {"name": "5300 Centre", "city": "St. Peters", "units": 265, "dog": "dog park", "lat": 38.7926, "lon": -90.5915, "mgr": "Propper"}, {"name": "Meadowridge Apartments", "city": "St. Peters", "units": 180, "dog": "dog park and stations", "lat": 38.7378, "lon": -90.6256, "mgr": "Timberland"}, {"name": "Enclave at Winghaven", "city": "O'Fallon", "units": 400, "dog": "off-site only", "lat": 38.739, "lon": -90.7388, "mgr": "Briar Capital"}, {"name": "Avenue64", "city": "O'Fallon", "units": 316, "dog": "dog park and pet spa", "lat": 38.7182, "lon": -90.705, "mgr": "Avenue5"}, {"name": "Bramblett Hills", "city": "O'Fallon", "units": 204, "dog": "paw park", "lat": 38.7935, "lon": -90.6955, "mgr": "Michelson"}, {"name": "Westchester Village", "city": "O'Fallon", "units": null, "dog": "unknown", "lat": 38.8014, "lon": -90.7373, "mgr": "Monarch"}, {"name": "Heartland View", "city": "Wentzville", "units": 201, "dog": "dog park, all breeds", "lat": 38.8222, "lon": -90.8698, "mgr": "2B Residential"}, {"name": "Grand Central at the Junction", "city": "Wentzville", "units": 180, "dog": "waste stations", "lat": 38.8083, "lon": -90.86, "mgr": "Timberland"}, {"name": "Hearthstone at Autumn Hollow", "city": "Wentzville", "units": 180, "dog": "dog park", "lat": 38.7637, "lon": -90.8317, "mgr": "Capital Eleven"}, {"name": "Synergy at the Meadows", "city": "Lake St. Louis", "units": 220, "dog": "dog park and stations", "lat": 38.7808, "lon": -90.7884, "mgr": "Timberland"}, {"name": "Trace", "city": "Weldon Spring", "units": 185, "dog": "bark park", "lat": 38.715, "lon": -90.6826, "mgr": null}, {"name": "Villas on the Prairie", "city": "Dardenne Prairie", "units": 204, "dog": "unknown", "lat": 38.766, "lon": -90.7456, "mgr": null}, {"name": "Country Club Place", "city": "St. Charles", "units": 600, "dog": "unknown", "lat": 38.77, "lon": -90.5196, "mgr": "Midwest Diversified"}, {"name": "Glen at Bogey Hills", "city": "St. Charles", "units": 486, "dog": "off-leash dog park", "lat": 38.7783, "lon": -90.5302, "mgr": "Priderock"}, {"name": "Remington Apartments", "city": "St. Charles", "units": 472, "dog": "unknown", "lat": 38.7893, "lon": -90.5493, "mgr": "Midwest Diversified"}, {"name": "Residences at the Streets of St. Charles", "city": "St. Charles", "units": 309, "dog": "dog park and wash", "lat": 38.7658, "lon": -90.4941, "mgr": "Morgan Properties"}, {"name": "River Crossing", "city": "St. Charles", "units": 251, "dog": "leash-free pet park", "lat": 38.7564, "lon": -90.5019, "mgr": "Edward Rose"}, {"name": "Sterling Heights", "city": "St. Charles", "units": 186, "dog": "unknown", "lat": 38.7378, "lon": -90.6143, "mgr": null}, {"name": "French District Villas", "city": "St. Charles", "units": null, "dog": "unknown", "lat": 38.8336, "lon": -90.5019, "mgr": "2B Residential"}, {"name": "Kensington Square", "city": "Florissant", "units": 510, "dog": "unknown", "lat": 38.805, "lon": -90.3168, "mgr": null}, {"name": "River Chase", "city": "Florissant", "units": 418, "dog": "pet park", "lat": 38.8077, "lon": -90.3652, "mgr": "Monarch"}, {"name": "Crossing at Northpointe", "city": "Florissant", "units": 334, "dog": "pet park", "lat": 38.8135, "lon": -90.2983, "mgr": "Rushmore"}, {"name": "Whispering Lake", "city": "Florissant", "units": 309, "dog": "unknown", "lat": 38.7921, "lon": -90.271, "mgr": null}, {"name": "Des Arboles", "city": "Florissant", "units": 264, "dog": "unknown", "lat": 38.8076, "lon": -90.296, "mgr": null}, {"name": "Greenway Chase", "city": "Florissant", "units": null, "dog": "unknown", "lat": 38.8256, "lon": -90.3155, "mgr": "Monarch"}, {"name": "Sugar Pines", "city": "Florissant", "units": null, "dog": "unknown", "lat": 38.7725, "lon": -90.2716, "mgr": "Monarch"}, {"name": "Paddock Village", "city": "Florissant", "units": null, "dog": "unknown", "lat": 38.7998, "lon": -90.2312, "mgr": "Monarch"}, {"name": "Village Square", "city": "Hazelwood", "units": 148, "dog": "unknown", "lat": 38.7823, "lon": -90.3637, "mgr": "Monarch"}, {"name": "Hazelwood Forest", "city": "Hazelwood", "units": null, "dog": "unknown", "lat": 38.7706, "lon": -90.3693, "mgr": null}, {"name": "Renewal Heights", "city": "North county (63136)", "units": 414, "dog": "dog park", "lat": 38.7392, "lon": -90.2725, "mgr": null}, {"name": "The Mint Townhomes", "city": "North county (63134)", "units": 156, "dog": "pet park", "lat": 38.7609, "lon": -90.3366, "mgr": null}];
+  var commLayer = L.layerGroup();
+  COMMS.forEach(function (c) {
+    var known = c.dog !== 'unknown';
+    L.marker([c.lat, c.lon], {
+      icon: L.divIcon({className: 'comm' + (known ? ' comm--dog' : ''),
+                       iconSize: [11, 11], html: ''})
+    }).bindPopup(
+      '<div class="pop"><h4>' + c.name + '</h4><p class="rg">' + c.city + '</p><dl>' +
+      '<dt>Units</dt><dd>' + (c.units ? c.units.toLocaleString() : 'not published') + '</dd>' +
+      '<dt>Dog amenity</dt><dd>' + c.dog + '</dd>' +
+      '<dt>Managed by</dt><dd>' + (c.mgr || 'not named') + '</dd></dl>' +
+      (known ? '' : '<p class="nt">No dog amenity advertised. On a pet-friendly property that ' +
+       'often means nobody has sold them one yet.</p>') + '</div>'
+    ).bindTooltip(c.name, {direction: 'top'}).addTo(commLayer);
+  });
+
+  var commToggle = document.getElementById('show-comms');
+  if (commToggle) {
+    commToggle.addEventListener('change', function () {
+      if (commToggle.checked) { commLayer.addTo(map); } else { map.removeLayer(commLayer); }
+    });
+  }
 
   function render() {
     layer.clearLayers();
