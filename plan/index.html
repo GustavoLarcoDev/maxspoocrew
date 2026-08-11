@@ -610,13 +610,15 @@ tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
     <p>Ranked by what it costs to fix against what it is costing now. The first three are free.</p>
   </div>
   <div class="gaps">
-    <div class="gap" style="--c:var(--stop)">
+    <div class="gap" style="--c:var(--ok)">
       <div class="rank">01</div>
       <div>
-        <h4>The new website is not live</h4>
-        <p>It is sitting in an unmerged pull request. Every QR code on forty-one pieces, and every ad,
-        sends people to the old site. An ad click that lands on the wrong page is money spent twice.</p>
-        <p class="fix"><b>Fix:</b> merge the PR. It is the only item here that blocks everything else.</p>
+        <h4>Resolved &mdash; the website is live</h4>
+        <p>This was the top item here for good reason: every QR code on forty-one pieces and every ad
+        pointed at a domain still serving the old site. That pull request has since been merged and
+        deployed. The redirects from the retired <code>/about</code>, <code>/pricing</code> and
+        <code>/faq</code> URLs answer correctly, so print and paid traffic now land on the new page.</p>
+        <p class="fix"><b>Nothing blocked:</b> the print run and the ads can go.</p>
       </div>
     </div>
     <div class="gap" style="--c:var(--stop)">
