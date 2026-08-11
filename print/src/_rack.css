@@ -1,0 +1,115 @@
+/* =============================================================================
+   Shared skeleton for the vertical 3.75 x 8.25 in rack cards.
+   -----------------------------------------------------------------------------
+   Load after _base.css. Same ten arguments as the letter flyers, but this
+   format holds roughly a third of the copy, so each card gets one idea and
+   stops. Trying to fit a whole flyer in here is how you get 7pt type nobody
+   reads standing at a rack.
+
+   Trim 3.75 x 8.25 in plus 1/8in bleed = a 4 x 8.5in sheet, which is why the
+   numbers come out round. Live width after padding is 3.15in - narrow enough
+   that headlines want three or four words a line, not seven.
+
+   Structure:
+     .sheet
+       header.top    red - logo, eyebrow, headline, lede
+       .body         one argument
+       footer.foot   phone, domain, offer
+
+   As with the flyers, .cta uses margin-top:auto, so shaving spacing frees
+   nothing. Cut content instead.
+   ========================================================================== */
+
+@page{ size: 4in 8.5in; margin:0 }
+
+.sheet{width:4in;height:8.5in;display:flex;flex-direction:column;
+  background:var(--cream)}
+
+/* --- header -------------------------------------------------------------- */
+/* Header is deliberately shallow. On an 8.25in card every tenth of an inch up
+   here comes straight out of the argument below it. */
+.top{padding:.26in .3in .2in;background:linear-gradient(160deg,var(--red),var(--red-deep));
+  color:#fff;text-align:center}
+.top .logo--boxed{width:.92in;margin:0 auto .1in;padding:.04in}
+.top .logo--boxed img{width:100%;height:auto;display:block}
+.top .eyebrow{font-size:.078in;letter-spacing:.14em}
+.top h1{font-size:.3in;color:#fff;margin-top:.06in;line-height:1.02}
+.top h1.tight{font-size:.26in}
+.top h1.big{font-size:.36in}
+.top .lede{color:rgba(255,255,255,.94);font-size:.096in;margin-top:.09in;
+  line-height:1.42}
+
+/* One line of dark under the header, for the thing that has to be read. */
+.strap{background:var(--ink);color:var(--butter);padding:.075in .3in;
+  text-align:center;font-family:var(--display);font-size:.115in}
+
+/* A yellow number band, for the cards whose argument is a price. */
+.band{background:var(--butter);padding:.12in .3in;text-align:center}
+.band .v{font-family:var(--display);font-size:.54in;color:var(--ink);line-height:.94;
+  letter-spacing:-.03em}
+.band .n{font-family:var(--display);font-size:.125in;color:var(--ink);margin-top:.025in}
+.band p{font-size:.086in;color:#6B4A16;line-height:1.36;margin-top:.04in}
+
+/* --- body ---------------------------------------------------------------- */
+.body{flex:1;padding:.24in .3in .16in;display:flex;flex-direction:column}
+
+h2{font-size:.185in;line-height:1.06}
+h3{font-size:.125in}
+.rule{width:.5in;height:.035in;margin:.09in 0 .12in}
+.body > p, .lede-b{font-size:.1in;color:var(--ink-2);line-height:1.47}
+.body > p + p{margin-top:.08in}
+
+/* stacked reason blocks - the workhorse of this format */
+.reasons{display:flex;flex-direction:column;gap:.11in}
+.r{background:#fff;border-radius:.11in;padding:.13in .14in}
+.r h3{color:var(--red-ink);font-size:.12in}
+.r p{font-size:.092in;color:var(--ink-2);line-height:1.42;margin-top:.04in}
+
+/* numbered steps, stacked */
+.steps{display:flex;flex-direction:column;gap:.1in}
+.st{display:flex;gap:.11in;align-items:flex-start}
+.st .n{flex:none;width:.24in;height:.24in;border-radius:.07in;background:var(--red);
+  color:#fff;font-family:var(--display);font-size:.115in;display:grid;
+  place-items:center}
+.st h3{font-size:.115in}
+.st p{font-size:.09in;color:var(--ink-2);line-height:1.4;margin-top:.02in}
+
+/* the price list, stacked rather than in a row - four columns at 3.15in wide
+   would give each price about 0.7in, which is not a price, it is a rumour */
+.plans{display:flex;flex-direction:column}
+.pl{display:flex;justify-content:space-between;align-items:baseline;
+  padding:.085in 0;border-bottom:1px solid var(--rule)}
+.pl:first-child{border-top:1px solid var(--rule-2)}
+.pl .n{font-family:var(--display);font-size:.115in;color:var(--ink)}
+.pl .n small{display:block;font-family:var(--body);font-weight:600;font-size:.078in;
+  color:var(--ink-3);margin-top:.015in}
+.pl .v{font-family:var(--display);font-size:.2in;color:var(--red);
+  letter-spacing:-.02em}
+.pl--best .n{color:var(--red-ink)}
+
+/* tinted list panel */
+.panel{background:var(--cream-2);border-radius:.11in;padding:.14in .15in}
+.panel .k{font-family:var(--body);font-weight:700;font-size:.075in;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:.07in}
+.panel ul{margin:0;padding:0;list-style:none}
+.panel li{font-size:.093in;color:var(--ink-2);line-height:1.42;padding-left:.14in;
+  position:relative;margin-bottom:.02in}
+.panel li::before{content:"";position:absolute;left:.03in;top:.055in;
+  width:.045in;height:.045in;border-radius:50%;background:var(--rule-2)}
+
+/* --- call to action ------------------------------------------------------ */
+.cta{margin-top:auto;display:flex;gap:.13in;align-items:center;
+  background:var(--ink);border-radius:.12in;padding:.14in .15in;color:var(--cream)}
+.cta .qr{width:.78in;flex:none}
+.cta .qr img{width:100%;height:auto;display:block;background:#fff;
+  border-radius:.03in}
+.cta .num{font-family:var(--display);font-size:.215in;color:var(--butter);
+  letter-spacing:-.025em;line-height:1}
+.cta .web{font-family:var(--display);font-size:.11in;color:#fff;margin-top:.03in}
+.cta p{font-size:.082in;color:#C9A79C;line-height:1.35;margin-top:.05in}
+
+/* --- footer -------------------------------------------------------------- */
+.foot{padding:.1in .3in .2in;text-align:center}
+.foot .pill{font-size:.09in;padding:.055in .13in}
+.foot .fine{font-size:.07in;color:var(--ink-3);line-height:1.32;margin-top:.06in}

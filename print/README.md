@@ -28,16 +28,23 @@ primero.
 | `ai-magnet-emblem.html` | Imán con emblema retro generado | 12 × 8 in |
 | `ai-sticker-round.html` | Calcomanía redonda troquelada | 6 in ø |
 | `ai-sticker-bumper.html` | Calcomanía de paragolpes | 10 × 3 in |
-| `flyer-h-price.html` … `flyer-q-move.html` | Los diez flyers de `/flyers/` | 8.5 × 11 in |
+| `flyer-h-price.html` … `flyer-q-move.html` | Los diez flyers carta | 8.5 × 11 in |
+| `rack-h-price.html` … `rack-q-move.html` | Los mismos diez, verticales | 3.75 × 8.25 in |
 
-Los diez flyers H–Q comparten `src/_flyer.css`, que trae el esqueleto de una hoja
-(cabecera, cuerpo, CTA, pie) y la regla `@page`. Por eso cada archivo lleva casi puro
-contenido: diez piezas que discuten diez cosas distintas tienen que seguir pareciendo de
-la misma empresa. Se ven lado a lado en **`/flyers/`**.
+Los diez flyers H–Q comparten `src/_flyer.css` y las diez rack cards comparten
+`src/_rack.css`; los dos esqueletos traen la cabecera, el cuerpo, el CTA, el pie y la
+regla `@page`. Por eso cada archivo lleva casi puro contenido: veinte piezas que discuten
+diez cosas tienen que seguir pareciendo de la misma empresa. Se ven lado a lado en
+**`/flyers/`**.
 
-Ojo con una trampa del esqueleto: `.cta` usa `margin-top:auto`, así que se come cualquier
-espacio que liberes achicando márgenes y la altura total no se mueve. Si un flyer se
-desborda hay que **sacar contenido**, no apretar el espaciado.
+La rack card entra **un tercio del texto** que la hoja carta, y esa es toda la
+restricción del formato. Cada tarjeta se queda con una idea y para. La tarjeta de
+comparación tuvo que soltar la tabla entera: tres columnas de tildes en 3.15 in de ancho
+vivo no es una tabla, es un examen de la vista — va como tres bloques apilados.
+
+Ojo con una trampa de los dos esqueletos: `.cta` usa `margin-top:auto`, así que se come
+cualquier espacio que liberes achicando márgenes y la altura total no se mueve. Si una
+pieza se desborda hay que **sacar contenido**, no apretar el espaciado.
 
 ## Cómo se compila
 
