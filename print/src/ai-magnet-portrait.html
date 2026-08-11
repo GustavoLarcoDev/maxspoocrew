@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>AI reimagine - photo door magnet 18x12 - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 18 x 12 in, 0.125in bleed all round. Truck and SUV door.
+
+   Effective resolution: the portrait is 1536px tall used across 12.25in, about
+   125 dpi. That is normal and fine for vehicle graphics, which are read from
+   several feet away - but it is why the photo occupies a panel rather than the
+   whole panel. Do not stretch this art across the full 18in. */
+@page{ size: 18.25in 12.25in; margin:0 }
+
+.sheet{width:18.25in;height:12.25in;display:flex}
+
+.copy{flex:1;padding:.9in .7in .9in 1in;display:flex;flex-direction:column;
+  justify-content:center}
+.markbox{width:4.3in;background:#fff;border-radius:.32in;padding:.22in;
+  margin-bottom:.42in}
+.markbox img{width:100%;height:auto;display:block}
+.service{font-family:var(--display);font-size:.5in;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--butter);line-height:1}
+.phone{font-family:var(--display);font-size:1.32in;line-height:.92;color:#fff;
+  letter-spacing:-.035em;margin-top:.16in;white-space:nowrap}
+.web{font-family:var(--display);font-size:.68in;color:#fff;margin-top:.12in;
+  letter-spacing:-.02em}
+.strip{margin-top:.34in;display:flex;align-items:center;gap:.26in;flex-wrap:wrap}
+.strip .pill{font-size:.3in;padding:.13in .3in}
+.area{font-family:var(--body);font-weight:700;font-size:.26in;
+  color:rgba(255,255,255,.92)}
+
+/* The photo panel. A soft red edge on its left blends the join rather than
+   leaving a hard seam down the middle of a door. */
+.photo{width:7.1in;flex:none;position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:60% center;
+  display:block}
+.photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(200,16,46,.92) 0%,rgba(200,16,46,0) 22%)}
+</style>
+</head>
+<body>
+
+<div class="sheet panel-red">
+  <div class="copy">
+    <div class="markbox">
+      <img src="../../img/logo-full.webp" alt="Max's Poo Crew">
+    </div>
+    <p class="service">Dog waste removal</p>
+    <p class="phone">618&#8209;719&#8209;3802</p>
+    <p class="web">maxspoocrew.com</p>
+    <div class="strip">
+      <span class="pill">First cleanup free</span>
+      <span class="area">St.&nbsp;Louis &amp; St.&nbsp;Charles County</span>
+    </div>
+  </div>
+
+  <div class="photo">
+    <img src="img-ai/ai-portrait-lab.jpg" alt="">
+  </div>
+</div>
+
+</body>
+</html>

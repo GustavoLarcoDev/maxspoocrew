@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>AI reimagine - bumper sticker 10x3 - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 10 x 3 in, 0.125in bleed all round. The customer giveaway.
+
+   The crest is used small - 2.55in across from a 1024px source, about 400 dpi -
+   which is the one place in this set where the generated art is comfortably
+   past print resolution rather than merely adequate.
+
+   No offer on this one, on purpose: a bumper sticker gets read in a second from
+   a moving car and there is no room for the condition attached to the free
+   cleanup, so it carries the name, the phone and the domain. */
+@page{ size: 10.25in 3.25in; margin:0 }
+
+.sheet{width:10.25in;height:3.25in;display:flex;align-items:center;
+  gap:.32in;padding:.125in .45in}
+
+.mark{flex:none;width:2.55in;height:2.55in;border-radius:50%;overflow:hidden;
+  border:.045in solid rgba(255,255,255,.9)}
+.mark img{width:100%;height:100%;object-fit:cover;display:block}
+
+.copy{flex:1;min-width:0}
+.tag{font-family:var(--display);font-size:.44in;color:#fff;line-height:1.02;
+  letter-spacing:-.02em}
+.tag em{font-style:normal;color:var(--butter)}
+.line{display:flex;align-items:baseline;gap:.26in;margin-top:.13in}
+.line .phone{font-family:var(--display);font-size:.46in;color:#fff;
+  letter-spacing:-.03em;white-space:nowrap}
+.line .web{font-family:var(--display);font-size:.24in;color:rgba(255,255,255,.9)}
+.sub{font-family:var(--body);font-weight:700;font-size:.155in;
+  color:rgba(255,255,255,.82);margin-top:.09in}
+</style>
+</head>
+<body>
+
+<div class="sheet panel-red">
+  <span class="mark"><img src="img-ai/ai-crest.jpg" alt=""></span>
+
+  <div class="copy">
+    <p class="tag">We scoop. <em>You do not.</em></p>
+    <div class="line">
+      <span class="phone">618-719-3802</span>
+      <span class="web">maxspoocrew.com</span>
+    </div>
+    <p class="sub">Dog waste removal &middot; St.&nbsp;Louis &amp; St.&nbsp;Charles County</p>
+  </div>
+</div>
+
+</body>
+</html>

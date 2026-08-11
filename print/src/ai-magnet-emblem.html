@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>AI reimagine - retro car magnet 12x8 - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 12 x 8 in, 0.125in bleed all round. Car door.
+
+   The emblem is generated artwork sized 1536 x 1024, and the sheet is 12.25 x
+   8.25 - almost the same 3:2 shape - so it covers full bleed with barely any
+   crop, at about 125 dpi. Fine for a panel read from another lane.
+
+   The illustration was generated with its left and right thirds left empty on
+   purpose, which is where the bands below sit without covering the dogs. */
+@page{ size: 12.25in 8.25in; margin:0 }
+
+.sheet{width:12.25in;height:8.25in;position:relative;overflow:hidden;
+  background:#F2EBDD}
+.art{position:absolute;inset:0}
+.art img{width:100%;height:100%;object-fit:cover;object-position:center 46%;
+  display:block}
+
+.top{position:absolute;left:0;right:0;top:0;background:var(--red);
+  padding:.24in .5in;display:flex;justify-content:space-between;align-items:center;
+  gap:.3in}
+.top .service{font-family:var(--display);font-size:.34in;letter-spacing:.03em;
+  text-transform:uppercase;color:#fff;line-height:1}
+.top .area{font-family:var(--body);font-weight:700;font-size:.19in;
+  color:rgba(255,255,255,.94)}
+
+.bottom{position:absolute;left:0;right:0;bottom:0;background:#1A1614;
+  padding:.26in .5in;display:flex;justify-content:space-between;align-items:center;
+  gap:.3in}
+.bottom .phone{font-family:var(--display);font-size:.86in;color:var(--butter);
+  letter-spacing:-.03em;line-height:.95;white-space:nowrap}
+.bottom .right{text-align:right}
+.bottom .web{font-family:var(--display);font-size:.34in;color:#F2EBDD;
+  letter-spacing:-.02em}
+.bottom .offer{font-family:var(--body);font-weight:700;font-size:.18in;
+  color:#B8A88F;margin-top:.05in}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="art"><img src="img-ai/ai-emblem-wide.jpg" alt=""></div>
+
+  <div class="top">
+    <p class="service">Dog waste removal</p>
+    <p class="area">St.&nbsp;Louis &amp; St.&nbsp;Charles County</p>
+  </div>
+
+  <div class="bottom">
+    <p class="phone">618&#8209;719&#8209;3802</p>
+    <div class="right">
+      <p class="web">maxspoocrew.com</p>
+      <p class="offer">First cleanup free with any plan</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

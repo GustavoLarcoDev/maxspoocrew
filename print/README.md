@@ -22,6 +22,12 @@ primero.
 | `magnet-door.html` | Imán de puerta, camioneta | 18 × 12 in |
 | `magnet-compact.html` | Imán de puerta, auto | 12 × 8 in |
 | `magnet-tailgate.html` | Tira para la tapa trasera | 24 × 6 in |
+| `ai-ad-lawn.html` | Anuncio con foto generada | 8.5 × 11 in |
+| `ai-ad-crest.html` | Afiche retro con escudo generado | 8.5 × 11 in |
+| `ai-magnet-portrait.html` | Imán con retrato generado | 18 × 12 in |
+| `ai-magnet-emblem.html` | Imán con emblema retro generado | 12 × 8 in |
+| `ai-sticker-round.html` | Calcomanía redonda troquelada | 6 in ø |
+| `ai-sticker-bumper.html` | Calcomanía de paragolpes | 10 × 3 in |
 
 ## Cómo se compila
 
@@ -73,6 +79,39 @@ Archivo y Archivo Black están en `src/fonts/` y se cargan con `@font-face` desd
 no desde Google Fonts. Una vez un PDF salió con la tipografía de reserva porque la red
 falló en mitad del build, y eso no se ve hasta que el trabajo está impreso. La licencia
 (SIL Open Font License) está en `src/fonts/OFL.txt`.
+
+## Las piezas "AI reimagine"
+
+El arte de `src/img-ai/` se generó con `gpt-image-2`. **Ninguna imagen tiene una sola letra
+adentro, a propósito.** El texto generado dentro de una imagen no se puede editar, se
+escribe mal en tamaños chicos y se deshace al reescalarlo a medida de imprenta. Entonces
+las imágenes son solo imágenes y cada palabra encima es texto real del HTML: cambiar un
+precio es editar una línea, no volver a generar nada.
+
+El escudo retro se pidió con la cinta **en blanco** justamente para poder ponerle texto
+encima después. Por eso la misma ilustración dice "NO PILE LEFT BEHIND" en el afiche y el
+teléfono en la calcomanía redonda, sin regenerarse.
+
+### Hasta dónde se pueden agrandar
+
+El arte generado sale a un tamaño fijo de píxeles, así que cada pieza tiene techo:
+
+| Pieza | Resolución efectiva |
+|---|---|
+| `ai-ad-lawn` | ~176 dpi |
+| `ai-ad-crest` | ~160 dpi |
+| `ai-magnet-portrait` | ~125 dpi |
+| `ai-magnet-emblem` | ~125 dpi |
+| `ai-sticker-round` | ~164 dpi |
+| `ai-sticker-bumper` | más de 400 dpi |
+
+Los 125 dpi de los imanes son normales para gráfica vehicular, que se lee a varios pies —
+y son la razón por la que la foto del 18×12 va en un panel y no estirada a lo ancho.
+
+**No agrandar ninguna de estas a un cartel de 24×18 ni a un wrap de vehículo.** A ese
+tamaño los mismos archivos caen debajo de 65 dpi y el pelo de los perros se pone blando.
+Para algo más grande hay que volver a generar el arte en tamaño mayor; los prompts están
+en `Claude Images/prompts/` fuera de este repo.
 
 ## El código QR
 

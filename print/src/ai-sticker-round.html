@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>AI reimagine - round car decal 6in - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Round die-cut decal, 6 in finished diameter on a 6.25 in square sheet, so the
+   artwork carries 1/8 in of bleed past the cut all the way round.
+
+   Everything readable sits inside a 4.4 in centred column. A round die drifts
+   more than a straight trim, and the usable width shrinks fast toward the top
+   and bottom of a circle - a line set near the top edge would be cut in half
+   even though it looks fine on a square preview.
+
+   The phone number sits on the banner the illustration already carries, rather
+   than under a panel laid over it. Effective resolution: 1024px over 6.25in,
+   about 164 dpi.
+
+   The dashed ring is a screen-only guide marking the cut line; it is hidden in
+   print media so it never reaches the PDF. */
+@page{ size: 6.25in 6.25in; margin:0 }
+
+.sheet{width:6.25in;height:6.25in;position:relative;overflow:hidden;
+  background:#F2EBDD}
+.art{position:absolute;inset:0}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* The banner in the artwork sits at about 78% of its height. */
+.ribbon{position:absolute;left:0;right:0;top:75.8%;text-align:center}
+.ribbon p{font-family:var(--display);font-size:.29in;color:#F7EFE0;
+  letter-spacing:-.01em;line-height:1}
+
+/* The banner tail and the sunburst both run under this line, so it carries its
+   own plate rather than relying on whatever the illustration puts behind it. */
+.web{position:absolute;left:0;right:0;bottom:.42in;text-align:center}
+.web p{display:inline-block;background:#1A1614;color:#F2EBDD;
+  font-family:var(--display);font-size:.185in;letter-spacing:-.01em;
+  padding:.075in .2in;border-radius:99in}
+
+.cutline{position:absolute;left:.125in;top:.125in;width:6in;height:6in;
+  border-radius:50%;border:1px dashed rgba(0,0,0,.45);pointer-events:none}
+@media print{ .cutline{display:none} }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="art"><img src="img-ai/ai-crest.jpg" alt=""></div>
+
+  <div class="ribbon"><p>618-719-3802</p></div>
+
+  <div class="web">
+    <p>maxspoocrew.com</p>
+  </div>
+
+  <div class="cutline"></div>
+</div>
+
+</body>
+</html>
