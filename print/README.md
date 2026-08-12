@@ -31,6 +31,7 @@ primero.
 | `flyer-h-price.html` … `flyer-q-move.html` | Los diez flyers carta | 8.5 × 11 in |
 | `rack-h-price.html` … `rack-q-move.html` | Los mismos diez, verticales | 3.75 × 8.25 in |
 | `simple-1-scoop.html` … `simple-3-barefoot.html` | Los tres simples: foto, logo, una línea | 8.5 × 11 in |
+| `mini-1-sit.html` … `mini-3-pair.html` | Lo mínimo: foto, logo, eslogan, teléfono, web, QR | 3.75 × 8.25 in |
 
 Los diez flyers H–Q comparten `src/_flyer.css` y las diez rack cards comparten
 `src/_rack.css`; los dos esqueletos traen la cabecera, el cuerpo, el CTA, el pie y la
@@ -170,6 +171,17 @@ una línea de tabla o el borde de una foto y reporta "no hay QR" cuando sí lo h
 
 Las piezas sin QR a propósito son los carteles, los imanes y las calcomanías: se leen desde
 un auto en movimiento, donde nadie está escaneando nada.
+
+## El eslogan
+
+Es **"We scoop it. You enjoy it."**, el H1 del sitio y el `og:title`. Sale de ahí, no se
+inventa.
+
+Tres piezas —el imán de puerta 18×12 y los dos anuncios AI— salieron una vez con *"No pile
+left behind"*, que **no es de Max's Poo Crew**: se escribió para estas maquetas y además
+parafrasea de cerca la línea de un competidor, lo cual en el costado de una camioneta es un
+problema. Ya están las tres corregidas. Si alguna se llegó a imprimir, esas son las que hay
+que reimprimir.
 
 ## Antes de mandar a imprimir
 

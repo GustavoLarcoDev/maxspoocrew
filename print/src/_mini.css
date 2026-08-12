@@ -1,0 +1,56 @@
+/* =============================================================================
+   The minimum viable piece: 3.75 x 8.25 in, one photograph, five things on it.
+   -----------------------------------------------------------------------------
+   Logo, slogan, phone, website, QR. No prices, no bullets, no argument. Nothing
+   on these cards goes out of date except the phone number, which means a box of
+   them keeps for years - the rest of the collateral goes stale the moment a
+   rate changes.
+
+   Full bleed photograph with the type on a dark scrim across the foot. The
+   generated artwork is framed with its lower third left as empty lawn, so the
+   scrim lands on grass rather than across a dog's face.
+
+   Trim 3.75 x 8.25 in plus 1/8in bleed = a 4 x 8.5in sheet.
+   Effective resolution: 1024px across 4in, about 256 dpi - the highest of any
+   generated piece here, because the card is small.
+   ========================================================================== */
+
+@page{ size: 4in 8.5in; margin:0 }
+
+.sheet{width:4in;height:8.5in;position:relative;overflow:hidden;background:var(--ink)}
+
+.art{position:absolute;inset:0}
+.art img{width:100%;height:100%;object-fit:cover;object-position:center 28%;
+  display:block}
+/* Deep enough to carry white type at the foot, and started high enough that it
+   reads as light falling off rather than as a panel stuck on top. */
+.art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4.6in;
+  background:linear-gradient(180deg,rgba(18,7,5,0) 0%,rgba(18,7,5,.72) 42%,rgba(18,7,5,.93) 100%)}
+
+/* --- everything, in one stack at the foot -------------------------------- */
+/* The logo used to float at the top of the card, but a 1024x1536 photograph on
+   a 4 x 8.5in sheet is cropped at the sides and fills the height exactly, so
+   there is no way to reframe the dog downward and out from under it. Putting
+   the whole lockup in one column at the foot avoids the collision and reads
+   more simply anyway. */
+.foot{position:absolute;left:0;right:0;bottom:0;padding:0 .34in .34in;
+  text-align:center;color:#fff}
+
+.badge{display:block;width:1.28in;margin:0 auto .16in;background:#fff;
+  border-radius:.14in;padding:.07in;box-shadow:0 .05in .16in rgba(20,5,8,.3)}
+.badge img{width:100%;height:auto;display:block}
+
+.slogan{font-family:var(--display);font-size:.3in;line-height:1.08;
+  letter-spacing:-.015em}
+.slogan em{font-style:normal;color:var(--butter)}
+
+.phone{font-family:var(--display);font-size:.44in;letter-spacing:-.03em;
+  margin-top:.16in;line-height:1;white-space:nowrap}
+.web{font-family:var(--display);font-size:.17in;color:var(--butter);
+  margin-top:.06in;letter-spacing:-.01em}
+
+.qr{width:1.28in;margin:.2in auto 0;background:#fff;padding:.055in;
+  border-radius:.07in}
+.qr img{width:100%;height:auto;display:block}
+.scan{font-size:.082in;color:rgba(255,255,255,.72);margin-top:.09in;
+  letter-spacing:.02em}
