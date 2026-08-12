@@ -118,6 +118,19 @@ td b{color:var(--ink)}
   border:1px solid var(--rule-2);background:var(--cream-2)}
 .ad-media .cap{font-size:11.5px;color:var(--ink-3);margin-top:6px;font-weight:600;
   letter-spacing:.05em;text-transform:uppercase}
+
+/* Download buttons. You need the file on your phone or desktop to upload it to
+   Facebook anyway, so these are not a fallback for the player - they are the
+   normal path. They also work if the inline player ever refuses a codec. */
+.getfile{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.getfile a{display:inline-flex;align-items:center;gap:8px;background:var(--red);
+  color:#fff;text-decoration:none;font-family:var(--display);font-size:14px;
+  padding:10px 16px;border-radius:999px;transition:transform .16s,background-color .16s}
+.getfile a:hover{background:var(--red-ink);transform:translateY(-2px)}
+.getfile a.alt{background:var(--ink)}
+.getfile a.alt:hover{background:#4a2019}
+.getfile svg{width:16px;height:16px;fill:currentColor}
+.playnote{font-size:12.5px;color:var(--ink-3);margin-top:8px;line-height:1.45}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .cards img{border-radius:9px}
 
@@ -391,8 +404,14 @@ Run by the team behind Max's K9 Club in Chesterfield. Plans from $65 a month, fi
       <p class="meta">Video 14s &middot; objective: Leads &middot; cold audience</p></div></div>
     <div class="ad-b">
       <div class="ad-media">
-        <video src="video/ad-1-the-call.mp4" controls playsinline muted loop preload="metadata"></video>
-        <p class="cap">Attach: ads/video/ad-1-the-call.mp4 &middot; 720 &times; 1280</p>
+        <video controls playsinline muted loop preload="metadata">
+          <source src="video/ad-1-the-call.mp4" type="video/mp4">
+        </video>
+        <div class="getfile">
+          <a href="video/ad-1-the-call.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download video</a>
+          <a class="alt" href="video/ad-1-the-call.mp4" target="_blank" rel="noopener">Open in new tab</a>
+        </div>
+        <p class="cap">ads/video/ad-1-the-call.mp4 &middot; 720 &times; 1280 &middot; 14.6s &middot; 5.6 MB</p>
       </div>
       <div>
         <div class="field"><p class="k">The story</p><div class="copy copy--sm">She walks the dog · the dog goes · the camera pulls back and it is the whole yard · she picks up the phone · the crew clears it · she is barefoot on perfect grass</div></div>
@@ -420,8 +439,14 @@ Your first cleanup is free with any plan, however bad it has got. After that, $6
       <p class="meta">Video 14s &middot; objective: Leads &middot; families, cold audience</p></div></div>
     <div class="ad-b">
       <div class="ad-media">
-        <video src="video/ad-2-the-kids.mp4" controls playsinline muted loop preload="metadata"></video>
-        <p class="cap">Attach: ads/video/ad-2-the-kids.mp4 &middot; 720 &times; 1280</p>
+        <video controls playsinline muted loop preload="metadata">
+          <source src="video/ad-2-the-kids.mp4" type="video/mp4">
+        </video>
+        <div class="getfile">
+          <a href="video/ad-2-the-kids.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>Download video</a>
+          <a class="alt" href="video/ad-2-the-kids.mp4" target="_blank" rel="noopener">Open in new tab</a>
+        </div>
+        <p class="cap">ads/video/ad-2-the-kids.mp4 &middot; 720 &times; 1280 &middot; 14.6s &middot; 4.9 MB</p>
       </div>
       <div>
         <div class="field"><p class="k">The story</p><div class="copy copy--sm">Kids run for the back door · dad stops them · his view of the yard · he calls · the crew clears it · the kids run barefoot with the dog</div></div>
@@ -444,6 +469,18 @@ First cleanup free with any plan. Plans from $65 a month, month to month, cancel
       </div>
     </div>
   </article>
+
+  <div class="note">
+    <h3>If a video will not play here</h3>
+    <p>Use <b>Download video</b> &mdash; you need the file on your phone or computer to upload it to
+    Facebook anyway, so that is the normal path, not a workaround. Both files are
+    <b>H.264 High profile, yuv420p, with AAC audio</b>, which is what Meta asks for and what every
+    browser and phone plays.</p>
+    <p>If the player shows <em>&ldquo;no video with supported format&rdquo;</em> and names a file
+    like <code>reel-2-thepair.mp4</code>, that is a <b>cached copy of an older version of this
+    page</b> asking for a video that no longer exists. Hard-refresh with
+    <b>Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;R</b> (<b>Cmd&nbsp;+&nbsp;Shift&nbsp;+&nbsp;R</b> on a Mac).</p>
+  </div>
 
   <div class="note">
     <h3>Both videos end on a card that is not generated</h3>
