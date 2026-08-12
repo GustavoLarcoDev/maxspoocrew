@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post planner — Max's Poo Crew</title>
+<meta name="description" content="Plan what goes out on Facebook, when, and find out which creative is actually earning the leads.">
+<meta name="theme-color" content="#C8102E">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/maxspoocrew/img/logo-mark.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   Same tokens as the other internal pages, so this reads as part of the set.
+   Three theme states: bare :root is light, prefers-color-scheme handles the
+   un-stamped default, and [data-theme] lets an explicit choice win both ways.
+   ======================================================================== */
+:root{
+  --ground:#FBF6F2; --surface:#FFFFFF; --surface-2:#F5EBE5;
+  --ink:#24120E; --ink-2:#6B4A40; --ink-3:#8A6A60;
+  --rule:#E8D8CF; --rule-2:#D6BEB2;
+  --brand:#C8102E; --brand-deep:#8E0B20; --butter:#FFD166;
+  --ok:#2F6F4E; --ok-bg:#E7F2EB; --warn:#B45309; --warn-bg:#FCF0E1;
+  --stop:#C8102E; --stop-bg:#FDECEE; --cool:#1F5F87; --cool-bg:#E5F0F7;
+  --display:ui-rounded,"SF Pro Rounded","Archivo Black",Archivo,system-ui,sans-serif;
+  --body:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sh:0 1px 2px rgba(60,20,15,.05), 0 12px 28px -18px rgba(60,20,15,.32);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#17100E; --surface:#211714; --surface-2:#2C1F1B;
+  --ink:#F7EDE8; --ink-2:#CBAFA5; --ink-3:#9C8076;
+  --rule:#3A2823; --rule-2:#4E362E;
+  --brand:#F2455C; --brand-deep:#FF8A96;
+  --ok:#63B98C; --ok-bg:#182A21; --warn:#E39A4A; --warn-bg:#2F2418;
+  --stop:#F2455C; --stop-bg:#33191C; --cool:#63A6D0; --cool-bg:#152633;
+  --sh:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --ground:#17100E; --surface:#211714; --surface-2:#2C1F1B;
+  --ink:#F7EDE8; --ink-2:#CBAFA5; --ink-3:#9C8076;
+  --rule:#3A2823; --rule-2:#4E362E;
+  --brand:#F2455C; --brand-deep:#FF8A96;
+  --ok:#63B98C; --ok-bg:#182A21; --warn:#E39A4A; --warn-bg:#2F2418;
+  --stop:#F2455C; --stop-bg:#33191C; --cool:#63A6D0; --cool-bg:#152633;
+  --sh:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.7);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--body);
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display); font-weight:800; margin:0; line-height:1.1;
+  letter-spacing:-.02em}
+p{margin:0}
+a{color:var(--brand)}
+button,input,select,textarea{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--brand); outline-offset:2px; border-radius:6px}
+.wrap{max-width:1180px; margin-inline:auto; padding-inline:clamp(16px,4vw,32px)}
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+.hero{background:linear-gradient(155deg,var(--brand),var(--brand-deep)); color:#fff;
+  padding-block:clamp(26px,5vw,46px)}
+.hero h1{font-size:clamp(26px,4.6vw,42px); color:#fff; margin-top:8px}
+.hero p{margin-top:12px; max-width:62ch; color:rgba(255,255,255,.94)}
+.eyebrow{font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--butter)}
+.back{display:inline-flex; gap:7px; margin-top:16px; color:rgba(255,255,255,.92);
+  text-decoration:none; font-size:15px; font-weight:600}
+
+section{padding-block:clamp(28px,4.5vw,46px)}
+section+section{border-top:1px solid var(--rule)}
+.shead{margin-bottom:20px; max-width:70ch}
+.shead .eyebrow{color:var(--brand)}
+.shead h2{font-size:clamp(21px,3vw,29px); margin-top:6px}
+.shead p{color:var(--ink-2); margin-top:9px}
+
+/* --- creative library ---------------------------------------------------- */
+.lib{display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+.cre{background:var(--surface); border:1px solid var(--rule); border-radius:14px; overflow:hidden;
+  box-shadow:var(--sh); display:flex; flex-direction:column}
+.cre img{width:100%; aspect-ratio:1; object-fit:cover; display:block; background:var(--surface-2)}
+.cre .meta{padding:10px 12px 12px}
+.cre h4{font-size:14px}
+.cre .arg{font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--brand); margin-top:2px}
+.cre .use{font-size:12px; color:var(--ink-2); margin-top:6px}
+.cre .row{display:flex; gap:6px; padding:0 12px 12px}
+.cre button, .cre a.mini{flex:1; text-align:center; text-decoration:none; font-size:12.5px;
+  font-weight:700; border:1px solid var(--rule-2); background:transparent; color:var(--ink-2);
+  border-radius:8px; padding:6px 4px; cursor:pointer}
+.cre button:hover, .cre a.mini:hover{border-color:var(--brand); color:var(--brand)}
+
+/* --- planner ------------------------------------------------------------- */
+.tools{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:16px}
+.btn{display:inline-flex; align-items:center; gap:8px; background:var(--brand); color:#fff;
+  border:0; border-radius:999px; font-family:var(--display); font-weight:800; font-size:14.5px;
+  padding:10px 18px; cursor:pointer}
+.btn--ghost{background:transparent; color:var(--ink-2); border:1.5px solid var(--rule-2)}
+.btn:hover{filter:brightness(1.07)}
+
+.weeks{display:grid; gap:12px}
+.week{background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  box-shadow:var(--sh); overflow:hidden}
+.week > header{display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+  padding:12px 16px; background:var(--surface-2); border-bottom:1px solid var(--rule)}
+.week h3{font-size:15.5px}
+.week .wmeta{font-family:var(--mono); font-size:12.5px; color:var(--ink-2)}
+.slots{display:grid; gap:1px; background:var(--rule); grid-template-columns:repeat(7,1fr)}
+@media (max-width:820px){.slots{grid-template-columns:repeat(2,1fr)}}
+.slot{background:var(--surface); min-height:104px; padding:8px; display:flex; flex-direction:column;
+  gap:6px}
+.slot .d{font-family:var(--mono); font-size:11px; color:var(--ink-3); font-weight:700}
+.slot select{width:100%; font-size:12px; padding:5px 6px; border-radius:7px;
+  border:1px solid var(--rule-2); background:var(--surface-2)}
+.slot .thumb{width:100%; aspect-ratio:1; border-radius:6px; object-fit:cover; display:block}
+.slot .clear{align-self:flex-start; background:none; border:0; color:var(--ink-3); font-size:11px;
+  cursor:pointer; padding:0; text-decoration:underline}
+
+/* --- composer ------------------------------------------------------------ */
+.composer{display:grid; gap:18px; grid-template-columns:minmax(0,1fr) minmax(0,300px)}
+@media (max-width:860px){.composer{grid-template-columns:1fr}}
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:16px 18px;
+  box-shadow:var(--sh)}
+label{display:block; font-size:13px; font-weight:700; margin-bottom:6px}
+textarea{width:100%; min-height:150px; padding:11px 12px; border-radius:10px;
+  border:1px solid var(--rule-2); background:var(--surface-2); resize:vertical; line-height:1.5}
+.checks{margin-top:12px; display:grid; gap:8px}
+.chk{display:flex; gap:9px; align-items:flex-start; font-size:13.4px; padding:9px 11px;
+  border-radius:9px; line-height:1.4}
+.chk.pass{background:var(--ok-bg); color:var(--ink)}
+.chk.fail{background:var(--stop-bg); color:var(--ink)}
+.chk.warn{background:var(--warn-bg); color:var(--ink)}
+.chk b{font-weight:800}
+.chk .ic{font-family:var(--mono); font-weight:700}
+.chk.pass .ic{color:var(--ok)} .chk.fail .ic{color:var(--stop)} .chk.warn .ic{color:var(--warn)}
+.snips{display:grid; gap:8px; margin-top:10px}
+.snips button{text-align:left; font-size:12.8px; background:var(--surface-2); border:1px solid var(--rule);
+  border-radius:9px; padding:9px 11px; cursor:pointer; color:var(--ink-2)}
+.snips button:hover{border-color:var(--brand); color:var(--ink)}
+
+/* --- results ------------------------------------------------------------- */
+.scroll{overflow-x:auto}
+table{width:100%; border-collapse:collapse; font-size:14px; min-width:660px}
+th,td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--rule)}
+th{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); font-weight:800}
+td.n,th.n{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums}
+td input{width:82px; padding:5px 7px; border-radius:7px; border:1px solid var(--rule-2);
+  background:var(--surface-2); text-align:right; font-family:var(--mono)}
+tbody tr.best td{background:var(--ok-bg)}
+tbody tr.worst td{background:var(--stop-bg)}
+.rank{display:inline-block; font-size:11px; font-weight:800; border-radius:999px; padding:1px 8px;
+  background:var(--surface-2); color:var(--ink-2)}
+tfoot td{border-top:2px solid var(--rule-2); font-weight:700; border-bottom:0}
+
+.note{border-left:4px solid var(--warn); background:var(--warn-bg); border-radius:0 12px 12px 0;
+  padding:14px 17px; margin-top:16px}
+.note h4{font-size:15.5px}
+.note p{font-size:14px; color:var(--ink-2); margin-top:6px}
+.note p b{color:var(--ink)}
+.foot{padding-block:28px; border-top:1px solid var(--rule); color:var(--ink-3); font-size:13.5px}
+.foot p+p{margin-top:8px}
+.toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(90px);
+  background:var(--ink); color:var(--ground); padding:11px 20px; border-radius:999px;
+  font-size:14px; font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,.35); z-index:9;
+  transition:transform .22s ease}
+.toast.on{transform:translateX(-50%) translateY(0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <p class="eyebrow">Max&rsquo;s Poo Crew &middot; post planner</p>
+  <h1>Plan the posts. Find the winner.</h1>
+  <p>The ten pieces that already exist, a calendar to put them on, and a scoreboard that tells you
+  which one is actually earning leads. <b>It does not post for you</b> &mdash; Meta Business Suite
+  does that for free, and this hands you the caption and the file to paste into it.</p>
+  <a class="back" href="../plan/">&larr; The growth map</a>
+</div></div>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Step one</span>
+    <h2>What you have to post</h2>
+    <p>Five ads arguing five different things, and five service menus. Download the file, copy a
+    caption, and schedule it in Business Suite.</p>
+  </div>
+  <div class="lib" id="lib"></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Step two</span>
+    <h2>The next eight weeks</h2>
+    <p>Two or three posts a week is plenty. The point of the calendar is not volume &mdash; it is
+    making sure all five arguments get an even run, so the scoreboard below means something.</p>
+  </div>
+  <div class="tools">
+    <button class="btn" id="fill">Fill it for me</button>
+    <button class="btn btn--ghost" id="clearCal">Clear the calendar</button>
+    <button class="btn btn--ghost" id="export">Export everything</button>
+    <button class="btn btn--ghost" id="importBtn">Import</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+  </div>
+  <div class="weeks" id="weeks"></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Step three</span>
+    <h2>Write the caption</h2>
+    <p>Every claim on this page has been checked against the website once already. The checks below
+    run on what you type, so a shortcut cannot creep back in on a Tuesday afternoon.</p>
+  </div>
+  <div class="composer">
+    <div class="card">
+      <label for="cap">Caption</label>
+      <textarea id="cap" placeholder="Write the post…"></textarea>
+      <div class="checks" id="checks"></div>
+      <div class="tools" style="margin:14px 0 0">
+        <button class="btn" id="copyCap">Copy caption</button>
+        <span class="num" id="capLen" style="color:var(--ink-3); font-size:13px"></span>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="font-size:15px">Openers that already work</h4>
+      <div class="snips" id="snips"></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Step four</span>
+    <h2>Which one is winning</h2>
+    <p>Type in what Meta reports after each run. Cost per lead is the only column that decides
+    anything &mdash; reach and likes do not pay for a truck.</p>
+  </div>
+  <div class="scroll"><table id="perf">
+    <thead><tr>
+      <th>Creative</th><th class="n">Spend</th><th class="n">Reach</th><th class="n">Clicks</th>
+      <th class="n">Leads</th><th class="n">Cost / lead</th><th class="n">Verdict</th>
+    </tr></thead>
+    <tbody></tbody>
+    <tfoot><tr><td>Totals</td><td class="n" id="tSpend">—</td><td class="n" id="tReach">—</td>
+      <td class="n" id="tClicks">—</td><td class="n" id="tLeads">—</td>
+      <td class="n" id="tCPL">—</td><td></td></tr></tfoot>
+  </table></div>
+
+  <div class="note">
+    <h4>Where this stops, and what would extend it</h4>
+    <p>This plans and measures. It does not publish, because publishing to a Facebook Page from your
+    own tool needs a registered Meta app, business verification for Mike, and App Review for the
+    posting permissions &mdash; plus a server to hold the tokens, which a static page cannot do.
+    <b>Say the word and I will build that side</b>; the Meta paperwork is the part only you can do.</p>
+    <p><b>Your numbers live in this browser.</b> They are saved locally, which means no account and no
+    server, and also that they do not follow you to another machine. Use <b>Export everything</b>
+    before you switch computers or clear your history.</p>
+  </div>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <p><b>Why not Hootsuite.</b> Its cheapest plan is $99 a month per user, which is $1,188 a year
+  &mdash; more than Jobber costs to run the whole business, for a job Meta Business Suite does free.
+  Hootsuite earns its price when you run many accounts, a team and an approval flow. One truck is not
+  that.</p>
+  <p><a href="../plan/">Growth map</a> &middot; <a href="../ops/">Software &amp; the model</a>
+  &middot; <a href="../client-map/">Client map</a> &middot; <a href="../print/">Print collateral</a> &middot; <a href="../flyers/">Flyers</a> &middot; <a href="../ads/">Video ads</a></p>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  // Every creative already produced, with the argument it makes. The argument
+  // is the point: five ads that all say "we scoop poop" would make the
+  // scoreboard below meaningless.
+  var CREATIVES = [
+    {id:'fb-ad-offer',  name:'Your first cleanup is free', arg:'The offer',
+     use:'Cold audience. Widest reach, cheapest clicks.'},
+    {id:'fb-ad-health', name:"It's not just an eyesore",   arg:'The worry',
+     use:'Households with children, and retargeting.'},
+    {id:'fb-ad-people', name:'Run by dog people',          arg:'The people',
+     use:'Local feed and neighbourhood groups.'},
+    {id:'fb-ad-street', name:"We're already on your street", arg:'The neighbourhood',
+     use:'Tight radius around streets already on the route.'},
+    {id:'fb-ad-reset',  name:'One visit. Whole yard. Gone.', arg:'The one-off',
+     use:'March and April. No photograph, on purpose.'},
+    {id:'menu-a', name:'Service menu — the pitch',   arg:'Menu', use:'Evergreen. Pin it to the page.'},
+    {id:'menu-b', name:'Service menu — the list',    arg:'Menu', use:'When people ask what you do.'},
+    {id:'menu-c', name:'Service menu — the visit',   arg:'Menu', use:'Answers the gate-code worry.'},
+    {id:'menu-d', name:'Service menu — the quiet one', arg:'Menu', use:'Best pure photograph post.'},
+    {id:'menu-e', name:'Service menu — commercial',  arg:'Menu', use:'Aimed at property managers.'}
+  ];
+
+  var SNIPPETS = [
+    'Your first cleanup is free with any residential plan. Weekly dog waste removal across ' +
+      'St. Louis and St. Charles County. 618-719-3802',
+    'Roundworm, hookworm and giardia live in dog waste and survive in soil for months. We walk the ' +
+      'whole yard and haul every scoop off your property.',
+    "You never have to be home. Same tech, same day, a text when we're on our way and another when " +
+      "the yard is clear.",
+    'Spring reset? One visit, whole yard, no plan required. Any yard, any condition.',
+    'We are already picking up on your block. Adding your yard is one more stop for us and costs ' +
+      'you nothing to try.'
+  ];
+
+  var KEY = 'mpc-social-v1';
+  var state = load();
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) { /* private mode, or corrupted — start clean rather than die */ }
+    return {cal: {}, caption: '', perf: {}};
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch (e) { toast('Could not save — this browser is blocking local storage'); }
+  }
+
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    clearTimeout(toastT);
+    toastT = setTimeout(function () { toastEl.classList.remove('on'); }, 2600);
+  }
+
+  function byId(id) {
+    for (var i = 0; i < CREATIVES.length; i++) if (CREATIVES[i].id === id) return CREATIVES[i];
+    return null;
+  }
+
+  // ---- library ----------------------------------------------------------
+  document.getElementById('lib').innerHTML = CREATIVES.map(function (c) {
+    return '<article class="cre">' +
+      '<img src="img/' + c.id + '.jpg" width="420" height="420" alt="' + c.name + '" loading="lazy">' +
+      '<div class="meta"><h4>' + c.name + '</h4><p class="arg">' + c.arg + '</p>' +
+      '<p class="use">' + c.use + '</p></div>' +
+      '<div class="row"><a class="mini" href="img/' + c.id + '-full.jpg" download>Download</a>' +
+      '<button data-sched="' + c.id + '">Schedule</button></div></article>';
+  }).join('');
+
+  // ---- calendar ---------------------------------------------------------
+  var WEEKS = 8, DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  function monday(offsetWeeks) {
+    var d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7) + offsetWeeks * 7);
+    return d;
+  }
+  function key(d) { return d.toISOString().slice(0, 10); }
+  function pretty(d) {
+    return d.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+  }
+
+  function renderCal() {
+    var out = '';
+    for (var w = 0; w < WEEKS; w++) {
+      var start = monday(w), cells = '', used = 0;
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(start); d.setDate(d.getDate() + i);
+        var k = key(d), picked = state.cal[k] || '';
+        if (picked) used++;
+        var opts = '<option value="">—</option>' + CREATIVES.map(function (c) {
+          return '<option value="' + c.id + '"' + (c.id === picked ? ' selected' : '') + '>' +
+                 c.name + '</option>';
+        }).join('');
+        cells += '<div class="slot"><span class="d">' + DAYS[i] + ' ' + pretty(d) + '</span>' +
+          (picked ? '<img class="thumb" src="img/' + picked + '.jpg" alt="" loading="lazy">' : '') +
+          '<select data-day="' + k + '">' + opts + '</select>' +
+          (picked ? '<button class="clear" data-clear="' + k + '">clear</button>' : '') +
+          '</div>';
+      }
+      out += '<div class="week"><header><h3>Week of ' + pretty(start) + '</h3>' +
+        '<span class="wmeta">' + used + ' post' + (used === 1 ? '' : 's') + '</span></header>' +
+        '<div class="slots">' + cells + '</div></div>';
+    }
+    document.getElementById('weeks').innerHTML = out;
+  }
+
+  document.getElementById('weeks').addEventListener('change', function (e) {
+    var sel = e.target.closest('select[data-day]');
+    if (!sel) return;
+    if (sel.value) state.cal[sel.dataset.day] = sel.value;
+    else delete state.cal[sel.dataset.day];
+    save(); renderCal();
+  });
+  document.getElementById('weeks').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-clear]');
+    if (!b) return;
+    delete state.cal[b.dataset.clear]; save(); renderCal();
+  });
+
+  document.getElementById('lib').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-sched]');
+    if (!b) return;
+    // Drop it on the next free weekday slot, which is what "schedule this" means
+    // in practice — nobody wants to hunt for an empty square.
+    for (var w = 0; w < WEEKS; w++) {
+      var start = monday(w);
+      for (var i = 0; i < 5; i++) {
+        var d = new Date(start); d.setDate(d.getDate() + i);
+        if (d < new Date().setHours(0, 0, 0, 0)) continue;
+        var k = key(d);
+        if (!state.cal[k]) {
+          state.cal[k] = b.dataset.sched; save(); renderCal();
+          toast('Scheduled for ' + pretty(d));
+          return;
+        }
+      }
+    }
+    toast('Every weekday in the next eight weeks is taken');
+  });
+
+  document.getElementById('fill').addEventListener('click', function () {
+    // Three a week, rotating the five ads evenly so the scoreboard is fair.
+    var ads = CREATIVES.filter(function (c) { return c.arg !== 'Menu'; });
+    var n = 0, today = new Date().setHours(0, 0, 0, 0);
+    for (var w = 0; w < WEEKS; w++) {
+      var start = monday(w);
+      [0, 2, 4].forEach(function (off) {
+        var d = new Date(start); d.setDate(d.getDate() + off);
+        if (d < today) return;
+        state.cal[key(d)] = ads[n % ads.length].id; n++;
+      });
+    }
+    save(); renderCal();
+    toast('Filled — five arguments, evenly rotated');
+  });
+
+  document.getElementById('clearCal').addEventListener('click', function () {
+    state.cal = {}; save(); renderCal(); toast('Calendar cleared');
+  });
+
+  // ---- caption + the rules ----------------------------------------------
+  var cap = document.getElementById('cap');
+  cap.value = state.caption || '';
+
+  // These are the same two rules enforced across all 41 printed pieces. They
+  // are here because a caption typed in a hurry is exactly where a claim that
+  // was carefully removed everywhere else creeps back in.
+  var RULES = [
+    {
+      test: function (t) { return !/no[\s-]+contracts?/i.test(t); },
+      pass: 'No "no contracts" claim.',
+      fail: '<b>Remove "no contracts".</b> Jobber has customers sign a service agreement at ' +
+            'signup, so it is not true. Say "month to month" instead.'
+    },
+    {
+      test: function (t) {
+        var re = /(free[^.!?]{0,30}cleanup|cleanup[^.!?]{0,15}free|first[^.!?]{0,20}free)/ig;
+        var m, ok = true;
+        while ((m = re.exec(t)) !== null) {
+          var around = t.slice(Math.max(0, m.index - 70), m.index + m[0].length + 70);
+          if (!/plan/i.test(around)) ok = false;
+        }
+        return ok;
+      },
+      pass: 'The free cleanup carries its condition.',
+      fail: '<b>The offer needs its condition.</b> The website offers a free first cleanup ' +
+            '<i>with any residential plan</i>. A bare version is one you have to take back on ' +
+            'the phone, and Meta rejects ads for it.'
+    },
+    {
+      test: function (t) { return /618-719-3802|maxspoocrew\.com/i.test(t); },
+      pass: 'There is a way to reach you.',
+      fail: 'No phone number or website in the caption. Add one — the image alone does not ' +
+            'give someone a tappable way to act.',
+      soft: true
+    },
+    {
+      test: function (t) { return t.trim().length > 0 && t.length <= 500; },
+      pass: 'Length is comfortable for the feed.',
+      fail: 'Over 500 characters. Facebook truncates long captions behind "See more", and the ' +
+            'part after the fold is rarely read.',
+      soft: true
+    }
+  ];
+
+  function runChecks() {
+    var t = cap.value;
+    document.getElementById('capLen').textContent = t.length + ' characters';
+    document.getElementById('checks').innerHTML = RULES.map(function (r) {
+      var ok = r.test(t);
+      if (!t.trim()) ok = r.soft ? false : true;
+      var cls = ok ? 'pass' : (r.soft ? 'warn' : 'fail');
+      var ic = ok ? '✓' : (r.soft ? '!' : '×');
+      return '<div class="chk ' + cls + '"><span class="ic">' + ic + '</span><span>' +
+             (ok ? r.pass : r.fail) + '</span></div>';
+    }).join('');
+  }
+  cap.addEventListener('input', function () {
+    state.caption = cap.value; save(); runChecks();
+  });
+
+  document.getElementById('snips').innerHTML = SNIPPETS.map(function (s, i) {
+    return '<button data-snip="' + i + '">' + s + '</button>';
+  }).join('');
+  document.getElementById('snips').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-snip]');
+    if (!b) return;
+    cap.value = (cap.value ? cap.value.replace(/\s*$/, '\n\n') : '') + SNIPPETS[+b.dataset.snip];
+    state.caption = cap.value; save(); runChecks(); cap.focus();
+  });
+
+  document.getElementById('copyCap').addEventListener('click', function () {
+    navigator.clipboard.writeText(cap.value).then(
+      function () { toast('Caption copied'); },
+      function () { toast('Could not copy — select it and use ⌘C'); });
+  });
+
+  // ---- results ----------------------------------------------------------
+  var FIELDS = ['spend', 'reach', 'clicks', 'leads'];
+
+  function renderPerf() {
+    var rows = CREATIVES.filter(function (c) { return c.arg !== 'Menu'; });
+    var cpls = rows.map(function (c) {
+      var p = state.perf[c.id] || {};
+      return (p.leads > 0 && p.spend > 0) ? p.spend / p.leads : null;
+    });
+    var real = cpls.filter(function (v) { return v !== null; });
+    var best = real.length > 1 ? Math.min.apply(null, real) : null;
+    var worst = real.length > 1 ? Math.max.apply(null, real) : null;
+
+    document.querySelector('#perf tbody').innerHTML = rows.map(function (c, i) {
+      var p = state.perf[c.id] || {};
+      var cpl = cpls[i];
+      var cls = cpl === null ? '' : (cpl === best ? 'best' : (cpl === worst ? 'worst' : ''));
+      var verdict = cpl === null ? '<span class="rank">no data</span>'
+        : (cpl === best ? '<span class="rank" style="color:var(--ok)">put budget here</span>'
+        : (cpl === worst ? '<span class="rank" style="color:var(--stop)">kill or rewrite</span>'
+        : '<span class="rank">keep running</span>'));
+      return '<tr class="' + cls + '"><td><b>' + c.name + '</b><br>' +
+        '<span style="font-size:12px;color:var(--ink-3)">' + c.arg + '</span></td>' +
+        FIELDS.map(function (f) {
+          return '<td class="n"><input type="number" min="0" step="' +
+            (f === 'spend' ? '0.01' : '1') + '" data-id="' + c.id + '" data-f="' + f +
+            '" value="' + (p[f] != null ? p[f] : '') + '"></td>';
+        }).join('') +
+        '<td class="n">' + (cpl === null ? '—' : '$' + cpl.toFixed(2)) + '</td>' +
+        '<td class="n">' + verdict + '</td></tr>';
+    }).join('');
+
+    var tot = {spend: 0, reach: 0, clicks: 0, leads: 0};
+    rows.forEach(function (c) {
+      var p = state.perf[c.id] || {};
+      FIELDS.forEach(function (f) { tot[f] += (+p[f] || 0); });
+    });
+    document.getElementById('tSpend').textContent = tot.spend ? '$' + tot.spend.toFixed(2) : '—';
+    document.getElementById('tReach').textContent = tot.reach ? tot.reach.toLocaleString() : '—';
+    document.getElementById('tClicks').textContent = tot.clicks ? tot.clicks.toLocaleString() : '—';
+    document.getElementById('tLeads').textContent = tot.leads || '—';
+    document.getElementById('tCPL').textContent =
+      (tot.leads > 0 && tot.spend > 0) ? '$' + (tot.spend / tot.leads).toFixed(2) : '—';
+  }
+
+  document.querySelector('#perf').addEventListener('input', function (e) {
+    var inp = e.target.closest('input[data-id]');
+    if (!inp) return;
+    var p = state.perf[inp.dataset.id] || (state.perf[inp.dataset.id] = {});
+    p[inp.dataset.f] = inp.value === '' ? null : +inp.value;
+    save();
+    // Re-render only the derived cells, so the field you are typing in keeps focus.
+    var active = document.activeElement;
+    var id = active && active.dataset ? active.dataset.id : null;
+    var f = active && active.dataset ? active.dataset.f : null;
+    renderPerf();
+    if (id && f) {
+      var again = document.querySelector('input[data-id="' + id + '"][data-f="' + f + '"]');
+      if (again) { again.focus(); again.setSelectionRange(again.value.length, again.value.length); }
+    }
+  });
+
+  // ---- export / import ---------------------------------------------------
+  document.getElementById('export').addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(state, null, 2)], {type: 'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'maxspoocrew-posts-' + new Date().toISOString().slice(0, 10) + '.json';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    toast('Exported');
+  });
+  document.getElementById('importBtn').addEventListener('click', function () {
+    document.getElementById('importFile').click();
+  });
+  document.getElementById('importFile').addEventListener('change', function (e) {
+    var f = e.target.files[0];
+    if (!f) return;
+    var fr = new FileReader();
+    fr.onload = function () {
+      try {
+        var next = JSON.parse(fr.result);
+        if (!next || typeof next !== 'object') throw new Error('shape');
+        state = {cal: next.cal || {}, caption: next.caption || '', perf: next.perf || {}};
+        save(); renderCal(); renderPerf();
+        cap.value = state.caption; runChecks();
+        toast('Imported');
+      } catch (err) { toast('That file is not a plan export'); }
+    };
+    fr.readAsText(f);
+    e.target.value = '';
+  });
+
+  renderCal(); runChecks(); renderPerf();
+})();
+</script>
+</body>
+</html>
