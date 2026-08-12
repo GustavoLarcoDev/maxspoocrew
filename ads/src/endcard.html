@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>End card 720x1280 - Max's Poo Crew</title>
+<style>
+/* =============================================================================
+   The last two seconds of both commercials.
+   -----------------------------------------------------------------------------
+   Sora is not asked to draw the logo, the phone number or the website. Generated
+   lettering comes out misspelled at this size and cannot be corrected without
+   regenerating the whole clip, so this card is rendered separately at exactly
+   720 x 1280 and composited onto the tail of the footage by end_card.py.
+
+   The practical payoff: if the number or the offer ever changes, this file is
+   edited and the commercials are rebuilt in seconds - no new footage.
+   ========================================================================== */
+
+@font-face{
+  font-family:"Archivo Black";
+  src:url("../../print/src/fonts/ArchivoBlack-Regular.ttf") format("truetype");
+  font-weight:400 900; font-style:normal; font-display:block;
+}
+@font-face{
+  font-family:"Archivo";
+  src:url("../../print/src/fonts/Archivo-Variable.ttf") format("truetype-variations");
+  font-weight:100 900; font-style:normal; font-display:block;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:720px;height:1280px;overflow:hidden}
+body{
+  background:linear-gradient(160deg,#C8102E,#8E0B20);
+  font-family:Archivo,system-ui,sans-serif;
+  color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 60px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.logo{width:340px;background:#fff;border-radius:38px;padding:26px;
+  box-shadow:0 16px 44px rgba(40,4,10,.42)}
+.logo img{width:100%;height:auto;display:block}
+
+.slogan{font-family:"Archivo Black";font-size:52px;line-height:1.05;
+  letter-spacing:-.02em;margin-top:52px}
+.slogan em{font-style:normal;color:#FFD166}
+
+.rule{width:120px;height:7px;background:#FFD166;border-radius:4px;margin:40px 0}
+
+.phone{font-family:"Archivo Black";font-size:88px;letter-spacing:-.035em;
+  line-height:1;white-space:nowrap}
+.web{font-family:"Archivo Black";font-size:40px;color:#FFD166;margin-top:16px;
+  letter-spacing:-.01em}
+
+.offer{margin-top:44px;background:#FFD166;color:#331411;
+  font-family:"Archivo Black";font-size:30px;padding:18px 34px;border-radius:999px}
+
+.area{font-weight:700;font-size:24px;color:rgba(255,255,255,.9);margin-top:34px;
+  line-height:1.45}
+</style>
+</head>
+<body>
+
+<span class="logo"><img src="../../img/logo-full.webp" alt="Max's Poo Crew"></span>
+
+<p class="slogan">We scoop it.<br><em>You enjoy it.</em></p>
+
+<span class="rule"></span>
+
+<p class="phone">618-719-3802</p>
+<p class="web">maxspoocrew.com</p>
+
+<span class="offer">First cleanup free</span>
+
+<p class="area">St. Louis &amp; St. Charles County<br>Mon&ndash;Sat, 7am&ndash;6pm</p>
+
+</body>
+</html>
