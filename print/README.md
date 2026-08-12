@@ -30,6 +30,7 @@ primero.
 | `ai-sticker-bumper.html` | Calcomanía de paragolpes | 10 × 3 in |
 | `flyer-h-price.html` … `flyer-q-move.html` | Los diez flyers carta | 8.5 × 11 in |
 | `rack-h-price.html` … `rack-q-move.html` | Los mismos diez, verticales | 3.75 × 8.25 in |
+| `simple-1-scoop.html` … `simple-3-barefoot.html` | Los tres simples: foto, logo, una línea | 8.5 × 11 in |
 
 Los diez flyers H–Q comparten `src/_flyer.css` y las diez rack cards comparten
 `src/_rack.css`; los dos esqueletos traen la cabecera, el cuerpo, el CTA, el pie y la
@@ -130,15 +131,45 @@ tamaño los mismos archivos caen debajo de 65 dpi y el pelo de los perros se pon
 Para algo más grande hay que volver a generar el arte en tamaño mayor; los prompts están
 en `Claude Images/prompts/` fuera de este repo.
 
-## El código QR
+## Los códigos QR
 
-`src/qr-site.svg` apunta a `https://maxspoocrew.com` con corrección de errores alta, que es
-la que aguanta que el impreso se raye o se moje. Para regenerarlo:
+Hay uno por formato, no uno solo. Todos van a `https://maxspoocrew.com/` pero cada uno se
+etiqueta a sí mismo — `?utm_source=trifold&utm_medium=print`, `flyer`, `rack`, `card`,
+`eddm`, `ratecard`, `hanger`, `menu` — así Analytics puede decir **qué pieza** trae los
+escaneos y no solo que "el impreso funciona". Las 41 piezas originales ya usaban esa
+convención; los nombres se conservan igual para que los datos viejos y los nuevos caigan
+en el mismo balde.
 
 ```bash
 pip install segno
-python -c "import segno; segno.make('https://maxspoocrew.com', error='h').save('src/qr-site.svg', scale=10, border=0, dark='#331411')"
+python make_qr.py        # reescribe los ocho SVG en src/
 ```
+
+Tres detalles del generador que no son cosméticos:
+
+- **`border=4`** — la zona de silencio que pide la norma. Sin ella el lector no tiene de
+  dónde agarrarse y el escaneo se vuelve poco fiable *de una forma que solo aparece en
+  papel*. Los QR se generaron una vez con `border=0` y decodificaban a veces sí y a veces
+  no según la pieza; en papel eso es una tirada perdida.
+- **`light="#ffffff"`** — campo blanco explícito, para que el código lleve su propio
+  contraste en vez de heredar lo que el arte le ponga detrás.
+- **`error='h'`** — la corrección de errores alta, que aguanta que el impreso se raye o se
+  moje.
+
+### Comprobar que escanean
+
+```bash
+pip install opencv-python-headless pymupdf
+python checkqr.py
+```
+
+Decodifica el QR **del PDF ya renderizado**, no del SVG, y falla si alguna pieza deja de
+escanear o pierde su etiqueta. Un QR que no lee no se descubre en pantalla. Tarda unos
+minutos porque prueba varias resoluciones: en una hoja cargada el detector se engancha con
+una línea de tabla o el borde de una foto y reporta "no hay QR" cuando sí lo hay.
+
+Las piezas sin QR a propósito son los carteles, los imanes y las calcomanías: se leen desde
+un auto en movimiento, donde nadie está escaneando nada.
 
 ## Antes de mandar a imprimir
 

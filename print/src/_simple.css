@@ -1,0 +1,61 @@
+/* =============================================================================
+   The plain ones: photograph, logo, one sentence, phone, QR. Nothing else.
+   -----------------------------------------------------------------------------
+   Load after _base.css. These exist because the other flyers argue, and
+   sometimes there is no room to argue - a noticeboard at ten feet, a shop
+   window, a stack by a till. One picture and one line does that better than
+   four sections of reasoning.
+
+   The photograph is generated artwork with no lettering in it, so all the type
+   here is real text: the price can change without regenerating anything.
+
+   Effective resolution: 1536px across an 8.75in sheet, about 176 dpi.
+   ========================================================================== */
+
+@page{ size: 8.75in 11.25in; margin:0 }
+
+.sheet{width:8.75in;height:11.25in;display:flex;flex-direction:column;
+  background:var(--cream)}
+
+/* --- the photograph ------------------------------------------------------ */
+.art{height:5.9in;flex:none;overflow:hidden;position:relative}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+/* A short scrim along the bottom edge so the logo badge never sits on a
+   bright patch of lawn. */
+.art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5in;
+  background:linear-gradient(180deg,rgba(20,8,6,0),rgba(20,8,6,.45))}
+
+/* --- the badge ----------------------------------------------------------- */
+/* Sits astride the join, which is the only decorative move on the page. */
+.badge{width:1.75in;margin:-.88in auto 0;position:relative;z-index:2;
+  background:#fff;border-radius:.2in;padding:.11in;
+  box-shadow:0 .06in .2in rgba(60,10,15,.22)}
+.badge img{width:100%;height:auto;display:block}
+
+/* --- the message --------------------------------------------------------- */
+.msg{flex:1;padding:.26in .7in 0;text-align:center;display:flex;
+  flex-direction:column;align-items:center}
+.msg h1{font-size:.62in;line-height:1;max-width:6.9in}
+.msg h1 em{font-style:normal;color:var(--red)}
+.msg .sub{font-size:.145in;color:var(--ink-2);line-height:1.44;margin-top:.14in;
+  max-width:5.6in}
+
+/* phone and QR, side by side, as large as the space allows */
+.contactrow{margin-top:auto;display:flex;align-items:center;justify-content:center;
+  gap:.3in;padding-bottom:.2in}
+.contactrow .qr{width:1.15in;flex:none;padding:0;background:none}
+.contactrow .qr img{width:100%;height:auto;display:block}
+.contactrow .num{font-family:var(--display);font-size:.54in;color:var(--ink);
+  letter-spacing:-.03em;line-height:1}
+.contactrow .web{font-family:var(--display);font-size:.21in;color:var(--red-ink);
+  margin-top:.04in}
+.contactrow .scan{font-size:.096in;color:var(--ink-3);margin-top:.05in}
+.contactrow .left{text-align:left}
+
+/* --- footer bar ---------------------------------------------------------- */
+.bar{flex:none;background:linear-gradient(160deg,var(--red),var(--red-deep));
+  color:#fff;padding:.22in .7in;display:flex;justify-content:space-between;
+  align-items:center;gap:.24in}
+.bar .offer{font-family:var(--display);font-size:.24in;color:var(--butter)}
+.bar .where{font-family:var(--body);font-weight:700;font-size:.125in;
+  color:rgba(255,255,255,.92);text-align:right;line-height:1.4}
