@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>Door hanger - Ink - Max's Poo Crew</title>
+<link rel="stylesheet" href="../../print/src/_base.css">
+<style>
+/* Trim 3.75 x 8.25 in, 1/8in bleed -> 4 x 8.5in sheet. Same die-cut zone as
+   Bold: top 1.55in of the panel stays empty for the knob hole. Dark panel,
+   butter accent - the quiet version for HOA and rental streets. */
+@page{ size: 4in 8.5in; margin:0 }
+.sheet{width:4in;height:8.5in;display:flex;flex-direction:column;background:#fff}
+
+.top{padding:1.55in .32in .22in;background:var(--ink);color:var(--cream);
+  text-align:center}
+.top .logo--boxed{width:.86in;margin:0 auto .1in;padding:.04in}
+.top .logo--boxed img{width:100%;height:auto;display:block}
+.top .eyebrow{font-size:.08in;letter-spacing:.14em;color:var(--butter)}
+.top h1{font-size:.32in;color:#fff;margin-top:.07in;line-height:1.05}
+.top .lede{color:rgba(255,241,235,.86);font-size:.1in;margin-top:.1in;line-height:1.42}
+
+.body{flex:1;padding:.26in .3in .18in;display:flex;flex-direction:column}
+.reasons{display:flex;flex-direction:column;gap:.12in}
+.r{background:var(--cream-2);border-radius:.11in;padding:.14in .15in}
+.r h3{color:var(--red-ink);font-size:.125in;font-family:var(--display);font-weight:900}
+.r p{font-size:.095in;color:var(--ink-2);line-height:1.42;margin-top:.045in}
+
+.cta{margin-top:auto;display:flex;gap:.14in;align-items:center;
+  background:linear-gradient(160deg,var(--red),var(--red-deep));border-radius:.12in;
+  padding:.16in .17in;color:#fff}
+.cta .qr{width:.86in;flex:none;background:#fff;padding:.055in;border-radius:.07in}
+.cta .qr img{width:100%;height:auto;display:block}
+.cta .num{font-family:var(--display);font-size:.23in;color:#fff;
+  letter-spacing:-.025em;line-height:1}
+.cta .web{font-family:var(--display);font-size:.115in;color:var(--butter);margin-top:.035in}
+.cta p{font-size:.086in;color:rgba(255,255,255,.82);line-height:1.35;margin-top:.06in}
+
+.foot{padding:.16in .3in .22in;text-align:center}
+.foot .pill{font-size:.095in;padding:.06in .14in}
+.foot .fine{font-size:.075in;color:var(--ink-3);line-height:1.34;margin-top:.07in}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <header class="top">
+    <span class="logo logo--boxed"><img src="../../img/logo-full.webp" alt="Max's Poo Crew"></span>
+    <p class="eyebrow">Dog waste removal</p>
+    <h1>Yard duty,<br>handled weekly.</h1>
+    <p class="lede">You never see us &mdash; you just stop seeing the mess.</p>
+  </header>
+
+  <div class="body">
+
+    <div class="reasons">
+      <div class="r">
+        <h3>Built for HOAs and rentals</h3>
+        <p>Common areas, dog parks, and between-tenant resets, billed to the
+          property or the resident.</p>
+      </div>
+      <div class="r">
+        <h3>Month to month</h3>
+        <p>No long-term contract to sign or cancel later.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <span class="qr"><img src="../../print/src/qr-hanger.svg" alt="QR code to maxspoocrew.com"></span>
+      <div>
+        <p class="num">636-681-4832</p>
+        <p class="web">maxspoocrew.com</p>
+        <p>Ask about a standing rate for the whole complex.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <span class="pill">First cleanup free with any plan</span>
+    <p class="fine">St. Louis &amp; St. Charles County &middot; Mon&ndash;Sat, 7am&ndash;6pm</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
