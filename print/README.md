@@ -190,5 +190,5 @@ que reimprimir.
 - **Los precios están escritos en el arte.** Si cambian en la web, hay que cambiarlos en
   `sheet-rates.html`, `trifold-l-plans.html`, `card-visit.html` y `postcard-eddm.html` y
   volver a compilar.
-- El teléfono, el correo y la dirección salen del sitio: 618-719-3802,
+- El teléfono, el correo y la dirección salen del sitio: 636-681-4832,
   maxspoocrew@outlook.com, 229 Chesterfield Business Pkwy, Chesterfield, MO 63005.

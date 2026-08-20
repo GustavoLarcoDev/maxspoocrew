@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Business card, ink - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 3.5 x 2 in on Vistaprint's 3.61 x 2.11 in sheet — 0.055in bleed a side.
+   Live copy stays 0.125in inside the trim, so 0.18in from the sheet edge.
+
+   The quiet one of the three. The dark panel and the butter accent do the work,
+   the slogan leads, and the dogs sit small so the card reads as a service you
+   would trust with a key to the side gate. */
+@page{ size: 3.61in 2.11in; margin:0 }
+
+.sheet{width:3.61in;height:2.11in}
+
+/* --- front --------------------------------------------------------------- */
+.front{display:flex;align-items:center;gap:.16in;padding:.24in}
+.front .copy{flex:1;min-width:0}
+.front h1{font-size:.185in;color:var(--cream);line-height:1.06}
+.front h1 em{font-style:normal;color:var(--butter)}
+.front .rule{width:.34in;height:.03in;margin:.075in 0 .085in}
+.front .phone{font-family:var(--display);font-size:.185in;color:#fff;
+  letter-spacing:-.02em;white-space:nowrap;line-height:1}
+.front .web{font-family:var(--body);font-weight:600;font-size:.088in;
+  color:rgba(255,241,235,.82);margin-top:.045in}
+.front .mark{width:1.02in;height:auto;display:block;flex:none}
+
+/* --- back ---------------------------------------------------------------- */
+.back{display:flex;flex-direction:column;justify-content:center;padding:.24in .26in}
+.back .eyebrow{font-size:.078in}
+.back h2{font-size:.135in;color:var(--ink);line-height:1.12;margin-top:.05in}
+.back .grid{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:.16in;margin-top:.1in}
+.back .rows{min-width:0}
+.back .row{font-size:.083in;color:var(--ink-2);line-height:1.45}
+.back .row b{color:var(--ink);font-weight:700}
+.back .qr{width:.68in;flex:none;padding:0;background:none}
+.back .pill{font-size:.076in;padding:.04in .09in;margin-top:.085in}
+</style>
+</head>
+<body>
+
+<!-- front -->
+<div class="sheet front panel-ink">
+  <div class="copy">
+    <h1>We scoop it.<br><em>You enjoy it.</em></h1>
+    <span class="rule rule--butter"></span>
+    <p class="phone">636-681-4832</p>
+    <p class="web">maxspoocrew.com</p>
+  </div>
+  <img class="mark" src="../../img/logo-mark.webp" alt="Max's Poo Crew">
+</div>
+
+<!-- back -->
+<div class="sheet back panel-cream">
+  <p class="eyebrow">Dog waste removal</p>
+  <h2>Weekly, biweekly, or a one-time reset.</h2>
+  <div class="grid">
+    <div class="rows">
+      <p class="row"><b>Call or text</b> 636-681-4832</p>
+      <p class="row"><b>Email</b> maxspoocrew@outlook.com</p>
+      <p class="row"><b>Serving</b> St. Louis &amp; St. Charles County, MO</p>
+      <span class="pill">First cleanup free with any plan</span>
+    </div>
+    <span class="qr"><img src="qr-card.svg" alt="QR code to maxspoocrew.com"></span>
+  </div>
+</div>
+
+</body>
+</html>
