@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Card - Crest - Max's Poo Crew</title>
+<link rel="stylesheet" href="../../print/src/_base.css">
+<style>
+/* Cut to Vistaprint's own standard business card sheet.
+     full bleed 3.61 x 2.11 in   (1083 x 633 px @ 300dpi)
+     trim       3.50 x 2.00 in   (1050 x 600)
+     safe       3.36 x 1.86 in   (1008 x 558)
+   The bleed is 0.055in a side, not the 0.125in the rest of the collateral
+   carries, so every padding here is >= 0.2in from the sheet edge - which puts
+   live copy 0.075in inside the safe box even if the trim drifts.
+
+   Layout follows the Missouri Search Dogs card: mark boxed on the left, a gold
+   hairline dividing it from a stacked contact block, and an inset rule above a
+   footer row. The phone is the hero because on a service card that is the one
+   thing a reader needs. */
+@page{ size: 3.61in 2.11in; margin:0 }
+/* _base.css paints the page canvas white. The sheet lands on a fractional
+   pixel at 3.61 x 2.11in, so that white shows through as a hairline along the
+   bottom edge - inside the bleed, but a cut that drifts outward would leave it
+   on the finished card. Painting the canvas the card colour removes it. */
+html,body{background:var(--ink)}
+.sheet{width:3.61in;height:2.11in;background:var(--ink);color:var(--cream)}
+
+/* --- front --------------------------------------------------------------- */
+.front{display:flex;flex-direction:column;height:100%}
+.front .main{flex:1;display:flex;align-items:center;padding:.2in .2in 0}
+.front .mark{flex:none;width:.82in;height:.82in;border-radius:.08in;background:#fff;
+  display:grid;place-items:center;padding:.05in}
+.front .mark img{width:100%;height:auto;display:block}
+.front .div{flex:none;width:1px;height:.95in;background:rgba(255,209,102,.45);
+  margin:0 .17in}
+.front .contact{flex:1;min-width:0}
+.front .org{font-family:var(--body);font-weight:700;font-size:.058in;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--butter)}
+.front .phone{font-family:var(--display);font-size:.225in;color:#fff;
+  letter-spacing:-.02em;white-space:nowrap;margin-top:.035in;line-height:1}
+.front .service{font-family:var(--body);font-weight:700;font-size:.058in;
+  letter-spacing:.11em;text-transform:uppercase;color:rgba(255,241,235,.7);
+  margin-top:.045in}
+.front .rule{width:.36in;height:1.5px;background:var(--butter);margin:.07in 0;
+  display:block}
+.front .row{font-size:.07in;color:rgba(255,241,235,.88);line-height:1.5}
+.front .base{border-top:1px solid rgba(255,209,102,.4);margin:0 .2in;
+  padding:.075in 0 .13in;display:flex;align-items:center;justify-content:space-between}
+.front .tag{font-family:var(--display);font-size:.08in;letter-spacing:.045em;
+  text-transform:uppercase;color:var(--butter)}
+.front .dom{font-family:var(--display);font-size:.088in;color:#fff}
+
+/* --- back ---------------------------------------------------------------- */
+.back{height:100%;padding:.2in;display:flex;gap:.17in;align-items:center}
+.back .qr{width:.78in;flex:none;background:#fff;padding:.05in;border-radius:.07in}
+.back .qr img{width:100%;height:auto;display:block}
+.back .info{flex:1;min-width:0}
+.back h2{font-size:.13in;color:#fff;line-height:1.14;font-family:var(--display);
+  font-weight:900}
+.back .rule{width:.3in;height:1.5px;background:var(--butter);margin:.065in 0 .075in;
+  display:block}
+.back .row{font-size:.075in;color:rgba(255,241,235,.85);line-height:1.45}
+.back .row b{color:var(--butter);font-weight:700}
+.back .pill{display:inline-block;background:var(--butter);color:var(--ink);
+  font-family:var(--display);border-radius:99in;font-size:.068in;
+  padding:.035in .08in;margin-top:.07in}
+</style>
+</head>
+<body>
+
+<!-- front -->
+<div class="sheet front">
+  <div class="main">
+    <span class="mark"><img src="../../img/logo-mark.webp" alt="Max's Poo Crew"></span>
+    <span class="div"></span>
+    <div class="contact">
+      <p class="org">Max&rsquo;s Poo Crew</p>
+      <p class="phone">636-681-4832</p>
+      <p class="service">Dog waste removal</p>
+      <span class="rule"></span>
+      <p class="row">maxspoocrew@outlook.com</p>
+      <p class="row">St. Louis &amp; St. Charles County</p>
+    </div>
+  </div>
+  <div class="base">
+    <span class="tag">We scoop it. You enjoy it.</span>
+    <span class="dom">maxspoocrew.com</span>
+  </div>
+</div>
+
+<!-- back -->
+<div class="sheet back">
+  <span class="qr"><img src="../../print/src/qr-card.svg" alt="QR code to maxspoocrew.com"></span>
+  <div class="info">
+    <h2>Get a price in about a minute.</h2>
+    <span class="rule"></span>
+    <p class="row"><b>Call or text</b> 636-681-4832</p>
+    <p class="row"><b>Email</b> maxspoocrew@outlook.com</p>
+    <p class="row"><b>Hours</b> Mon&ndash;Sat, 7am&ndash;6pm</p>
+    <span class="pill">First cleanup free with any residential plan</span>
+  </div>
+</div>
+
+</body>
+</html>
