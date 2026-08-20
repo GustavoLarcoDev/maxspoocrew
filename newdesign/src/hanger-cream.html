@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>Door hanger - Cream - Max's Poo Crew</title>
+<link rel="stylesheet" href="../../print/src/_base.css">
+<style>
+/* Trim 3.75 x 8.25 in, 1/8in bleed -> 4 x 8.5in sheet. The photo runs full
+   width through the top 3.5in, so the die-cut knob hole (centered 1.75in
+   down) lands on lawn, not on a word - same clearance as Bold and Ink, just
+   met with a photograph instead of flat color. */
+@page{ size: 4in 8.5in; margin:0 }
+.sheet{width:4in;height:8.5in;display:flex;flex-direction:column;background:#fff}
+
+.art{position:relative;height:3.5in;overflow:hidden;background:var(--ink)}
+.art img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2in;
+  background:linear-gradient(180deg,rgba(18,7,5,0) 0%,rgba(18,7,5,.85) 100%)}
+.art .copy{position:absolute;left:0;right:0;bottom:0;padding:0 .32in .22in;
+  text-align:center;color:#fff}
+.art .eyebrow{font-size:.08in;letter-spacing:.14em;color:var(--butter)}
+.art h1{font-size:.3in;color:#fff;margin-top:.06in;line-height:1.06}
+
+.body{flex:1;padding:.26in .3in .18in;display:flex;flex-direction:column;
+  background:var(--cream)}
+.lede-b{font-size:.1in;color:var(--ink-2);line-height:1.44;text-align:center}
+.reasons{display:flex;flex-direction:column;gap:.12in;margin-top:.18in}
+.r{background:#fff;border-radius:.11in;padding:.14in .15in}
+.r h3{color:var(--red-ink);font-size:.125in;font-family:var(--display);font-weight:900}
+.r p{font-size:.095in;color:var(--ink-2);line-height:1.42;margin-top:.045in}
+
+.cta{margin-top:auto;display:flex;gap:.14in;align-items:center;
+  background:var(--ink);border-radius:.12in;padding:.16in .17in;color:var(--cream)}
+.cta .qr{width:.86in;flex:none;background:#fff;padding:.055in;border-radius:.07in}
+.cta .qr img{width:100%;height:auto;display:block}
+.cta .num{font-family:var(--display);font-size:.23in;color:var(--butter);
+  letter-spacing:-.025em;line-height:1}
+.cta .web{font-family:var(--display);font-size:.115in;color:#fff;margin-top:.035in}
+.cta p{font-size:.086in;color:#C9A79C;line-height:1.35;margin-top:.06in}
+
+.foot{padding:.16in .3in .22in;text-align:center;background:var(--cream)}
+.foot .pill{font-size:.095in;padding:.06in .14in}
+.foot .fine{font-size:.075in;color:var(--ink-3);line-height:1.34;margin-top:.07in}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="art">
+    <img src="../../print/src/img-ai/mini-pair.jpg" alt="Max and Simon on a mowed lawn">
+    <div class="copy">
+      <p class="eyebrow">New to the neighborhood?</p>
+      <h1>First cleanup&rsquo;s on us.</h1>
+    </div>
+  </div>
+
+  <div class="body">
+    <p class="lede-b">Plans start at $65/mo, flat rate, no quote visit needed.</p>
+
+    <div class="reasons">
+      <div class="r">
+        <h3>Tell us how many dogs</h3>
+        <p>That is the whole quote &mdash; no walkthrough required.</p>
+      </div>
+      <div class="r">
+        <h3>Run by people who love dogs</h3>
+        <p>The same team behind Max&rsquo;s K9 Club in Chesterfield.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <span class="qr"><img src="../../print/src/qr-hanger.svg" alt="QR code to maxspoocrew.com"></span>
+      <div>
+        <p class="num">636-681-4832</p>
+        <p class="web">maxspoocrew.com</p>
+        <p>Scan to book your free first cleanup.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span class="pill">First cleanup free with any plan</span>
+    <p class="fine">St. Louis &amp; St. Charles County &middot; Mon&ndash;Sat, 7am&ndash;6pm</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

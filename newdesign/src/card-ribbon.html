@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Card - Ribbon - Max's Poo Crew</title>
+<link rel="stylesheet" href="../../print/src/_base.css">
+<style>
+/* Trim 3.5 x 2 in, US standard. 0.125in bleed all round.
+   White card, logo left, contact right - same brief as Paper, but the tagline
+   moves into a solid red ribbon along the bottom edge instead of sitting in
+   plain type, and the phone number turns red to match it. */
+@page{ size: 3.75in 2.25in; margin:0 }
+.sheet{width:3.75in;height:2.25in;background:#fff;color:var(--ink)}
+
+/* --- front --------------------------------------------------------------- */
+.front{display:flex;flex-direction:column;height:100%}
+.front .row{flex:1;padding:.26in .28in 0;display:flex;align-items:center;
+  justify-content:space-between;gap:.2in}
+.front .mark{width:.9in;height:auto;display:block;flex:none}
+.front .contact{text-align:right}
+.front .phone{font-family:var(--display);font-size:.27in;color:var(--red);
+  letter-spacing:-.025em;white-space:nowrap;line-height:1}
+.front .web{font-family:var(--display);font-size:.125in;color:var(--ink);
+  margin-top:.05in}
+.front .area{font-size:.075in;color:var(--ink-3);margin-top:.06in;line-height:1.3}
+.front .ribbon{background:var(--red);color:#fff;text-align:center;
+  padding:.085in .2in;font-family:var(--display);font-size:.115in;
+  letter-spacing:-.005em}
+.front .ribbon em{font-style:normal;color:var(--butter)}
+
+/* --- back ---------------------------------------------------------------- */
+.back{display:flex;flex-direction:column;height:100%}
+.back .ribbon{background:var(--red);color:#fff;text-align:center;
+  padding:.085in .2in;font-family:var(--display);font-size:.115in}
+.back .body{flex:1;padding:.2in .28in;display:flex;gap:.2in;align-items:center;
+  background:#fff}
+.back .qr{width:.78in;flex:none;background:#fff;border:1.5px solid var(--rule);
+  padding:.05in;border-radius:.08in}
+.back .qr img{width:100%;height:auto;display:block}
+.back .info{flex:1;min-width:0}
+.back .row{font-size:.086in;color:var(--ink-2);line-height:1.44}
+.back .row b{color:var(--ink);font-weight:700}
+.back .pill{font-size:.078in;padding:.042in .095in;margin-top:.07in}
+</style>
+</head>
+<body>
+
+<!-- front -->
+<div class="sheet front">
+  <div class="row">
+    <img class="mark" src="../../img/logo-mark.webp" alt="Max's Poo Crew">
+    <div class="contact">
+      <p class="phone">636-681-4832</p>
+      <p class="web">maxspoocrew.com</p>
+      <p class="area">St. Louis &amp; St. Charles County, MO</p>
+    </div>
+  </div>
+  <p class="ribbon">We scoop it. <em>You enjoy it.</em></p>
+</div>
+
+<!-- back -->
+<div class="sheet back">
+  <p class="ribbon">Get a price in about a minute</p>
+  <div class="body">
+    <span class="qr"><img src="../../print/src/qr-card.svg" alt="QR code to maxspoocrew.com"></span>
+    <div class="info">
+      <p class="row"><b>Call or text</b> 636-681-4832</p>
+      <p class="row"><b>Email</b> maxspoocrew@outlook.com</p>
+      <p class="row"><b>Hours</b> Mon&ndash;Sat, 7am&ndash;6pm</p>
+      <span class="pill">First cleanup free with any plan</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
