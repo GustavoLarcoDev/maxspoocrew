@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Card - Panel - Max's Poo Crew</title>
+<link rel="stylesheet" href="../../print/src/_base.css">
+<style>
+/* Vistaprint standard business card sheet - see card-crest.html for the full
+   trim/safe arithmetic. Same brief again, but the mark sits in a red panel
+   that bleeds off the left edge.
+
+   Deliberately no inset border on this one. A hairline frame near the trim is
+   the classic way a bleed card goes wrong: the cut drifts up to about 1/16in,
+   which on a 0.1in border shows as one edge twice the width of the other. A
+   panel that bleeds off the edge cannot go uneven that way. */
+@page{ size: 3.61in 2.11in; margin:0 }
+/* _base.css paints the page canvas white. The sheet lands on a fractional
+   pixel at 3.61 x 2.11in, so that white shows through as a hairline along the
+   bottom edge - inside the bleed, but a cut that drifts outward would leave it
+   on the finished card. Painting the canvas the card colour removes it. */
+html,body{background:var(--ink)}
+.sheet{width:3.61in;height:2.11in;background:var(--ink);color:var(--cream)}
+
+/* --- front --------------------------------------------------------------- */
+.front{display:flex;height:100%}
+.front .panel{flex:none;width:1.22in;padding:.16in;display:grid;place-items:center;
+  background:linear-gradient(160deg,var(--red),var(--red-deep))}
+.front .panel img{width:100%;height:auto;display:block}
+.front .body{flex:1;min-width:0;display:flex;flex-direction:column;
+  justify-content:center;padding:.2in .2in .2in .18in}
+.front .org{font-family:var(--body);font-weight:700;font-size:.058in;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--butter)}
+.front .phone{font-family:var(--display);font-size:.215in;color:#fff;
+  letter-spacing:-.02em;white-space:nowrap;margin-top:.035in;line-height:1}
+.front .service{font-family:var(--body);font-weight:700;font-size:.056in;
+  letter-spacing:.11em;text-transform:uppercase;color:rgba(255,241,235,.7);
+  margin-top:.042in}
+.front .rule{width:.32in;height:1.5px;background:var(--butter);margin:.07in 0;
+  display:block}
+.front .row{font-size:.068in;color:rgba(255,241,235,.88);line-height:1.5}
+.front .tag{font-family:var(--display);font-size:.082in;color:var(--butter);
+  margin-top:.08in}
+
+/* --- back ---------------------------------------------------------------- */
+.back{height:100%;padding:.2in;display:flex;gap:.17in;align-items:center}
+.back .qr{width:.78in;flex:none;background:#fff;padding:.05in;border-radius:.07in}
+.back .qr img{width:100%;height:auto;display:block}
+.back .info{flex:1;min-width:0}
+.back h2{font-size:.13in;color:#fff;line-height:1.14;font-family:var(--display);
+  font-weight:900}
+.back .rule{width:.3in;height:1.5px;background:var(--butter);margin:.065in 0 .075in;
+  display:block}
+.back .row{font-size:.075in;color:rgba(255,241,235,.85);line-height:1.45}
+.back .row b{color:var(--butter);font-weight:700}
+.back .pill{display:inline-block;background:var(--butter);color:var(--ink);
+  font-family:var(--display);border-radius:99in;font-size:.068in;
+  padding:.035in .08in;margin-top:.07in}
+</style>
+</head>
+<body>
+
+<!-- front -->
+<div class="sheet front">
+  <div class="panel"><img src="../../img/logo-mark.webp" alt="Max's Poo Crew"></div>
+  <div class="body">
+    <p class="org">Max&rsquo;s Poo Crew</p>
+    <p class="phone">636-681-4832</p>
+    <p class="service">Dog waste removal</p>
+    <span class="rule"></span>
+    <p class="row">maxspoocrew.com</p>
+    <p class="row">St. Louis &amp; St. Charles County</p>
+    <p class="tag">We scoop it. You enjoy it.</p>
+  </div>
+</div>
+
+<!-- back -->
+<div class="sheet back">
+  <span class="qr"><img src="../../print/src/qr-card.svg" alt="QR code to maxspoocrew.com"></span>
+  <div class="info">
+    <h2>Get a price in about a minute.</h2>
+    <span class="rule"></span>
+    <p class="row"><b>Call or text</b> 636-681-4832</p>
+    <p class="row"><b>Email</b> maxspoocrew@outlook.com</p>
+    <p class="row"><b>Hours</b> Mon&ndash;Sat, 7am&ndash;6pm</p>
+    <span class="pill">First cleanup free with any residential plan</span>
+  </div>
+</div>
+
+</body>
+</html>
