@@ -96,9 +96,15 @@ Salieron del sitio, que es de donde se copiaron: el sitio venía atrasado respec
 
 ## El eslogan
 
-El impreso lleva **"We scoop it. You enjoy it."**, que es el H1 del sitio.
+Es **"We Scoop Poop"**, y va igual en las 26 piezas y en el sitio.
 
-Las animaciones cierran con **"We scoop your yard. You enjoy it."**, que es lo que se pidió. Son
-dos líneas distintas dando vueltas; conviene decidir cuál queda. Ya pasó una vez que una pieza
-salió con un eslogan que no era de la casa (*"No pile left behind"*, que además parafraseaba a un
-competidor) y hubo que rehacerla.
+Antes hubo tres lineas dando vueltas a la vez: el H1 viejo del sitio ("We scoop it. You enjoy
+it.") en el impreso, una variante ("We scoop your yard. You enjoy it.") en las animaciones, y
+esta. Eso es exactamente lo que no se nota hasta que un cliente ve el flyer y el feed diciendo
+cosas distintas.
+
+Antes de eso ya habia pasado algo peor: tres piezas salieron con *"No pile left behind"*, que no
+era de la casa y ademas parafraseaba de cerca la linea de un competidor. En el costado de una
+camioneta eso es un problema, no un detalle.
+
+Por las dudas: el eslogan **no se inventa ni se mejora**. Sale de Mike.
