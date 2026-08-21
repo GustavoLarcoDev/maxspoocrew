@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="1">
+<title>AI reimagine - retro poster advertisement - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* Trim 8.5 x 11 in, 0.125in bleed all round.
+
+   The crest is generated artwork and its banner ribbon was deliberately left
+   blank, so the words on it below are real type sitting over the illustration.
+   Change the tagline and nothing has to be redrawn.
+
+   Effective resolution: 1024px across 6.4in of crest, about 160 dpi. */
+@page{ size: 8.75in 11.25in; margin:0 }
+
+.sheet{width:8.75in;height:11.25in;display:flex;flex-direction:column;
+  background:#F2EBDD;padding:.125in}
+
+.frame{flex:1;border:.055in solid var(--red);border-radius:.06in;
+  padding:.34in .4in .3in;display:flex;flex-direction:column;text-align:center}
+
+.kicker{font-family:var(--display);font-size:.185in;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--red-ink)}
+h1{font-size:.7in;color:#1A1614;line-height:.98;margin-top:.08in}
+h1 em{font-style:normal;color:var(--red)}
+
+/* The crest sits in the middle with the ribbon roughly 78% down its height.
+   The tagline is absolutely positioned onto that ribbon. */
+.crest{position:relative;width:5.1in;margin:.14in auto 0;flex:none}
+.crest img{width:100%;height:auto;display:block}
+.crest .ribbon{position:absolute;left:0;right:0;top:75.5%;
+  font-family:var(--display);font-size:.2in;color:#F7EFE0;letter-spacing:.02em;
+  text-align:center}
+
+.strap{margin-top:.16in;font-size:.122in;color:#5C4A3A;line-height:1.46;
+  max-width:6.1in;margin-inline:auto}
+
+.rates{display:flex;gap:.13in;margin-top:.18in}
+.r{flex:1;border:.02in solid #D8C7A8;border-radius:.1in;padding:.11in .1in}
+.r .n{font-family:var(--body);font-weight:700;font-size:.082in;letter-spacing:.08em;
+  text-transform:uppercase;color:#8A7355}
+.r .v{font-family:var(--display);font-size:.28in;color:var(--red);line-height:1;
+  margin-top:.04in;letter-spacing:-.02em}
+
+.foot{margin-top:auto;background:#1A1614;border-radius:.1in;color:#F2EBDD;
+  padding:.2in .26in;display:flex;justify-content:space-between;align-items:center;
+  gap:.2in;text-align:left}
+.foot .num{font-family:var(--display);font-size:.4in;color:var(--butter);
+  letter-spacing:-.025em;line-height:1}
+.foot .web{font-family:var(--display);font-size:.17in;color:#F2EBDD;margin-top:.03in}
+.foot .qr{width:1.05in;flex:none;padding:.05in;background:#F2EBDD;border-radius:.05in}
+.foot .qr img{width:100%;height:auto;display:block}
+.foot .right{text-align:right}
+.foot .right p{font-size:.098in;color:#B8A88F;line-height:1.4}
+.foot .right b{color:var(--butter);font-family:var(--display);font-size:.115in;
+  display:block;margin-bottom:.03in}
+
+.fine{margin-top:.14in;font-size:.082in;color:#9A876B;line-height:1.4}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="frame">
+
+    <p class="kicker">Since the yard stopped being fun</p>
+    <h1>We scoop.<br><em>You do not.</em></h1>
+
+    <div class="crest">
+      <img src="img-ai/ai-crest.jpg" alt="">
+      <p class="ribbon">WE SCOOP IT &middot; YOU ENJOY IT</p>
+    </div>
+
+    <p class="strap">Dog waste removal across St.&nbsp;Louis and St.&nbsp;Charles County.
+      Same day every week, every corner walked, waste hauled off your property. Your first
+      cleanup is free with any plan, however bad it has got.</p>
+
+    <div class="rates">
+      <div class="r"><p class="n">Twice weekly</p><p class="v">$90</p></div>
+      <div class="r"><p class="n">Weekly</p><p class="v">$80</p></div>
+      <div class="r"><p class="n">Every other week</p><p class="v">$70</p></div>
+      <div class="r"><p class="n">Once a month</p><p class="v">$65</p></div>
+    </div>
+
+    <div class="foot">
+      <span class="qr"><img src="qr-flyer.svg" alt="QR code to maxspoocrew.com"></span>
+      <div>
+        <p class="num">636-681-4832</p>
+        <p class="web">maxspoocrew.com</p>
+      </div>
+      <div class="right">
+        <p><b>Mon&ndash;Sun, 7am&ndash;6pm</b>
+          One-time cleanup $100, no plan needed.<br>
+          Run by the team behind Max&rsquo;s K9 Club.</p>
+      </div>
+    </div>
+
+    <p class="fine">Rates are per month for one dog on a standard residential lot up to
+      1/3 acre. Two dogs add $10, three or more add $10 to $20.</p>
+
+  </div>
+</div>
+
+</body>
+</html>
