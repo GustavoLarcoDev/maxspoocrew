@@ -4,10 +4,34 @@
 a ningún CDN. Se sube tal cual a Netlify, Vercel, Cloudflare Pages, GitHub Pages o
 cualquier hosting compartido.
 
+## Las carpetas
+
+| Carpeta | Qué es |
+|---|---|
+| `index.html` + `img/` | El sitio. Es lo único que hace falta subir para la web pública |
+| `marketing/` | **Todo el material, en una página**: tres ejemplos de cada formato y las fuentes que los generan |
+| `ops/` `plan/` `board/` | Herramientas internas: operación, plan, tablero |
+| `social/` `client-map/` | Planificador de publicaciones y mapa de clientes |
+| `_source/` | Los originales sin procesar. No hace falta subirla |
+
+En agosto de 2026 `/cards`, `/flyers`, `/newdesign`, `/animation`, `/print` y `/ads` se
+juntaron en `/marketing`. Estaban repartidas seis páginas de revisión con material
+repetido; ahora es una sola con tres ejemplos por formato. Lo que se retiró sigue en el
+historial de git.
+
+## Dos datos que estaban mal en todo
+
+Hasta esa misma fecha, el sitio y las 40 y pico de piezas decían **"St. Louis & St. Charles
+County"** y **"Mon–Sat"**. Es **Counties** —son dos condados— y **Mon–Sun**, porque la
+cuadrilla trabaja todos los días. Ya está corregido acá y en los datos estructurados, que
+le venían diciendo a Google que el negocio cerraba los domingos. **Lo impreso antes lleva
+el texto viejo.**
+
 ## Qué subir
 
-Solo `index.html` y `img/`. La carpeta `_source/` son los originales sin procesar
-(5.6 MB) y **no hace falta subirla** — está ahí por si algún día se necesita reencuadrar
+Para la web pública, solo `index.html` y `img/`. `marketing/` es material interno
+(está marcado `noindex`). La carpeta `_source/` son los originales sin procesar y **no hace
+falta subirla** — está ahí por si algún día se necesita reencuadrar
 una foto desde el archivo grande.
 
 ## Las imágenes
@@ -72,6 +96,8 @@ Todo el contenido salió del sitio actual (maxspoocrew.com). Vale la pena confir
   la placa del collar y del nombre de un archivo. Los nombres salen en los pies de foto.
 - **Redes sociales.** El sitio actual no mostraba ninguna. Si Mike tiene Facebook o
   Instagram, conviene agregarlas al footer.
+- **Horario y zona.** Ya corregidos a Mon–Sun y "Counties" en plural, según lo confirmó
+  Mike en agosto de 2026.
 
 ## Detalles técnicos que ya vienen resueltos
 

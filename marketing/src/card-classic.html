@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="pages" content="2">
+<title>Card - Classic - Max's Poo Crew</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+/* White card built on the Missouri Search Dogs layout: the full lockup on the
+   left, a hairline divider, the contact block stacked on the right, then a
+   rule across the foot with the tagline under it.
+
+   Cut to Vistaprint's own business card sheet:
+     full bleed 3.61 x 2.11 in   (1083 x 633 px @ 300dpi)
+     trim       3.50 x 2.00 in
+     safe       3.36 x 1.86 in
+
+   Live copy sits 0.2in in from the sheet edge - 0.145in inside the trim, so it
+   stays in the safe box even when the cut drifts.
+
+   Nothing bleeds here on purpose. A white card on white stock carries no ink
+   at the trim, so a drifting cut has nothing to expose - the one real
+   advantage this format has over the dark cards.
+
+   Where Jan's card puts a person's name under the org, a service card puts the
+   number: it is the one thing anyone needs off it. Swapping in a name and
+   title is a two-line edit if Mike wants one. */
+@page{ size: 3.61in 2.11in; margin:0 }
+.sheet{width:3.61in;height:2.11in;background:#fff;color:var(--ink)}
+
+/* --- front --------------------------------------------------------------- */
+.front{display:flex;flex-direction:column}
+.front .main{flex:1;display:flex;align-items:center;padding:.18in .22in 0}
+.front .logo{flex:none;width:1.06in;height:auto;display:block}
+.front .div{flex:none;width:1px;height:1.16in;background:rgba(200,16,46,.28);
+  margin:0 .17in}
+.front .contact{flex:1;min-width:0}
+.front .org{font-family:var(--body);font-weight:700;font-size:.063in;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--red-ink)}
+.front .phone{font-family:var(--display);font-size:.234in;color:var(--ink);
+  letter-spacing:-.022em;white-space:nowrap;margin-top:.04in;line-height:1}
+.front .service{font-family:var(--body);font-weight:700;font-size:.062in;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+  margin-top:.05in}
+.front .rule{width:.4in;height:1.5px;background:var(--red);margin:.085in 0;
+  display:block}
+.front .row{font-size:.078in;color:var(--ink-2);line-height:1.52}
+.front .base{border-top:1px solid rgba(200,16,46,.28);margin:0 .22in;
+  padding:.095in 0 .2in;display:flex;align-items:center;
+  justify-content:space-between}
+.front .tag{font-family:var(--display);font-size:.09in;letter-spacing:.045em;
+  text-transform:uppercase;color:var(--red-ink)}
+.front .dom{font-family:var(--display);font-size:.098in;color:var(--ink)}
+
+/* --- back ---------------------------------------------------------------- */
+/* Jan's back is the patch, a rule and the domain, centred and nothing else.
+   Same here, with the QR added under it - the whole print system tags its
+   scans by format, and a card with no code is a card that cannot be counted. */
+.back{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:.18in;text-align:center}
+.back .logo{width:.82in;height:auto;display:block}
+.back .rule{width:.5in;height:1.5px;background:var(--red);margin:.08in 0 .065in;
+  display:block}
+.back .dom{font-family:var(--display);font-size:.09in;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink)}
+.back .qr{width:.54in;margin-top:.075in;background:#fff;padding:0}
+.back .qr img{width:100%;height:auto;display:block}
+</style>
+</head>
+<body>
+
+<!-- front -->
+<div class="sheet front">
+  <div class="main">
+    <img class="logo" src="../../img/logo-full.webp" alt="Max's Poo Crew">
+    <span class="div"></span>
+    <div class="contact">
+      <p class="org">Max&rsquo;s Poo Crew</p>
+      <p class="phone">636-681-4832</p>
+      <p class="service">Dog waste removal</p>
+      <span class="rule"></span>
+      <p class="row">maxspoocrew@outlook.com</p>
+      <p class="row">St. Louis &amp; St. Charles Counties</p>
+    </div>
+  </div>
+  <div class="base">
+    <span class="tag">We scoop it. You enjoy it.</span>
+    <span class="dom">maxspoocrew.com</span>
+  </div>
+</div>
+
+<!-- back -->
+<div class="sheet back">
+  <img class="logo" src="../../img/logo-full.webp" alt="Max's Poo Crew">
+  <span class="rule"></span>
+  <p class="dom">maxspoocrew.com</p>
+  <span class="qr"><img src="qr-card.svg" alt="QR code to maxspoocrew.com"></span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* =============================================================================
+   Shared skeleton for the Vistaprint door hangers.
+   -----------------------------------------------------------------------------
+   Load after _base.css.
+
+   SIZE. Vistaprint sells door hangers at 3.5 x 8.5 in and 4.5 x 11 in. These
+   are the big one:
+
+     trim   4.50 x 11.00 in
+     bleed  0.125 in a side  ->  sheet 4.75 x 11.25 in
+     safe   keep live copy 0.25 in inside the trim, i.e. 0.375 in from the sheet
+
+   Note this is NOT 4.25 x 11. That size is real, but it belongs to GotPrint and
+   Conquest, not Vistaprint - upload a 4.25 file to Vistaprint and it gets
+   scaled. The size lives in the @page rule below and build.py reads it from
+   there, so re-cutting the whole set for another printer is one line.
+
+   THE HOLE. The die is Vistaprint's, not ours: a hanger hole near the top with
+   a slit up to the edge. We never draw it - drawing a hole that does not line
+   up with their die is worse than drawing none. What we do is keep the top
+   2.5 in of the sheet free of anything that matters, so wherever their die
+   lands it cuts through flat colour instead of through a word.
+
+   Structure:
+     .sheet
+       header.top    the clear zone, then logo, eyebrow, headline
+       .body         one argument
+       footer.foot   phone, QR, offer
+
+   As with the rack cards, .cta uses margin-top:auto, so tightening the spacing
+   inside the body frees nothing. What does buy room is the header: 2.5in of
+   clearance plus a big lockup leaves under five inches for the actual argument,
+   which is why the type here runs smaller than the rack cards even though the
+   sheet is larger.
+   ========================================================================== */
+
+@page{ size: 4.75in 11.25in; margin:0 }
+
+.sheet{width:4.75in;height:11.25in;display:flex;flex-direction:column;
+  background:var(--cream)}
+
+/* --- header ---------------------------------------------------------------
+   The 2.5in of padding at the top is the die-cut clearance, not a design
+   choice. It looks like a lot of empty red on screen; on the door it is the
+   part wrapped around the knob and largely unseen. */
+.top{padding:2.5in .42in .22in;text-align:center;color:#fff;
+  background:linear-gradient(160deg,var(--red),var(--red-deep))}
+.top--ink{background:var(--ink);color:var(--cream)}
+.top .logo--boxed{width:1.16in;margin:0 auto .12in;padding:.05in}
+.top .logo--boxed img{width:100%;height:auto;display:block}
+.top .eyebrow{font-size:.1in;letter-spacing:.14em}
+.top h1{font-size:.40in;color:#fff;margin-top:.1in;line-height:1.03}
+.top h1.tight{font-size:.35in}
+.top .lede{color:rgba(255,255,255,.94);font-size:.118in;margin-top:.1in;
+  line-height:1.42}
+
+/* one dark line under the header, for the thing that has to be read */
+.strap{background:var(--ink);color:var(--butter);padding:.08in .42in;
+  text-align:center;font-family:var(--display);font-size:.15in}
+
+/* --- body ---------------------------------------------------------------- */
+.body{flex:1;padding:.24in .42in .18in;display:flex;flex-direction:column}
+h2{font-size:.24in;line-height:1.06}
+.rule{width:.62in;height:.045in;margin:.12in 0 .16in}
+.body > p{font-size:.125in;color:var(--ink-2);line-height:1.5}
+.body > p + p{margin-top:.1in}
+
+.reasons{display:flex;flex-direction:column;gap:.12in}
+.r{background:#fff;border-radius:.13in;padding:.15in .16in}
+.r h3{color:var(--red-ink);font-size:.155in}
+.r p{font-size:.115in;color:var(--ink-2);line-height:1.44;margin-top:.055in}
+
+.plans{display:flex;flex-direction:column}
+.pl{display:flex;justify-content:space-between;align-items:baseline;
+  padding:.085in 0;border-bottom:1px solid var(--rule)}
+.pl:first-child{border-top:1px solid var(--rule-2)}
+.pl .n{font-family:var(--display);font-size:.145in;color:var(--ink)}
+.pl .n small{display:block;font-family:var(--body);font-weight:600;font-size:.098in;
+  color:var(--ink-3);margin-top:.02in}
+.pl .v{font-family:var(--display);font-size:.26in;color:var(--red);
+  letter-spacing:-.02em}
+
+.panel{background:var(--cream-2);border-radius:.13in;padding:.15in .16in}
+.panel .k{font-family:var(--body);font-weight:700;font-size:.095in;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:.09in}
+.panel ul{margin:0;padding:0;list-style:none}
+.panel li{font-size:.118in;color:var(--ink-2);line-height:1.44;padding-left:.18in;
+  position:relative;margin-bottom:.03in}
+.panel li::before{content:"";position:absolute;left:.04in;top:.07in;
+  width:.055in;height:.055in;border-radius:50%;background:var(--rule-2)}
+
+/* --- call to action ------------------------------------------------------ */
+.cta{margin-top:auto;display:flex;gap:.18in;align-items:center;
+  background:var(--ink);border-radius:.15in;padding:.16in .17in;color:var(--cream)}
+.cta .qr{width:.92in;flex:none;background:#fff;padding:.06in;border-radius:.08in}
+.cta .qr img{width:100%;height:auto;display:block}
+.cta .num{font-family:var(--display);font-size:.27in;color:var(--butter);
+  letter-spacing:-.025em;line-height:1}
+.cta .web{font-family:var(--display);font-size:.145in;color:#fff;margin-top:.04in}
+.cta p{font-size:.105in;color:#C9A79C;line-height:1.36;margin-top:.07in}
+
+/* --- footer -------------------------------------------------------------- */
+.foot{padding:.13in .42in .22in;text-align:center}
+.foot .pill{font-size:.103in;padding:.06in .15in}
+.foot .fine{font-size:.095in;color:var(--ink-3);line-height:1.34;margin-top:.09in}

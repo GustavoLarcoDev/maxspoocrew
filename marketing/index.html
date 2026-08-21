@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing — Max's Poo Crew</title>
+<meta name="description" content="Every piece of Max's Poo Crew marketing on one page: business cards, door hangers, flyers, rack cards, mini cards, magnets, photo pieces, animations and the two commercials.">
+<meta name="theme-color" content="#C8102E">
+<!-- For choosing artwork, not for customers. Keep it out of search. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/maxspoocrew/img/logo-mark.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================================================
+   The one marketing page. Everything that used to live in /cards, /flyers,
+   /newdesign, /animation, /print and /ads is here - three examples per format -
+   and the sources that build them sit in src/ beside it.
+
+   Tokens are inline rather than shared, for the same reason the old review
+   pages held theirs: this page has to keep working if the site stylesheet moves.
+   ========================================================================== */
+:root{
+  --red:#C8102E; --red-ink:#A50D26; --butter:#FFD166;
+  --cream:#FFF1EB; --cream-2:#FFE3DA; --surface:#fff;
+  --ink:#331411; --ink-2:#6E433A; --ink-3:#9C6E62;
+  --rule:#F3D3C7; --rule-2:#E6BCAC;
+  --display:ui-rounded,"SF Pro Rounded","Archivo Black",Archivo,system-ui,sans-serif;
+  --body:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --sh:0 4px 10px rgba(140,20,30,.07),0 26px 52px -26px rgba(140,20,30,.34);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --red:#E23048; --red-ink:#FF9182; --cream:#1F0D0A; --cream-2:#2A1310;
+  --surface:#2C1512; --ink:#FFF1EA; --ink-2:#D6ADA2; --ink-3:#A97E74;
+  --rule:#412019; --rule-2:#552C23;
+  --sh:0 4px 10px rgba(0,0,0,.36),0 26px 52px -26px rgba(0,0,0,.66);
+}}
+:root[data-theme="dark"]{
+  --red:#E23048; --red-ink:#FF9182; --cream:#1F0D0A; --cream-2:#2A1310;
+  --surface:#2C1512; --ink:#FFF1EA; --ink-2:#D6ADA2; --ink-3:#A97E74;
+  --rule:#412019; --rule-2:#552C23;
+  --sh:0 4px 10px rgba(0,0,0,.36),0 26px 52px -26px rgba(0,0,0,.66);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(18px,4vw,34px)}
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;line-height:1.06;
+  letter-spacing:-.022em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
+
+.hero{background:linear-gradient(160deg,var(--red),#8E0B20);color:#fff;
+  padding:clamp(34px,6vw,60px) 0 clamp(30px,5vw,50px)}
+.hero h1{font-size:clamp(30px,5.4vw,50px);color:#fff}
+.hero p{margin-top:14px;max-width:64ch;color:rgba(255,255,255,.93);font-size:clamp(16px,1.8vw,18.5px)}
+.hero .hero-note{margin-top:10px;font-family:var(--display);font-size:14px;letter-spacing:.06em;
+  color:var(--butter);text-transform:uppercase}
+.eyebrow{display:inline-flex;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--butter)}
+.back{display:inline-block;margin-top:22px;color:#fff;font-weight:600;font-size:15px}
+
+/* Eight formats on one page needs a way to get around it. */
+.jump{position:sticky;top:0;z-index:20;background:var(--surface);
+  border-bottom:1px solid var(--rule);padding:9px 0}
+.jump .wrap{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin}
+.jump a{flex:none;text-decoration:none;font-size:13.5px;font-weight:700;
+  padding:7px 13px;border-radius:999px;background:var(--cream-2);color:var(--ink-2);
+  white-space:nowrap}
+.jump a:hover{background:var(--red);color:#fff}
+
+section{padding-block:clamp(32px,4.6vw,52px);scroll-margin-top:62px}
+section:nth-of-type(even){background:var(--cream-2)}
+.shead{max-width:74ch;margin-bottom:24px}
+.shead .eyebrow{color:var(--red-ink)}
+.shead h2{font-size:clamp(23px,3.4vw,33px);margin-top:8px}
+.shead p{margin-top:11px;color:var(--ink-2)}
+.grid{display:grid;gap:clamp(18px,2.4vw,26px);
+  grid-template-columns:repeat(auto-fit,minmax(272px,1fr))}
+
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:18px;
+  overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column}
+.card-h{padding:17px clamp(14px,2vw,20px) 4px}
+.card-h h3{font-size:18px}
+.role{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--red-ink);margin-top:3px}
+.card-b{padding:7px clamp(14px,2vw,20px) 12px}
+.card-b p{color:var(--ink-2);font-size:14.5px}
+
+.shots{padding:0 clamp(14px,2vw,20px);display:grid;gap:9px}
+.shots--2{grid-template-columns:1fr 1fr}
+.shots img{width:100%;height:auto;display:block;border-radius:9px;
+  border:1px solid var(--rule-2);cursor:zoom-in;background:var(--cream-2)}
+.screen{margin:0 clamp(14px,2vw,20px);border-radius:12px;overflow:hidden;
+  border:1px solid var(--rule-2);background:#0d0d0f}
+.screen video{width:100%;height:auto;display:block}
+
+.dl{margin:13px clamp(14px,2vw,20px) 17px;display:flex;gap:9px;align-items:center;
+  flex-wrap:wrap;margin-top:auto}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;
+  text-decoration:none;font-family:var(--display);font-weight:800;font-size:14.5px;
+  padding:10px 17px;border-radius:999px;transition:transform .16s,background-color .16s}
+.btn:hover{background:var(--red-ink);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px;fill:currentColor}
+.meta{font-size:12.5px;color:var(--ink-3)}
+
+.note{background:var(--surface);border:1px solid var(--rule);border-left:5px solid var(--red);
+  border-radius:14px;padding:18px 20px;margin-top:20px}
+.note h3{font-size:17.5px}
+.note p{color:var(--ink-2);margin-top:7px;font-size:15.5px}
+.note p + p{margin-top:10px}
+.note ul{margin:9px 0 0;padding-left:20px;color:var(--ink-2);font-size:15.5px}
+.note li{margin-top:5px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;
+  background:var(--cream-2);padding:.1em .35em;border-radius:5px}
+
+.facts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));
+  margin-top:18px}
+.fact{background:var(--surface);border:1px solid var(--rule);border-radius:13px;padding:14px 16px}
+.fact .k{font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3)}
+.fact .v{font-family:var(--display);font-size:16.5px;margin-top:4px;display:block}
+
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh}
+dialog::backdrop{background:rgba(20,4,6,.88)}
+dialog img{max-width:96vw;max-height:92vh;border-radius:10px;display:block}
+dialog button{position:fixed;top:16px;right:18px;background:#fff;color:#111;border:0;
+  border-radius:999px;padding:9px 17px;font-family:var(--display);font-size:15px;cursor:pointer}
+
+footer{padding-block:34px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:14.5px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <span class="eyebrow">Max&rsquo;s Poo Crew &middot; for approval</span>
+  <h1>Marketing</h1>
+  <p class="hero-note">8 formats &middot; 3 of each &middot; every file downloadable</p>
+  <p>Everything in one place: three examples of every format, each rendered from the file the
+  printer actually receives, and each <b>Download</b> button hands you that file. The sources that
+  build them sit in <code>src/</code> next to this page, so any of it can be changed and rebuilt.</p>
+  <a class="back" href="../">&larr; The website</a>
+</div></div>
+
+<nav class="jump"><div class="wrap">
+  <a href="#cards">Business cards</a>
+  <a href="#hangers">Door hangers</a>
+  <a href="#flyers">Flyers</a>
+  <a href="#rack">Rack cards</a>
+  <a href="#mini">Mini cards</a>
+  <a href="#magnets">Magnets</a>
+  <a href="#photo">Photo pieces</a>
+  <a href="#video">Animations</a>
+</div></nav>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">On every piece</span>
+    <h2>The facts, in one place</h2>
+    <p>These appear on all 26 pieces below. Two of them were wrong on everything &mdash; including
+    the website &mdash; until August 2026; there is a note about that at the foot of this page.</p>
+  </div>
+  <div class="facts">
+    <div class="fact"><span class="k">Phone</span><span class="v">636-681-4832</span></div>
+    <div class="fact"><span class="k">Website</span><span class="v">maxspoocrew.com</span></div>
+    <div class="fact"><span class="k">Email</span><span class="v">maxspoocrew@outlook.com</span></div>
+    <div class="fact"><span class="k">Service area</span><span class="v">St. Louis &amp; St. Charles Counties</span></div>
+    <div class="fact"><span class="k">Hours</span><span class="v">Mon&ndash;Sun, 7am&ndash;6pm</span></div>
+    <div class="fact"><span class="k">Offer</span><span class="v">First cleanup free, any residential plan</span></div>
+  </div>
+</div></section>
+
+<section id="cards"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">1 &middot; trim 3.5 &times; 2 in</span>
+    <h2>Business cards</h2>
+    <p>White card, the full logo on the left, contact stacked on the right, tagline along the bottom &mdash; laid out the way Jan&rsquo;s Missouri Search Dogs card is. Cut to <b>3.61 &times; 2.11 in</b>, which is Vistaprint&rsquo;s own sheet for a 3.5 &times; 2 in card. Double-sided: page 1 front, page 2 back.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Classic</h3><p class="role">Closest to the reference</p></div>
+        <div class="card-b"><p>Hairline divider, rule across the foot.</p></div>
+        <div class="shots shots--2"><div><img src="img/card-classic-p1.jpg" alt="Classic page 1" loading="lazy" decoding="async"></div><div><img src="img/card-classic-p2.jpg" alt="Classic page 2" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/card-classic.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.3 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Quiet</h3><p class="role">The restrained one</p></div>
+        <div class="card-b"><p>No divider; the white space does the work.</p></div>
+        <div class="shots shots--2"><div><img src="img/card-quiet-p1.jpg" alt="Quiet page 1" loading="lazy" decoding="async"></div><div><img src="img/card-quiet-p2.jpg" alt="Quiet page 2" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/card-quiet.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.3 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Band</h3><p class="role">The tagline shouts</p></div>
+        <div class="card-b"><p>Red band bleeding off three edges.</p></div>
+        <div class="shots shots--2"><div><img src="img/card-band-p1.jpg" alt="Band page 1" loading="lazy" decoding="async"></div><div><img src="img/card-band-p2.jpg" alt="Band page 2" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/card-band.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.3 MB</span></div>
+      </article>
+  </div>
+</div></section>
+<section id="hangers"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">2 &middot; trim 4.5 &times; 11 in</span>
+    <h2>Door hangers</h2>
+    <p>Cut to <b>Vistaprint&rsquo;s own door-hanger size, 4.5 &times; 11 in</b> (sheet 4.75 &times; 11.25 with bleed). The top <b>2.5 in of every one is deliberately clear of anything that matters</b>: the knob hole is cut by Vistaprint&rsquo;s die, not drawn by us, so wherever it lands it goes through flat colour or lawn rather than through a word.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Already on your street</h3><p class="role">Cold-canvass the block</p></div>
+        <div class="card-b"><p>Social proof is the whole pitch.</p></div>
+        <div class="shots"><div><img src="img/hanger-vp-street-p1.jpg" alt="Already on your street page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/hanger-vp-street.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.4 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Every price we charge</h3><p class="role">The number first</p></div>
+        <div class="card-b"><p>All four plans, no quote visit.</p></div>
+        <div class="shots"><div><img src="img/hanger-vp-price-p1.jpg" alt="Every price we charge page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/hanger-vp-price.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.4 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>First cleanup&rsquo;s on us</h3><p class="role">New streets</p></div>
+        <div class="card-b"><p>Max and Simon carry the top half.</p></div>
+        <div class="shots"><div><img src="img/hanger-vp-photo-p1.jpg" alt="First cleanup&rsquo;s on us page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/hanger-vp-photo.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.5 MB</span></div>
+      </article>
+  </div>
+</div></section>
+<section id="flyers"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">3 &middot; trim 8.5 &times; 11 in</span>
+    <h2>Letter flyers</h2>
+    <p>One page, one argument. These three cover the offer, the health case and the new-mover case; they share a skeleton, so twenty pieces still read as one company.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Free first cleanup</h3><p class="role">The offer</p></div>
+        <div class="card-b"><p>Leads with what costs them nothing.</p></div>
+        <div class="shots"><div><img src="img/flyer-i-free-p1.jpg" alt="Free first cleanup page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/flyer-i-free.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.5 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>The health case</h3><p class="role">Why it matters</p></div>
+        <div class="card-b"><p>The yard, the kids, the shoes.</p></div>
+        <div class="shots"><div><img src="img/flyer-j-health-p1.jpg" alt="The health case page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/flyer-j-health.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.5 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Just moved in?</h3><p class="role">New homeowners</p></div>
+        <div class="card-b"><p>Catches people before a habit forms.</p></div>
+        <div class="shots"><div><img src="img/flyer-q-move-p1.jpg" alt="Just moved in? page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/flyer-q-move.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.4 MB</span></div>
+      </article>
+  </div>
+</div></section>
+<section id="rack"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">4 &middot; trim 3.75 &times; 8.25 in</span>
+    <h2>Rack cards</h2>
+    <p>The same three arguments at about a third of the copy, for countertop holders, envelopes and pockets. Narrow enough that a headline wants four words, not seven.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Free first cleanup</h3><p class="role">The offer</p></div>
+        
+        <div class="shots"><div><img src="img/rack-i-free-p1.jpg" alt="Free first cleanup page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/rack-i-free.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.4 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>The health case</h3><p class="role">Why it matters</p></div>
+        
+        <div class="shots"><div><img src="img/rack-j-health-p1.jpg" alt="The health case page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/rack-j-health.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.4 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Just moved in?</h3><p class="role">New homeowners</p></div>
+        
+        <div class="shots"><div><img src="img/rack-q-move-p1.jpg" alt="Just moved in? page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/rack-q-move.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.4 MB</span></div>
+      </article>
+  </div>
+</div></section>
+<section id="mini"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">5 &middot; trim 3.75 &times; 8.25 in</span>
+    <h2>Mini cards</h2>
+    <p>Photo, logo, tagline, phone, website, QR. No prices and no dated argument, so a box of these keeps for years &mdash; the rest of the collateral goes stale the moment a rate moves.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Black Lab</h3><p class="role">Single dog</p></div>
+        
+        <div class="shots"><div><img src="img/mini-1-sit-p1.jpg" alt="Black Lab page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/mini-1-sit.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.6 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Chocolate Lab</h3><p class="role">Single dog</p></div>
+        
+        <div class="shots"><div><img src="img/mini-2-lie-p1.jpg" alt="Chocolate Lab page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/mini-2-lie.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.6 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Max and Simon</h3><p class="role">The pair</p></div>
+        
+        <div class="shots"><div><img src="img/mini-3-pair-p1.jpg" alt="Max and Simon page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/mini-3-pair.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.7 MB</span></div>
+      </article>
+  </div>
+</div></section>
+<section id="magnets"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">6 &middot; trim 18 &times; 12 &middot; 12 &times; 8 &middot; 24 &times; 6 in</span>
+    <h2>Vehicle magnets</h2>
+    <p>Read from a moving car, so there is no QR on any of them &mdash; nobody scans a truck door. Effective resolution is about 125 dpi, which is normal for vehicle graphics; <b>do not scale these up to a wrap</b>.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Truck door</h3><p class="role">18 &times; 12 in</p></div>
+        
+        <div class="shots"><div><img src="img/magnet-door-p1.jpg" alt="Truck door page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/magnet-door.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.3 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Car door</h3><p class="role">12 &times; 8 in</p></div>
+        
+        <div class="shots"><div><img src="img/magnet-compact-p1.jpg" alt="Car door page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/magnet-compact.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.3 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Tailgate strip</h3><p class="role">24 &times; 6 in</p></div>
+        
+        <div class="shots"><div><img src="img/magnet-tailgate-p1.jpg" alt="Tailgate strip page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/magnet-tailgate.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.3 MB</span></div>
+      </article>
+  </div>
+</div></section>
+<section id="photo"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">7 &middot; trim 8.5 &times; 11 &middot; 18 &times; 12 in</span>
+    <h2>Photo pieces</h2>
+    <p>Generated artwork with <b>not one letter inside the image</b>, on purpose: type drawn into a picture cannot be respelled or repriced without regenerating the picture. Every word on these is real text sitting on top of it.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Lawn ad</h3><p class="role">8.5 &times; 11 in</p></div>
+        
+        <div class="shots"><div><img src="img/ai-ad-lawn-p1.jpg" alt="Lawn ad page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/ai-ad-lawn.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.8 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Retro crest poster</h3><p class="role">8.5 &times; 11 in</p></div>
+        
+        <div class="shots"><div><img src="img/ai-ad-crest-p1.jpg" alt="Retro crest poster page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/ai-ad-crest.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.6 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Portrait magnet</h3><p class="role">18 &times; 12 in</p></div>
+        
+        <div class="shots"><div><img src="img/ai-magnet-portrait-p1.jpg" alt="Portrait magnet page 1" loading="lazy" decoding="async"></div></div>
+        <div class="dl"><a class="btn" href="pdf/ai-magnet-portrait.pdf" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>PDF</a>
+          <span class="meta">0.6 MB</span></div>
+      </article>
+  </div>
+</div></section>
+
+<section id="video"><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">8 &middot; 720 &times; 1280 &middot; 11 seconds</span>
+    <h2>Animations</h2>
+    <p>A dog does its business in the yard, the crew walks the same line behind it and clears up,
+    and the card lands with the number. Vertical and silent, because that is how the feed plays
+    them. These are SVG and CSS rather than generated video, so the type is real text over the
+    scene and never drawn into it.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>Morning round</h3><p class="role">Early sun, black Lab</p></div>
+        <div class="screen"><video src="video/scene-1-morning.mp4" muted loop autoplay playsinline
+          preload="metadata" poster="img/scene-1-morning-p1.png"></video></div>
+        <div class="dl"><a class="btn" href="video/scene-1-morning.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>MP4</a>
+          <span class="meta">0.5 MB &middot; 11s</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Golden hour</h3><p class="role">Late light, chocolate Lab</p></div>
+        <div class="screen"><video src="video/scene-2-golden.mp4" muted loop autoplay playsinline
+          preload="metadata" poster="img/scene-2-golden-p1.png"></video></div>
+        <div class="dl"><a class="btn" href="video/scene-2-golden.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>MP4</a>
+          <span class="meta">0.5 MB &middot; 11s</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Both dogs</h3><p class="role">Max and Simon &mdash; the upsell</p></div>
+        <div class="screen"><video src="video/scene-5-both.mp4" muted loop autoplay playsinline
+          preload="metadata" poster="img/scene-5-both-p1.png"></video></div>
+        <div class="dl"><a class="btn" href="video/scene-5-both.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>MP4</a>
+          <span class="meta">0.6 MB &middot; 11s</span></div>
+      </article>
+  </div>
+
+  <div class="note">
+    <h3>The line on these is not the line on the print</h3>
+    <p>The animations close on <b>&ldquo;We scoop your yard. You enjoy it.&rdquo;</b>, which is what
+    was asked for. Every printed piece carries the site&rsquo;s own line,
+    <b>&ldquo;We scoop it. You enjoy it.&rdquo;</b> Worth settling one way or the other: two slogans
+    in circulation goes unnoticed until the print and the feed disagree.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Also here</span>
+    <h2>The two commercials</h2>
+    <p>Twelve seconds of generated footage each, cross-faded into the same branded end card. There
+    are two of these rather than three &mdash; they are the only pieces in this set that need
+    footage, and footage is the expensive part.</p>
+  </div>
+  <div class="grid">
+      <article class="card">
+        <div class="card-h"><h3>The call</h3><p class="role">12s plus end card</p></div>
+        <div class="screen"><video src="video/ad-1-the-call.mp4" controls muted loop playsinline
+          preload="metadata"></video></div>
+        <div class="dl"><a class="btn" href="video/ad-1-the-call.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>MP4</a>
+          <span class="meta">5.6 MB</span></div>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>The kids</h3><p class="role">12s plus end card</p></div>
+        <div class="screen"><video src="video/ad-2-the-kids.mp4" controls muted loop playsinline
+          preload="metadata"></video></div>
+        <div class="dl"><a class="btn" href="video/ad-2-the-kids.mp4" download><svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>MP4</a>
+          <span class="meta">4.9 MB</span></div>
+      </article>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead">
+    <span class="eyebrow">Before anything goes to press</span>
+    <h2>Four things worth knowing</h2>
+  </div>
+
+  <div class="note">
+    <h3>Two facts were wrong on everything, including the website</h3>
+    <p>It is <b>&ldquo;St. Louis &amp; St. Charles Counties&rdquo;</b> &mdash; plural, because it is two
+    counties &mdash; and the hours are <b>Mon&ndash;Sun</b>, because the crew works every day. Every
+    piece here carries the corrected wording, and <code>index.html</code> was fixed too, including
+    the structured data that had been telling Google the business was closed on Sundays.</p>
+    <p>Anything printed before August 2026 has the old wording on it. Worth checking before a
+    reprint rather than after.</p>
+  </div>
+
+  <div class="note">
+    <h3>The sizes belong to the printer, not to us</h3>
+    <ul>
+      <li><b>Business cards</b> upload at 3.61 &times; 2.11 in, which is Vistaprint&rsquo;s sheet for
+      a 3.5 &times; 2 in card. Do not scale or nudge them on their canvas.</li>
+      <li><b>Door hangers</b> are 4.5 &times; 11 in, which is Vistaprint&rsquo;s size.
+      <b>Not 4.25 &times; 11</b> &mdash; that size is real, but it is GotPrint&rsquo;s and
+      Conquest&rsquo;s. Each piece declares its own trim in its <code>@page</code> rule and the build
+      reads it from there, so re-cutting the set for another printer is one line per piece.</li>
+      <li>Everything else carries <b>1/8 in of bleed</b> a side, with live copy at least 1/4 in
+      inside the trim.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <h3>The QR codes are tagged, and they are checked</h3>
+    <p>Each format tags itself &mdash; <code>?utm_source=card</code>, <code>hanger</code>,
+    <code>flyer</code>, <code>rack</code> &mdash; so Analytics can say <i>which piece</i> brought a
+    scan rather than just that print works. They are verified by decoding them back out of the
+    finished PDF rather than by trusting the source art: a code that only fails once rasterised is
+    exactly the kind that gets discovered on paper.</p>
+  </div>
+
+  <div class="note">
+    <h3>Changing any of it</h3>
+    <p>Sources are in <code>src/</code>, one file per piece, sharing <code>_base.css</code> and a
+    skeleton per format. Edit a price or a phone number there, then run:</p>
+    <p><code>python build.py</code> &mdash; rebuilds the PDFs and the previews on this page.<br>
+    <code>python build_video.py</code> &mdash; rebuilds the animations.</p>
+    <p>The build fails rather than quietly clipping when a piece overruns its sheet. That is how two
+    of the door hangers above came to be shortened, instead of arriving from the printer with their
+    feet cut off.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Max&rsquo;s Poo Crew &middot; 636-681-4832 &middot; maxspoocrew.com &middot;
+  St. Louis &amp; St. Charles Counties &middot; Mon&ndash;Sun, 7am&ndash;6pm
+</div></footer>
+
+<dialog id="lb"><button type="button" autofocus>Close</button><img alt=""></dialog>
+<script>
+  // Tap any preview to see it full size.
+  const lb = document.getElementById('lb');
+  const full = lb.querySelector('img');
+  document.querySelectorAll('.shots img').forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      full.src = thumb.src;
+      full.alt = thumb.alt;
+      lb.showModal();
+    });
+  });
+  lb.querySelector('button').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+</script>
+
+</body>
+</html>
