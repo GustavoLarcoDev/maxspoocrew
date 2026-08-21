@@ -7,6 +7,7 @@ formato** y el resto retirado.
 ```
 marketing/
   index.html        la página
+  cards/            las tarjetas con nombre, listas para Vistaprint
   src/              las fuentes, un archivo por pieza
   scenes/           las tres animaciones (SVG + CSS)
   pdf/              lo que recibe la imprenta
@@ -28,6 +29,7 @@ marketing/
 | Imanes de vehículo | 18×12, 12×8, 24×6 in | `magnet-door` `magnet-compact` `magnet-tailgate` |
 | Piezas con foto | 8.5×11, 18×12 in | `ai-ad-lawn` `ai-ad-crest` `ai-magnet-portrait` |
 | Animaciones | 720 × 1280, 11 s | `scene-1-morning` `scene-2-golden` `scene-5-both` |
+| Tarjetas con nombre | 3.5 × 2 in | `cards/Option-1-Classic` `-2-Red-Footer` `-3-Centered` |
 
 Más los dos comerciales, que son dos y no tres: son las únicas piezas que necesitan material
 filmado, y filmar es la parte cara.
@@ -80,6 +82,28 @@ a ojo.
 `?t=` — abrir `scenes/scene-1-morning.html?t=6.3` congela el bucle en el segundo 6.3. El reloj
 virtual de Chrome no sirve para esto: `transform` y `opacity` corren en el compositor, donde no
 llega, y los 275 fotogramas salen idénticos.
+
+## Los códigos QR
+
+Todos van a **https://maxspoocrew.com/quote/**, con la etiqueta "Scan for your free quote".
+Antes iban a la portada, que dejaba el escaneo a un clic de lo único para lo que sirve un
+escaneo.
+
+```bash
+pip install segno
+python make_qr.py      # reescribe los cuatro SVG de src/
+```
+
+Cada formato se etiqueta solo —`?utm_source=card`, `hanger`, `flyer`, `rack`— para que
+Analytics pueda decir **qué pieza** trajo el escaneo y no solo que el impreso funciona. Las
+tarjetas de `cards/` llevan la dirección pelada, sin etiqueta; van al mismo lugar.
+
+**Ojo con esto:** el sitio que está en vivo hoy tiene una página real en `/quote/`, pero el
+sitio de este repo es de una sola página y el formulario es la sección `#quote`. Por eso se
+agregó `quote/index.html`, que redirige. Sin eso, el día que este sitio reemplace al actual
+**todos los códigos ya impresos caerían en un 404**, y un QR en papel no se corrige.
+
+Se verifican decodificándolos del PDF terminado, no del SVG.
 
 ## Los dos datos que estaban mal en todo
 
