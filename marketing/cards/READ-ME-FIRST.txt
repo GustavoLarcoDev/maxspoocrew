@@ -1,0 +1,78 @@
+MAX'S POO CREW - BUSINESS CARDS FOR VISTAPRINT
+===============================================
+
+Open PROOF-all-designs.png first - all 3 designs side by side.
+PROOF-with-cut-guides.png shows where the cut line and safe zone fall.
+
+WHAT CHANGED IN THIS VERSION
+  - "WE SCOOP POOP" is now the lead phrase everywhere. It is the biggest
+    thing on the back of every design, and it sits above the name on the
+    front. The old "No Pile Left Behind" line is gone.
+  - A QR code on the back of every design goes to
+    https://maxspoocrew.com/quote/
+    Labelled "SCAN FOR YOUR FREE QUOTE".
+  - "COUNTY" is now "COUNTIES" - St. Louis & St. Charles Counties.
+
+THREE DESIGNS. Pick one, throw the other two away.
+
+  Option-1-Classic     Same layout as the msd-card sample you sent, redone
+                       on white with the Max's Poo Crew logo.
+  Option-2-Red-Footer  White card with a full-bleed red band on the bottom.
+  Option-3-Centered    Logo on top, name and contact centred.
+
+WHAT'S IN EACH FOLDER
+
+  FRONT-Michael-Harvey-*.pdf   front, Michael Harvey / Chief Pooper Officer (CPO)
+  FRONT-Gustavo-Larco-*.pdf    front, Gustavo Larco / Director
+  BACK-shared-*.pdf            the back - same for both people, order one back
+  BOTH-*-2page.pdf             front + back in one 2-page file
+  *-300dpi.png                 same artwork as a 300 dpi image, if the
+                               uploader will not take a PDF
+
+  QR-quote-page.png            the bare QR on its own, for flyers, yard signs,
+                               door hangers, invoices - anything else you print
+
+HOW TO UPLOAD ON VISTAPRINT
+
+  1. Standard Business Cards -> "Upload a full design"
+  2. Front  = the FRONT pdf for that person
+     Back   = the BACK pdf
+  3. If it asks about bleed, the files already include it - do not let it
+     scale or "fit to page". Choose 100% / actual size.
+  4. Michael and Gustavo are separate orders (different front, same back).
+
+BEFORE YOU ORDER
+  Scan the QR on PROOF-all-designs.png with your own phone. It should open
+  the quote page. It is worth 10 seconds to confirm on your own device.
+
+FILE SPECS
+
+  Document size   3.61 x 2.11 in  (259.92 x 151.92 pt) - includes bleed
+  Trim size       3.5 x 2 in - standard US business card
+  Bleed           0.055 in on every edge
+  Safe zone       0.125 in inside the trim - all text is inside it
+  Colour          RGB (sRGB), Vistaprint converts to CMYK
+  Fonts           embedded, nothing to install
+  Logo            600+ dpi at printed size
+  QR code         0.90 in square, 0.62 mm modules, error correction level Q
+                  (survives 25% damage), drawn as vector - not a picture,
+                  so it stays razor sharp at any size
+
+  Same page dimensions as the msd-card sample you sent, so these drop into
+  the same Vistaprint product.
+
+BRAND VALUES USED
+
+  Red    #C8102E        Ink  #1A1A1A       Gold accent  #FFD166
+  Phone  636-681-4832
+  Email  maxspoocrew@outlook.com
+  Web    maxspoocrew.com
+  Quote  https://maxspoocrew.com/quote/
+
+NOTES
+  - The QR is on the BACK, not the front. A QR has to be about 0.8 in to
+    scan reliably, and the front is already carrying the logo, name, title
+    and three contact lines. If you want it on the front instead, say so
+    and I'll rework the front of whichever design you pick.
+  - Both cards carry the same phone and email (the company's). If Michael
+    should have his own number, tell me and I'll rebuild that one.

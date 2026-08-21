@@ -12,6 +12,7 @@ cualquier hosting compartido.
 | `marketing/` | **Todo el material, en una página**: tres ejemplos de cada formato y las fuentes que los generan |
 | `ops/` `plan/` `board/` | Herramientas internas: operación, plan, tablero |
 | `social/` `client-map/` | Planificador de publicaciones y mapa de clientes |
+| `quote/` | Redirección a la sección `#quote`. **No borrar:** es a donde apuntan todos los QR impresos |
 | `_source/` | Los originales sin procesar. No hace falta subirla |
 
 En agosto de 2026 `/cards`, `/flyers`, `/newdesign`, `/animation`, `/print` y `/ads` se
