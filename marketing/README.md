@@ -23,6 +23,7 @@ marketing/
 |---|---|---|
 | Tarjetas de presentación | 3.5 × 2 in | `card-classic` `card-quiet` `card-band` |
 | Door hangers | 4.5 × 11 in | `hanger-vp-street` `hanger-vp-price` `hanger-vp-photo` |
+| Door hangers de vecinos | 4.5 × 11 in | `hanger-nb-street` `hanger-nb-referral` `hanger-nb-look` |
 | Flyers carta | 8.5 × 11 in | `flyer-i-free` `flyer-j-health` `flyer-q-move` |
 | Rack cards | 3.75 × 8.25 in | `rack-i-free` `rack-j-health` `rack-q-move` |
 | Mini cards | 3.75 × 8.25 in | `mini-1-sit` `mini-2-lie` `mini-3-pair` |
@@ -68,6 +69,28 @@ palabra.
 
 Eso deja menos de cinco pulgadas para el argumento, y por eso la tipografía acá es más chica que en
 las rack cards aunque el pliego sea más grande.
+
+## Los door hangers de vecinos
+
+Van en las puertas de al lado de un patio que la cuadrilla acaba de terminar. La prueba es
+todo el argumento: la camioneta estuvo en la calle y el vecino puede pasar y mirar.
+
+- `hanger-nb-street` — lo cuelga la cuadrilla, el mismo día del servicio.
+- `hanger-nb-referral` — lo reparte **el cliente**. Lleva una línea en blanco para que escriba
+  su propio nombre, que es lo que hace que el crédito de $20 tenga dónde caer.
+- `hanger-nb-look` — el más suave, para calles donde una venta dura cae mal.
+
+Tres reglas que no son cosméticas:
+
+**Solo colgar el de la calle donde sea cierto.** Abre diciendo que la cuadrilla estuvo ahí.
+En una calle sin cliente eso es mentira, y del tipo que se le repite al vecino que nombra.
+
+**Ninguno nombra al cliente, a propósito.** Un nombre o un número de casa le cuenta a la
+cuadra quién paga por un servicio de recolección, y eso no es nuestro para repartir. El
+argumento se sostiene igual sin eso.
+
+**Nunca en el buzón.** En EE.UU. el buzón es propiedad del correo y solo entra correo con
+estampilla. Va en el picaporte, trabado en la puerta, o en la baranda del porche.
 
 ## Las animaciones
 
