@@ -90,6 +90,29 @@ h2{font-size:.24in;line-height:1.06}
 .panel li::before{content:"";position:absolute;left:.04in;top:.07in;
   width:.055in;height:.055in;border-radius:50%;background:var(--rule-2)}
 
+
+/* --- the write-in line ----------------------------------------------------
+   One piece asks the customer to put their own name on it before handing it
+   over. That is the whole referral mechanic: the site pays $20 to the person
+   who referred and $20 to the new customer, and the credit needs a name to
+   land on. Printing an existing customer's name for them is not an option -
+   it tells the street who pays for a scooping service.
+
+   Sized for a ballpoint: 0.34in of clear height, and a rule dark enough to
+   photocopy but light enough to write over. */
+.writein{margin-top:.22in}
+.writein .k{font-family:var(--body);font-weight:700;font-size:.095in;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--red-ink)}
+.writein .line{display:block;height:.4in;border-bottom:2px solid var(--ink-3)}
+
+/* numbered steps, for the piece that explains the referral */
+.steps{display:flex;flex-direction:column;gap:.14in}
+.st{display:flex;gap:.15in;align-items:flex-start}
+.st .n{flex:none;width:.32in;height:.32in;border-radius:.09in;background:var(--red);
+  color:#fff;font-family:var(--display);font-size:.15in;display:grid;place-items:center}
+.st h3{font-size:.145in}
+.st p{font-size:.112in;color:var(--ink-2);line-height:1.42;margin-top:.03in}
+
 /* --- call to action ------------------------------------------------------ */
 .cta{margin-top:auto;display:flex;gap:.18in;align-items:center;
   background:var(--ink);border-radius:.15in;padding:.16in .17in;color:var(--cream)}
